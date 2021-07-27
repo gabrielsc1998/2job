@@ -7,7 +7,7 @@ app.use(express.urlencoded({ extended: false }));
 const { port } = require('../../config').app;
 
 app.listen(port, () => {
-  console.log(`\n ## Server is listening on http://localhost:${port}`);
+  console.log(`\n ## Server started [http://localhost:${port}]`);
 });
 
 module.exports = app;

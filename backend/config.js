@@ -6,6 +6,9 @@ const config = {
     app: {
       port: process.env.APP_PORT || 3000,
     },
+    db: {
+      url: process.env.URL || 'mongodb://localhost/db'
+    }
   },
 }
 
