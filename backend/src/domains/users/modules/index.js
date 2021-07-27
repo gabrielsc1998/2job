@@ -1,53 +1,26 @@
-const mongoose = require("../../dataBase");
-// const bcrypt = require("bcryptjs");
+const userSchema = require('./schema');
+const { USER_EMPLOYEE, USER_EMPLOYER } = require('../../config');
 
-const UserSchema = new mongoose.Schema({	
-	
-	name: {
-		type: String,
-		require: true,
-	},
+class UserModule {
 
-  username: {
-    type: String,
-    unique: true,
-    // require: true
-  },
+	async create(userInfo) {
 
-	email: {
-		type: String,
-		unique: true,
-		require: true,
-		lowercase: true,
-	},
-
-	password: {
-		type: String,
-		require: true,
-		select: false,
-	},
-
-	createAt: {
-		type: Date,
-		default: Date.now,
-	},
-});
-
-const user = mongoose.model("User", UserSchema);
-module.exports = user;
+		try {
+			const { type, name, email, username } = userInfo;
 
 
+			if(type === USER_EMPLOYER) {
+				const { companyName, cnpj } = userInfo;
 
-// Antes de salvar, criptografa a senha
-// pre -> função do "mongoose" para dizer que 
-// se quer que algo aconteça antes de salvar
-// userSchema.pre("save", async function(next)
-// {
-// 	// this -> ponteiro para o dado a ser salvo
-// 	// Faz a criptografia da senha com "10 rounds" - padrão
-// 	const passwordHash = await bcrypt.hash(this.password, 10);
-// 	// Passa a senha criptografada para a senha
-// 	this.password = passwordHash;
+			} else {
 
-// 	next();
-// });
+			}
+    } catch(error) {
+      
+    }
+
+	}
+
+}
+
+module.exports = new UserModule();
