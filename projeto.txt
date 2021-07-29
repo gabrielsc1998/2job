@@ -1,0 +1,72 @@
+- Projeto 2JOB:
+
+  - Descrição: plataforma de anúncio e busca de vagas de emprego para empresas e desenvolvedores;
+
+  - Componentes do sistema:
+
+    - Usuários:
+
+      - Empresas:
+
+        - E-mail e senha;
+
+        - Nome (razão social);
+
+        - Localização:
+
+          - País;
+          - Estado;
+          - Cidade;
+
+      - Devs:
+
+        - E-mail, username e senha;
+        
+        - Nome completo;
+
+        - Data de nascimento;
+
+        - Área de atuação (frontend, backend ou fullstack);
+
+        - Tecnologias (javascript, python, node, react, vue, angular, mongo, mysql, c# ...);
+
+        - Localização:
+
+        - País;
+        - Estado;
+        - Cidade; 
+
+    - Regra de negócio:
+
+        - Vagas:
+
+          - descrição;
+          - área de atuação;
+          - tecnologias;
+          - data de criação;
+          - salário:
+            - pj e clt (pode ter apenas um ou ambos);
+          - número de candidatos;
+          - status (caso for fechada, será apagada do sistema);
+
+      - Empresas:
+
+        - Anunciam as vagas e podem;
+
+          - criar vagas;
+          - editar vagas;
+          - fechar vagas;
+          - contratar um dos candidatos (simplificar processo);
+          - ver perfil de devs no sistema e dos candidatos das suas vagas (ver complexidade X tempo);
+          - podem convidar devs para as vagas (ver complexidade X tempo);
+
+      - Devs:
+
+        - Buscam e se candidatam a vagas, podendo:
+
+          - procurar as vagas por área de atuação e tecnologias;
+          - verificar perfil das empresas;
+          - aceitar ou não convites das empresas (ver complexidade X tempo);
+          - serem contratados;
+
+
