@@ -1,12 +1,7 @@
 const mongoose = require("../../dataBase");
 // const bcrypt = require("bcryptjs");
 
-const UserSchema = new mongoose.Schema({	
-
-	type: {
-		type: String,
-		require: true,
-	},
+const DevSchema = new mongoose.Schema({	
 
 	name: {
 		type: String,
@@ -16,7 +11,8 @@ const UserSchema = new mongoose.Schema({
   username: {
     type: String,
     unique: true,
-    require: true
+    require: true,
+		lowercase: true,
   },
 
 	email: {
@@ -32,14 +28,28 @@ const UserSchema = new mongoose.Schema({
 		select: false,
 	},
 
-	companyName: {
+	occupationArea: {
 		type: String,
+		require: true
 	},
 
-	cnpj: {
-		type: String
+	technologies: [String],
+
+	country: {
+		type: String,
+		require: true,
 	},
 
+	state: {
+		type: String,
+		require: true,
+	},
+
+	city: {
+		type: String,
+		require: true,
+	},
+	
 	createAt: {
 		type: Date,
 		default: Date.now,
@@ -47,8 +57,8 @@ const UserSchema = new mongoose.Schema({
 
 });
 
-const user = mongoose.model("User", UserSchema);
-module.exports = user;
+const dev = mongoose.model("Dev", DevSchema);
+module.exports = dev;
 
 
 

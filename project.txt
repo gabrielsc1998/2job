@@ -18,6 +18,8 @@
           - Estado;
           - Cidade;
 
+        - Data de cadastro
+
       - Devs:
 
         - E-mail, username e senha;
@@ -32,9 +34,11 @@
 
         - Localização:
 
-        - País;
-        - Estado;
-        - Cidade; 
+          - País;
+          - Estado;
+          - Cidade; 
+
+        - Data de cadastro
 
     - Regra de negócio:
 

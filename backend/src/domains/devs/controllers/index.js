@@ -1,7 +1,7 @@
 const _ = require('lodash');
 const fs = require('fs');
 
-const validateUserCreate = (body) => {
+const validateDevCreate = (body) => {
   if(_.isEmpty(body) || _.isNull(body) || _.isUndefined(body)) {
     throw Error
   }
@@ -20,21 +20,16 @@ const validateUserCreate = (body) => {
   }
 }
 
-class UserController {
+class DevController {
 
   async create(request, response) {
     
     try {
 
-      validateUserCreate(request.body);
+      validateDevCreate(request.body);
       
       const {  
-        type,
-        name,
-        email,
-        password,
-        companyName,
-        cnpj
+
       } = request.body;
       
       // const file = './test_temp/users.json';
@@ -85,4 +80,4 @@ class UserController {
   // }
 }
 
-module.exports = new UserController();
+module.exports = new DevController();
