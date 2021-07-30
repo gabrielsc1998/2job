@@ -1,1 +1,0 @@
-{"type":"employee","name":"João da Silva","email":"joao_silva@gmail.com","password":"abcd1234"}

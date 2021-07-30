@@ -1,6 +1,8 @@
 const _ = require('lodash');
 const fs = require('fs');
 
+const DevModel = require('../modules');
+
 const validateDevCreate = (body) => {
   if(_.isEmpty(body) || _.isNull(body) || _.isUndefined(body)) {
     throw Error
@@ -26,18 +28,21 @@ class DevController {
     
     try {
 
-      validateDevCreate(request.body);
+      // console.log(request.body);
+      // validateDevCreate(request.body);
       
-      const {  
+      // const {  
 
-      } = request.body;
+      // } = request.body;
       
       // const file = './test_temp/users.json';
       // const usersTest = JSON.parse(fs.readFileSync(file, 'utf8'));
       // usersTest.users.push(request.body);
       // fs.writeFileSync(file, JSON.stringify(usersTest), 'utf8');
       
-      response.status(200).send();
+      const resp = await DevModel.create(request.body);
+      // console.log(resp)
+      response.status(201).send();
     } catch(error) {
       response.status(400).send({ error });
     }

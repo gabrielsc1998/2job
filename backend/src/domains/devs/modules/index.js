@@ -1,11 +1,30 @@
-const userSchema = require('./schema');
+const devModel = require('./schema');
 
-class DevModule {
+class DevModel {
+
+	constructor() {}
 
 	async create(devInfo) {
 
 		try {
-			const { name, email, username } = devInfo;
+
+			// console.log(devInfo);
+
+			// const { 
+			// 	name, 
+			// 	birthDate,
+			// 	email, 
+			// 	username,
+			// 	password,
+			// 	occupationArea,
+			// 	technologies,
+			// 	state,
+			// 	city
+			// } = devInfo;
+			
+			const ret = await devModel.create(devInfo);
+			console.log(ret)
+			return ret != undefined;
 
     } catch(error) {
       
@@ -15,4 +34,4 @@ class DevModule {
 
 }
 
-module.exports = new DevModule();
+module.exports = new DevModel();

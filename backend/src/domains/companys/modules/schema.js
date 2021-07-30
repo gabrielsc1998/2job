@@ -22,11 +22,6 @@ const CompanySchema = new mongoose.Schema({
 		unique: true,
 	},
 
-	country: {
-		type: String,
-		require: true,
-	},
-
 	state: {
 		type: String,
 		require: true,

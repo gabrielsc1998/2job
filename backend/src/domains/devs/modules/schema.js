@@ -1,11 +1,15 @@
-const mongoose = require("../../dataBase");
+const db = require("../../../database");
 // const bcrypt = require("bcryptjs");
 
-const DevSchema = new mongoose.Schema({	
+const DevSchema = new db.mongoose.Schema({	
 
 	name: {
 		type: String,
 		require: true,
+	},
+
+	birthDate: {
+		type: String
 	},
 
   username: {
@@ -35,11 +39,6 @@ const DevSchema = new mongoose.Schema({
 
 	technologies: [String],
 
-	country: {
-		type: String,
-		require: true,
-	},
-
 	state: {
 		type: String,
 		require: true,
@@ -57,7 +56,7 @@ const DevSchema = new mongoose.Schema({
 
 });
 
-const dev = mongoose.model("Dev", DevSchema);
+const dev = db.mongoose.model("Dev", DevSchema);
 module.exports = dev;
 
 

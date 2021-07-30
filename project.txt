@@ -14,17 +14,16 @@
 
         - Localização:
 
-          - País;
           - Estado;
           - Cidade;
 
-        - Data de cadastro
+        - Data de cadastro;
 
       - Devs:
 
-        - E-mail, username e senha;
-        
         - Nome completo;
+        
+        - E-mail, username e senha;
 
         - Data de nascimento;
 
@@ -34,11 +33,10 @@
 
         - Localização:
 
-          - País;
           - Estado;
           - Cidade; 
 
-        - Data de cadastro
+        - Data de cadastro;
 
     - Regra de negócio:
 
