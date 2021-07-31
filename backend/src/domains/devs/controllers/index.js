@@ -1,56 +1,53 @@
 const _ = require('lodash');
-const fs = require('fs');
-const { body, validationResult } = require('express-validator');
+const { validationResult } = require('express-validator');
 
-const DevModel = require('../modules');
+const dev = require('../modules');
 
-// const validateDevCreate = (body) => {
-//   if(_.isEmpty(body) || _.isNull(body) || _.isUndefined(body)) {
-//     throw Error
-//   }
-
-//   const {  
-//     type,
-//     name,
-//     email,
-//     password,
-//     companyName,
-//     cnpj
-//   } = body;
-
-//   if(_.isUndefined(type) && type != '') {
-
-//   }
-// }
+const checkError = (request) => {
+  const errors = validationResult(request);
+  if(!errors.isEmpty()) {
+    throw errors.array();
+  }
+}
 
 class DevController {
 
   async create(request, response) {
-    
     try {
+      checkError(request);
+      const payloadCreateDev = request.body;
+      await dev.create(payloadCreateDev);
+      response.status(201).send({ msg: 'Dev created!' });
+    } catch(error) {
+      response.status(400).send({ error });
+    }
+  }
 
-      // console.log(request.body);
-      // validateDevCreate(request.body);
-      
-      // const {  
+  async getById(request, response) {
+    try {
+      checkError(request);
+      const devList = await dev.getById(request.params.id);
+      response.status(200).send(devList);
+    } catch(error) {
+      response.status(400).send({ error });
+    }
+  }
+  
+  async listAll(request, response) {
+    try {
+      checkError(request);
+      const devList = await dev.listAll();
+      response.status(200).send(devList);
+    } catch(error) {
+      response.status(400).send({ error });
+    }
+  }
 
-      // } = request.body;
-      
-      // const file = './test_temp/users.json';
-      // const usersTest = JSON.parse(fs.readFileSync(file, 'utf8'));
-      // usersTest.users.push(request.body);
-      // fs.writeFileSync(file, JSON.stringify(usersTest), 'utf8');
-      
-      // body('email').isEmail();
-
-      const errors = validationResult(request);
-      if (!errors.isEmpty()) {
-        return response.status(400).json({ errors: errors.array() });
-      }
-
-      // const resp = await DevModel.create(request.body);
-      // console.log(resp)
-      response.status(201).send();
+  async deleteById(request, response) {
+    try {
+      checkError(request);
+      await dev.deleteById(request.params.id);
+      response.status(200).send({ msg: 'Dev deleted!' });
     } catch(error) {
       response.status(400).send({ error });
     }

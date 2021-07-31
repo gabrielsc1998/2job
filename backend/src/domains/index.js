@@ -1,3 +1,4 @@
+const _ = require('lodash');
 const fs = require('fs');
 const path = require('path');
  
@@ -6,10 +7,9 @@ class Domains {
   constructor() {
     this.domainRoutes = [];
     
-    // Busca em cada domínio o arquivo routes e importa as rotas, inserindo no array 'domainRoutes'
+    // Busca em cada domínio o arquivo 'routes' e importa as rotas, inserindo no array 'domainRoutes'
     fs  
       .readdirSync(__dirname)
-      .sort((a, b) => fs.statSync(`${__dirname}/${a}`).mtime.getTime() - fs.statSync(`${__dirname}/${b}`).mtime.getTime())
       .forEach(subDir => {
         if(subDir.indexOf('.js') === -1) {
           const filesAndSubDir = fs.readdirSync(path.resolve(`${__dirname}/${subDir}`));
@@ -29,24 +29,32 @@ class Domains {
 
     if(this.domainRoutes.length != 0) {
       this.domainRoutes.forEach(domainRoutes => {
-        const { BASE_PATH, routes } = domainRoutes;
-        if(routes && routes.lenght != 0) {
+        const { BASE_PATH=undefined, routes=undefined } = domainRoutes;
+
+        if(!_.isUndefined(BASE_PATH) && (_.isArray(routes) && routes.lenght != 0)) {
           const router = server.getRouter();
           routes.forEach(route => {
             const { method, path, validations=undefined, handler } = route;
     
             if(method === 'GET') {
-              if(validations != undefined) {
-                router.get(`${path}`, validations, handler);
-              } else {
+              if(_.isUndefined(validations)) {
                 router.get(`${path}`, handler);
+              } else {
+                router.get(`${path}`, validations, handler);
               }
             }
             else if(method === 'POST') {
-              if(validations != undefined) {
-                router.post(`${path}`, validations, handler);
-              } else {
+              if(_.isUndefined(validations)) {
                 router.post(`${path}`, handler);
+              } else {
+                router.post(`${path}`, validations, handler);
+              }
+            }
+            else if(method === 'DELETE') {
+              if(_.isUndefined(validations)) {
+                router.delete(`${path}`, handler);
+              } else {
+                router.delete(`${path}`, validations, handler);
               }
             }
     

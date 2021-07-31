@@ -1,35 +1,56 @@
+const _ = require('lodash');
+
 const devModel = require('./schema');
 
 class DevModel {
 
 	constructor() {}
 
-	async create(devInfo) {
+	create(payload) {
+		return new Promise(async (resolve, reject) => {
+			try {
+				const ret = await devModel.create(payload);
+				resolve(ret);
+			} catch (error) {
+				reject(error);
+			}
+		});
+	}
 
-		try {
+	getById(id) {
+		return new Promise(async (resolve, reject) => {
+			try {
+				if(!_.isString(id)) {
+					throw `invalid id type`;
+				}
+				const ret = await devModel.findById(id);
+				resolve(ret);
+			} catch (error) {
+				reject(error);
+			}
+		});
+	}
 
-			// console.log(devInfo);
+	listAll() {
+		return new Promise(async (resolve, reject) => {
+			try {
+				const ret = await devModel.find();
+				resolve(ret);
+			} catch (error) {
+				reject(error);
+			}
+		});
+	}
 
-			// const { 
-			// 	name, 
-			// 	birthDate,
-			// 	email, 
-			// 	username,
-			// 	password,
-			// 	occupationArea,
-			// 	technologies,
-			// 	state,
-			// 	city
-			// } = devInfo;
-			
-			const ret = await devModel.create(devInfo);
-			console.log(ret)
-			return ret != undefined;
-
-    } catch(error) {
-      
-    }
-
+	deleteById(id) {
+		return new Promise(async (resolve, reject) => {
+			try {
+				const ret = await devModel.findByIdAndRemove(id);
+				resolve(ret);
+			} catch (error) {
+				reject(error);
+			}
+		});
 	}
 
 }
