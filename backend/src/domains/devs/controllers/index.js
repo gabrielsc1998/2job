@@ -2,7 +2,7 @@ const _ = require('lodash');
 const fs = require('fs');
 const { body, validationResult } = require('express-validator');
 
-const DevModel = require('../modules');
+// const DevModel = require('../modules');
 
 // const validateDevCreate = (body) => {
 //   if(_.isEmpty(body) || _.isNull(body) || _.isUndefined(body)) {
@@ -48,7 +48,7 @@ class DevController {
         return response.status(400).json({ errors: errors.array() });
       }
 
-      const resp = await DevModel.create(request.body);
+      // const resp = await DevModel.create(request.body);
       // console.log(resp)
       response.status(201).send();
     } catch(error) {

@@ -3,22 +3,32 @@ const mongoConfig = require('./config');
 
 mongoose.Promise = global.Promise;
 
-let _mongoStarted = false;
-const start = async () => { 
-  try {
-    if(await mongoose.connect(mongoConfig.DB_URL, mongoConfig.options)) {
-      _mongoStarted = true;
-      console.log(' ## Database started!');
-    }
-  } catch(error) {
-    console.log(` ## Problem to start the database [error: ${error}]`)
+class MongoDB {
+
+  constructor() {
+    this.dbStarted = false;
   }
 
-  return _mongoStarted;
+  async connect() {
+    try {
+      const { DB_URL, options } = mongoConfig;
+      if(await mongoose.connect(DB_URL, options)) {
+        this.dbStarted = true;
+        console.log(' ## Database started!');
+      }
+      return this.dbStarted;
+    } catch(error) {
+      console.log(` ## Problem to connect the database [${error}]`);
+      return false;
+    }
+  }
+
+  getInstance() {
+    if(this.dbStarted) {
+      return mongoose;
+    }
+    return undefined;
+  }
 }
 
-module.exports = {
-  start,
-  mongoose
-};
-
+module.exports = new MongoDB();

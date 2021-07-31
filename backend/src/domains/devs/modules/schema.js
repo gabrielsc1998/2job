@@ -1,7 +1,9 @@
 const db = require("../../../database");
 // const bcrypt = require("bcryptjs");
 
-const DevSchema = new db.mongoose.Schema({	
+const mongoose = db.getInstance();
+
+const DevSchema = new mongoose.Schema({	
 
 	name: {
 		type: String,
@@ -56,7 +58,7 @@ const DevSchema = new db.mongoose.Schema({
 
 });
 
-const dev = db.mongoose.model("Dev", DevSchema);
+const dev = mongoose.model("Dev", DevSchema);
 module.exports = dev;
 
 
