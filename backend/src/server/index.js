@@ -36,7 +36,7 @@ class Server {
     try {
       app.use(method);
     } catch(error) {
-
+      console.log(` ## Error to user [${error}]`);
     }
   }
 
@@ -44,7 +44,7 @@ class Server {
     try {
       return app.use(path, router);
     } catch(error) {
-
+      console.log(` ## Error to useRouter [${error}]`);
     }
   }
 
