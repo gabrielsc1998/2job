@@ -13,10 +13,11 @@ class Domains {
       .forEach(subDir => {
         if(subDir.indexOf('.js') === -1) {
           const filesAndSubDir = fs.readdirSync(path.resolve(`${__dirname}/${subDir}`));
+          const SUBDIR_ROUTES = 'routes';
           if(filesAndSubDir.length != 0) {
-            const routesDir = filesAndSubDir.filter(subDir => subDir === 'routes')
+            const routesDir = filesAndSubDir.filter(subDir => subDir === SUBDIR_ROUTES)
             if(routesDir.length != 0) {
-              const pathResolved = path.resolve(`${__dirname}/${subDir}/routes`, 'index.js');
+              const pathResolved = path.resolve(`${__dirname}/${subDir}/${SUBDIR_ROUTES}`, 'index.js');
               this.domainRoutes.push(require(pathResolved));
             }
           }
@@ -29,11 +30,9 @@ class Domains {
     if(this.domainRoutes.length != 0) {
       this.domainRoutes.forEach(domainRoutes => {
         const { BASE_PATH, routes } = domainRoutes;
-        console.log(domainRoutes)
         if(routes && routes.lenght != 0) {
           const router = server.getRouter();
           routes.forEach(route => {
-            
             const { method, path, validations=undefined, handler } = route;
     
             if(method === 'GET') {

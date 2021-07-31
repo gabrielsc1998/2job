@@ -2,7 +2,7 @@ const _ = require('lodash');
 const fs = require('fs');
 const { body, validationResult } = require('express-validator');
 
-// const DevModel = require('../modules');
+const DevModel = require('../modules');
 
 // const validateDevCreate = (body) => {
 //   if(_.isEmpty(body) || _.isNull(body) || _.isUndefined(body)) {
