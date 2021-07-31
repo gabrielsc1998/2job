@@ -1,26 +1,27 @@
 const _ = require('lodash');
 const fs = require('fs');
+const { body, validationResult } = require('express-validator');
 
 const DevModel = require('../modules');
 
-const validateDevCreate = (body) => {
-  if(_.isEmpty(body) || _.isNull(body) || _.isUndefined(body)) {
-    throw Error
-  }
+// const validateDevCreate = (body) => {
+//   if(_.isEmpty(body) || _.isNull(body) || _.isUndefined(body)) {
+//     throw Error
+//   }
 
-  const {  
-    type,
-    name,
-    email,
-    password,
-    companyName,
-    cnpj
-  } = body;
+//   const {  
+//     type,
+//     name,
+//     email,
+//     password,
+//     companyName,
+//     cnpj
+//   } = body;
 
-  if(_.isUndefined(type) && type != '') {
+//   if(_.isUndefined(type) && type != '') {
 
-  }
-}
+//   }
+// }
 
 class DevController {
 
@@ -40,6 +41,13 @@ class DevController {
       // usersTest.users.push(request.body);
       // fs.writeFileSync(file, JSON.stringify(usersTest), 'utf8');
       
+      // body('email').isEmail();
+
+      const errors = validationResult(request);
+      if (!errors.isEmpty()) {
+        return response.status(400).json({ errors: errors.array() });
+      }
+
       const resp = await DevModel.create(request.body);
       // console.log(resp)
       response.status(201).send();

@@ -1,13 +1,27 @@
-app = require('./src/app');
-const { Router } = require('express');
-const router = Router();
-
 const db = require('./src/database');
-db.start();
 
-const Dev = require('./src/domains/devs/controllers');
+const { body } = require('express-validator');
 
-router.post('/dev/create', Dev.create);
+async function serverInitialize() {
+  if(await db.start()) {
+    const Dev = require('./src/domains/devs/controllers');
+    
+    app = require('./src/app');
+    const { Router } = require('express');
+    const router = Router();
+    
+    const test = () => {
+      const validations = [
+        body('email').isEmail(),
+        body('name').isString(),
+      ]
+      return validations;
+    }
+    router.post('/dev/create', test(), Dev.create);
+    
+    app.use(router);
+  }
+}
 
-app.use(router);
+serverInitialize();
 
