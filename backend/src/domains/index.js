@@ -34,30 +34,15 @@ class Domains {
         if(!_.isUndefined(BASE_PATH) && (_.isArray(routes) && routes.lenght != 0)) {
           const router = server.getRouter();
           routes.forEach(route => {
-            const { method, path, validations=undefined, handler } = route;
-    
-            if(method === 'GET') {
+            const { path, validations=undefined, handler } = route;
+            const method = server.getMethod(route.method);
+            if(!_.isUndefined(method)) {
               if(_.isUndefined(validations)) {
-                router.get(`${path}`, handler);
+                router[method.toLowerCase()](`${path}`, handler);
               } else {
-                router.get(`${path}`, validations, handler);
+                router[method.toLowerCase()](`${path}`, validations, handler);
               }
             }
-            else if(method === 'POST') {
-              if(_.isUndefined(validations)) {
-                router.post(`${path}`, handler);
-              } else {
-                router.post(`${path}`, validations, handler);
-              }
-            }
-            else if(method === 'DELETE') {
-              if(_.isUndefined(validations)) {
-                router.delete(`${path}`, handler);
-              } else {
-                router.delete(`${path}`, validations, handler);
-              }
-            }
-    
           });
     
           server.useRouter(BASE_PATH, router);

@@ -52,7 +52,22 @@ class Server {
     try {
       return router;
     } catch (error) {
+      console.log(` ## Error to getRouter [${error}]`);
+    }
+    return undefined;
+  }
 
+  getMethod(method) {
+    try {
+      const httpMethods = {
+        GET: 'GET',
+        PUT: 'PUT',
+        POST: 'POST',
+        DELETE: 'DELETE',
+      };
+      return httpMethods[method];
+    } catch (error) {
+      console.log(` ## Error to getMethod [${error}]`);
     }
     return undefined;
   }
