@@ -8,6 +8,10 @@ const router = Router();
 class Server {
 
   constructor() {
+    this._config()
+  }
+
+  _config() {
     app.use(cors());
     app.use(express.json());
     app.use(express.urlencoded({ extended: false }));

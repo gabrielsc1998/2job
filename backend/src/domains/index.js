@@ -1,19 +1,23 @@
 const _ = require('lodash');
 const fs = require('fs');
 const path = require('path');
- 
+
+const SUBDIR_ROUTES = 'routes';
+
 class Domains {
 
   constructor() {
     this.domainRoutes = [];
-    
+    this._sweepAndGet();
+  }
+
+  _sweepAndGet() {
     // Busca em cada domínio o arquivo 'routes' e importa as rotas, inserindo no array 'domainRoutes'
     fs  
       .readdirSync(__dirname)
       .forEach(subDir => {
         if(subDir.indexOf('.js') === -1) {
           const filesAndSubDir = fs.readdirSync(path.resolve(`${__dirname}/${subDir}`));
-          const SUBDIR_ROUTES = 'routes';
           if(filesAndSubDir.length != 0) {
             const routesDir = filesAndSubDir.filter(subDir => subDir === SUBDIR_ROUTES)
             if(routesDir.length != 0) {
