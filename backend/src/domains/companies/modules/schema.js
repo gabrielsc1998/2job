@@ -1,5 +1,7 @@
-const mongoose = require("../../dataBase");
+const db = require("../../../database");
 // const bcrypt = require("bcryptjs");
+
+const mongoose = db.getInstance();
 
 const CompanySchema = new mongoose.Schema({	
 
@@ -39,7 +41,7 @@ const CompanySchema = new mongoose.Schema({
 
 });
 
-const company = mongoose.model("Company", CompanySchema);
+const company = mongoose.model("company", CompanySchema);
 module.exports = company;
 
 
