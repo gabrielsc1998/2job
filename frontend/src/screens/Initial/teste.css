@@ -1,0 +1,6 @@
+.classButton {
+  background-color: blue;
+}
+.classButton:hover { /* Aumenta a especificidade */
+  background-color: white;
+}
