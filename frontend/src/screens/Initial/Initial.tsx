@@ -7,8 +7,8 @@
  */
 
 import React from 'react';
-import ContainerInitialForms from 'components/ContainerInitialForms/ContainerInitialForms';
-import Container from 'components/Container/Container';
+
+import { Container, ContainerInitialForms } from 'components'
 
 import logo_2job from 'images/logo_2job.svg'
 export default function Initial() {
