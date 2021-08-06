@@ -14,7 +14,7 @@ export default function ContainerInitialForms(props: any) {
   return (
     <Container>
       <ContainerLogo>
-        <img src={logo_2job} style={{ width: '90%' }} alt='Logo 2JOB' />
+        <img src={logo_2job} style={{ width: '100%' }} alt='Logo 2JOB' />
       </ContainerLogo>
       {props.children}
     </Container>

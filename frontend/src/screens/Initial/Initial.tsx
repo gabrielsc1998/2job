@@ -8,56 +8,76 @@
 
 import React from 'react';
 import { Button } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 
 import { Container, ContainerInitialForms } from 'components';
 
+import { 
+  useStyles, 
+  ContainerScreen,
+  ContainerButtons, 
+  ContainerTitle, 
+  Title,
+  ContainerLabelAndButtons,
+  ContainerLabel,
+  Label
+} from './style';
+
 import TEXTS from './texts';
 
-const useStyles = makeStyles((theme) => ({
-  button: {
-    width: '100%',
-    color: 'white', 
-    borderColor: 'white', 
-    backgroundColor: 'transparent',
-    '&:hover': {
-      fontWeight: 'bold',
-      color: '#454893',
-      backgroundColor: 'white'
-    },
+interface InterfaceMyButton {
+  options: {
+    text: string,
+    onClick?: () => void;
+    style?: React.CSSProperties | undefined;
   }
-}));
+};
 
 export default function Initial() {
 
   const classes = useStyles();
+
+  const MyButton = (props: InterfaceMyButton) => {
+    const { text='', onClick=(()=>{}), style=undefined } = props.options;
+    return (
+      <Button 
+        variant={'outlined'}
+        disableElevation
+        className={classes.button}
+        style={style}
+        onClick={onClick}
+      > {text} </Button>
+    );
+  };
+  
   return(
     <Container>
       <ContainerInitialForms>
-        <div style={{ display: 'flex', flex: 1, flexDirection: 'column',  width: '100%', padding: 16 }}>
-          <div style={{ display: 'flex', flex: 1, justifyContent: 'center' }}>
-            <h3 style={{ fontSize: 25, color: 'white' }}>{TEXTS.title}</h3>
-          </div>
-          <div style={{ display: 'flex', flex: 1, flexDirection: 'column', width: '100%',   }}>
-            <div style={{ display: 'flex', flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-              <h2 style={{ fontSize: 20, color: 'white' }}>{TEXTS.label}</h2>
-            </div> 
-            <div style={{ display: 'flex',width: '100%' }}> 
-              <Button 
-                variant={'outlined'}
-                disableElevation
-                className={classes.button}
-                style={{ marginRight: 5 }}
-              > {TEXTS.buttons.dev} </Button>
-              <Button 
-                variant={'outlined'}
-                disableElevation
-                className={classes.button}
-                style={{ marginLeft: 5 }}
-              > {TEXTS.buttons.company} </Button>
-            </div> 
-          </div>
-        </div>
+        <ContainerScreen>
+          <ContainerTitle>
+            <Title> {TEXTS.title} </Title>
+          </ContainerTitle>
+          <ContainerLabelAndButtons>
+            <ContainerLabel>
+              <Label>{TEXTS.label}</Label>
+            </ContainerLabel> 
+            <ContainerButtons> 
+              <MyButton 
+                options={{
+                  text: TEXTS.buttons.dev, 
+                  style:{ marginRight: 5 },
+                  onClick: (() => alert(`Bem vindo ${TEXTS.buttons.dev}`))
+                }}
+              />
+              <MyButton 
+                options={{
+                  text: TEXTS.buttons.company, 
+                  style:{ marginLeft: 5 },
+                  onClick: (() => alert(`Bem vindo ${TEXTS.buttons.company}`))
+                }}
+              />
+            </ContainerButtons> 
+          </ContainerLabelAndButtons>
+        </ContainerScreen>
       </ContainerInitialForms>
     </Container>
   )

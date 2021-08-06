@@ -11,9 +11,9 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   width: 80%;
-  height: 70%;
+  height: 75%;
   max-width: 400px;
-  min-width: 300px;
+  min-width: 270px;
   max-height: 800px;
   min-height: 250px;
   border-radius: 3px;
@@ -22,6 +22,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  padding: 16px;
 `;
 
 export const ContainerLogo = styled.div`
