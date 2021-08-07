@@ -13,6 +13,8 @@ import { Button } from '@material-ui/core';
 import { ContainerInitialForms } from 'components';
 import { logo_2job } from 'images';
 
+import { useCreateUser } from 'providers/CreateUser';
+
 import {
   useStyles,
   LabelTitle, 
@@ -34,6 +36,7 @@ interface InterfaceMyButton {
 export default function Initial() {
 
   const classes = useStyles();
+  const createUser = useCreateUser();
 
   const MyButton = (props: InterfaceMyButton) => {
     const { text='', onClick=(()=>{}), style=undefined } = props.options;
@@ -75,14 +78,14 @@ export default function Initial() {
                 options={{
                   text: TEXTS.buttons.dev, 
                   style:{ marginRight: 8 },
-                  onClick: (() => alert(`Bem vindo ${TEXTS.buttons.dev}`))
+                  onClick: (() => { createUser.setType('dev'); alert(`Bem vindo ${TEXTS.buttons.dev}`) } )
                 }}
               />
               <MyButton 
                 options={{
                   text: TEXTS.buttons.company, 
                   style:{ marginLeft: 8 },
-                  onClick: (() => alert(`Bem vindo ${TEXTS.buttons.company}`))
+                  onClick: (() => { createUser.setType('dev');  alert(`Bem vindo ${TEXTS.buttons.company}`) } )
                 }}
               />
             </div>
