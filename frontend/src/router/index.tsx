@@ -7,22 +7,25 @@
  */
 
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, BrowserRouter } from 'react-router-dom';
 
 import routes from './routes';
 
 export default function Router() {
   return (
-    <Switch>
-      {
-        routes && routes.length ?
-          routes.map(route => {
-            return (
-              <Route path={route.ref} component={route.component} />
-            )
-          })
-        : false
-      }
-    </Switch>
+    <BrowserRouter>
+      <Switch>
+        {
+          routes && routes.length ?
+            routes.map((route, index) => {
+              const { ref, component } = route;
+              return (
+                <Route key={index} exact path={ref} component={component} />
+              )
+            })
+          : false
+        }
+      </Switch>
+    </BrowserRouter>
   )
 }

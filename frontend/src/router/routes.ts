@@ -7,18 +7,24 @@
  */
 
 import {
-  Initial
+  Initial,
+  Login
 } from 'screens';
 
 import {
-  INITIAL_SCREEN
+  INITIAL_SCREEN,
+  LOGIN_SCREEN
 } from './references';
 
 const routes = [
   {
     ref: INITIAL_SCREEN,
     component: Initial
-  }
+  },
+  {
+    ref: LOGIN_SCREEN,
+    component: Login
+  },
 ];
 
 export default routes;

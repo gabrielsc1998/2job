@@ -9,7 +9,9 @@
 import React from 'react';
 
 import { Button } from '@material-ui/core';
+import { useHistory } from 'react-router';
 
+import { LOGIN_SCREEN } from 'router/references';
 import { ContainerInitialForms } from 'components';
 import { logo_2job } from 'images';
 
@@ -37,6 +39,11 @@ export default function Initial() {
 
   const classes = useStyles();
   const createUser = useCreateUser();
+  const history = useHistory();
+
+  const gotToLoginScreen = () => {
+    history.push(LOGIN_SCREEN);
+  }
 
   const MyButton = (props: InterfaceMyButton) => {
     const { text='', onClick=(()=>{}), style=undefined } = props.options;
@@ -78,14 +85,14 @@ export default function Initial() {
                 options={{
                   text: TEXTS.buttons.dev, 
                   style:{ marginRight: 8 },
-                  onClick: (() => { createUser.setType('dev'); alert(`Bem vindo ${TEXTS.buttons.dev}`) } )
+                  onClick: (() => { createUser.setType('dev'); gotToLoginScreen(); } )
                 }}
               />
               <MyButton 
                 options={{
                   text: TEXTS.buttons.company, 
                   style:{ marginLeft: 8 },
-                  onClick: (() => { createUser.setType('dev');  alert(`Bem vindo ${TEXTS.buttons.company}`) } )
+                  onClick: (() => { createUser.setType('company'); gotToLoginScreen(); } )
                 }}
               />
             </div>
