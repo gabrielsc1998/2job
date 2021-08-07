@@ -6,8 +6,8 @@
  * 
  */
 
-import background from 'back.svg';
-import logo_2job from 'logo_2job.svg';
+import background from './back.svg';
+import logo_2job from './logo_2job.svg';
 
 export {
   logo_2job,
