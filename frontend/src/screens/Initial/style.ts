@@ -9,20 +9,20 @@
 import styled from 'styled-components';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { FlexBoxCentralize } from 'style/global';
+import { colors, FlexBoxCentralize } from 'style/global';
 
 export const useStyles = makeStyles((theme) => ({
   button: {
     width: '100%',
     minWidth: 90,
-    color: '#F3F3F3', 
+    color: colors.SECONDARY, 
     borderRadius: 50,
-    borderColor: '#454893', 
-    backgroundColor: '#454893',
+    borderColor: colors.PRIMARY, 
+    backgroundColor: colors.PRIMARY,
     '&:hover': {
       fontWeight: 'bold',
-      color: '#454893',
-      backgroundColor: '#F3F3F3'
+      color: colors.PRIMARY,
+      backgroundColor: colors.SECONDARY
     },
   }
 }));
@@ -30,24 +30,27 @@ export const useStyles = makeStyles((theme) => ({
 export const ContainerLabel = styled.div`
   flex: 1;
   flex-direction: column;
-  ${FlexBoxCentralize}
+  ${FlexBoxCentralize};
 `;
 
 export const ContainerLabel2 = styled.div`
-  flex: 1;
+  width: 60%;
+  min-width: 300px;
+  height: 50%;
+  min-height: 300px;
   flex-direction: column;
-  ${FlexBoxCentralize}
+  ${FlexBoxCentralize};
 `;
 
 export const LabelTitle = styled.p`
-  color: #F3F3F3;
+  color: ${colors.SECONDARY};
   font-size: 40px;
   text-align: center;
 `;
 
 export const LabelSubtitle = styled.p`
   opacity: 0.5;
-  color: #F3F3F3;
+  color: ${colors.SECONDARY};
   font-size: 30px;
   text-align: center;
 `;

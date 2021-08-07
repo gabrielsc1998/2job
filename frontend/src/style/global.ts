@@ -9,7 +9,8 @@
 import { createGlobalStyle, css } from 'styled-components';
 
 export const colors = {
-  BACKGROUND: '#454893'
+  PRIMARY: '#454893',
+  SECONDARY: '#F3F3F3',
 };
 
 export const theme = {
@@ -37,7 +38,7 @@ export default createGlobalStyle`
   body {
     -webkit-font-smoothing: antialiased;
     background-size: cover;
-    background-color: red;
+    background-color: #F3F3F3;
   }
   body, input, button {
     font-family: 'Roboto Slab', serif;

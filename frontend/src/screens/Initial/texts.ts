@@ -11,9 +11,10 @@ const TEXTS = [
     title: 'Seja bem vindo(a)!',
     subtitle: {
       p1: 'Aqui as empresas e',
-      p2: 'os devs se encontram'
+      p2: 'os devs se encontram.'
     },
-    label: 'Eu sou:',
+    labelTellUsAboutYou: 'Conte-nos um pouco sobre você',
+    labelButtons: 'Eu sou:',
     buttons: {
       dev: 'Dev.',
       company: 'Empresa'

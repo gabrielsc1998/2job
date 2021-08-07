@@ -8,7 +8,7 @@
 
 import styled from 'styled-components';
 
-import { FlexBoxCentralize } from 'style/global';
+import { colors, FlexBoxCentralize } from 'style/global';
 
 import { background } from 'images';
 
@@ -16,7 +16,7 @@ export const ContainerRight = styled.div`
   flex: 0.6;
   width: 100%;
   flex-direction: column;
-  background-color: #F3F3F3;
+  background-color: ${colors.SECONDARY};
   ${FlexBoxCentralize}
   @media(max-width: 800px) {
     flex: 1;

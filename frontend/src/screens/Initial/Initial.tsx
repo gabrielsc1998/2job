@@ -62,23 +62,30 @@ export default function Initial() {
       }
       right={
         <ContainerLabel2>
-          <img src={logo_2job} style={{ width: '80%' }} alt='Logo_2JOB' />
-          <h1 style={{ marginTop: 64 }}> Conte-nos um pouco sobre você </h1>
-          <div style={{ display: 'flex', width: '80%', flexDirection: 'row', marginTop: 64 }}>
-            <MyButton 
-              options={{
-                text: TEXTS.buttons.dev, 
-                style:{ marginRight: 5 },
-                onClick: (() => alert(`Bem vindo ${TEXTS.buttons.dev}`))
-              }}
-            />
-            <MyButton 
-              options={{
-                text: TEXTS.buttons.company, 
-                style:{ marginLeft: 5 },
-                onClick: (() => alert(`Bem vindo ${TEXTS.buttons.company}`))
-              }}
-            />
+          <div style={{ width: '100%' }}>
+            <img src={logo_2job} style={{ width: '100%' }} alt='Logo_2JOB' />
+          </div>
+          <div style={{ display: 'flex', flex: 1, width: '100%', justifyContent: 'center', alignItems: 'center' }}>
+            <h1 style={{ fontSize: 25, color: '#909090', textAlign: 'center' }}>{TEXTS.labelTellUsAboutYou}</h1>
+          </div>
+          <div style={{ width: '100%' }}>
+            <h2 style={{ fontSize: 20, color: '#454893', textAlign: 'center' }}>{TEXTS.labelButtons}</h2>
+            <div style={{ display: 'flex', width: '100%', flexDirection: 'row', marginTop: 8 }}>
+              <MyButton 
+                options={{
+                  text: TEXTS.buttons.dev, 
+                  style:{ marginRight: 8 },
+                  onClick: (() => alert(`Bem vindo ${TEXTS.buttons.dev}`))
+                }}
+              />
+              <MyButton 
+                options={{
+                  text: TEXTS.buttons.company, 
+                  style:{ marginLeft: 8 },
+                  onClick: (() => alert(`Bem vindo ${TEXTS.buttons.company}`))
+                }}
+              />
+            </div>
           </div>
         </ContainerLabel2>
       }
