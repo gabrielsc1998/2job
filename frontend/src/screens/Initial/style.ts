@@ -14,18 +14,26 @@ import { FlexBoxCentralize } from 'style/global';
 export const useStyles = makeStyles((theme) => ({
   button: {
     width: '100%',
-    color: 'white', 
-    borderColor: 'white', 
-    backgroundColor: 'transparent',
+    minWidth: 90,
+    color: '#F3F3F3', 
+    borderRadius: 50,
+    borderColor: '#454893', 
+    backgroundColor: '#454893',
     '&:hover': {
       fontWeight: 'bold',
       color: '#454893',
-      backgroundColor: 'white'
+      backgroundColor: '#F3F3F3'
     },
   }
 }));
 
 export const ContainerLabel = styled.div`
+  flex: 1;
+  flex-direction: column;
+  ${FlexBoxCentralize}
+`;
+
+export const ContainerLabel2 = styled.div`
   flex: 1;
   flex-direction: column;
   ${FlexBoxCentralize}

@@ -10,9 +10,13 @@ import styled from 'styled-components';
 
 import { FlexBoxCentralize } from 'style/global';
 
+
+import back from 'images/back.svg';
+
 export const ContainerRight = styled.div`
   flex: 0.6;
   width: 100%;
+  flex-direction: column;
   background-color: #F3F3F3;
   ${FlexBoxCentralize}
   @media(max-width: 800px) {
@@ -23,7 +27,10 @@ export const ContainerRight = styled.div`
 export const ContainerLeft = styled.div`
   flex: 0.45;
   width: 100%;
-  background-color: #454893;
+  flex-direction: column;
+  background-image: url(${back});
+  background-position: center;
+  background-size: auto 100% ;
   ${FlexBoxCentralize}
   @media(max-width: 800px) {
     display: none;
@@ -33,6 +40,5 @@ export const ContainerLeft = styled.div`
 export const ContainerLogo = styled.div`
   flex: 1;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  ${FlexBoxCentralize}
 `;

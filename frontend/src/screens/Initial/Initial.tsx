@@ -7,42 +7,46 @@
  */
 
 import React from 'react';
-// import { Button } from '@material-ui/core';
+
+import { Button } from '@material-ui/core';
 
 import { ContainerInitialForms } from 'components';
+import logo_2job from 'images/logo_2job.svg';
 
-import { 
+import {
+  useStyles,
   LabelTitle, 
   LabelSubtitle,
-  ContainerLabel
+  ContainerLabel,
+  ContainerLabel2
 } from './style';
 
 import TEXTS from './texts';
 
-// interface InterfaceMyButton {
-//   options: {
-//     text: string,
-//     onClick?: () => void;
-//     style?: React.CSSProperties | undefined;
-//   }
-// };
+interface InterfaceMyButton {
+  options: {
+    text: string,
+    onClick?: () => void;
+    style?: React.CSSProperties | undefined;
+  }
+};
 
 export default function Initial() {
 
-  // const classes = useStyles();
+  const classes = useStyles();
 
-  // const MyButton = (props: InterfaceMyButton) => {
-  //   const { text='', onClick=(()=>{}), style=undefined } = props.options;
-  //   return (
-  //     <Button 
-  //       variant={'outlined'}
-  //       disableElevation
-  //       className={classes.button}
-  //       style={style}
-  //       onClick={onClick}
-  //     > {text} </Button>
-  //   );
-  // };
+  const MyButton = (props: InterfaceMyButton) => {
+    const { text='', onClick=(()=>{}), style=undefined } = props.options;
+    return (
+      <Button 
+        variant={'outlined'}
+        disableElevation
+        className={classes.button}
+        style={style}
+        onClick={onClick}
+      > {text} </Button>
+    );
+  };
   
   return(
     <ContainerInitialForms 
@@ -56,39 +60,28 @@ export default function Initial() {
           </LabelSubtitle>
         </ContainerLabel>
       }
+      right={
+        <ContainerLabel2>
+          <img src={logo_2job} style={{ width: '80%' }} alt='Logo_2JOB' />
+          <h1 style={{ marginTop: 64 }}> Conte-nos um pouco sobre você </h1>
+          <div style={{ display: 'flex', width: '80%', flexDirection: 'row', marginTop: 64 }}>
+            <MyButton 
+              options={{
+                text: TEXTS.buttons.dev, 
+                style:{ marginRight: 5 },
+                onClick: (() => alert(`Bem vindo ${TEXTS.buttons.dev}`))
+              }}
+            />
+            <MyButton 
+              options={{
+                text: TEXTS.buttons.company, 
+                style:{ marginLeft: 5 },
+                onClick: (() => alert(`Bem vindo ${TEXTS.buttons.company}`))
+              }}
+            />
+          </div>
+        </ContainerLabel2>
+      }
     />
   )
-
-  // return(
-  //   <Container>
-  //     <ContainerInitialForms>
-  //       <ContainerScreen>
-  //         <ContainerTitle>
-  //           <Title> {TEXTS.title} </Title>
-  //         </ContainerTitle>
-  //         <ContainerLabelAndButtons>
-  //           <ContainerLabel>
-  //             <Label>{TEXTS.label}</Label>
-  //           </ContainerLabel> 
-  //           <ContainerButtons> 
-  //             <MyButton 
-  //               options={{
-  //                 text: TEXTS.buttons.dev, 
-  //                 style:{ marginRight: 5 },
-  //                 onClick: (() => alert(`Bem vindo ${TEXTS.buttons.dev}`))
-  //               }}
-  //             />
-  //             <MyButton 
-  //               options={{
-  //                 text: TEXTS.buttons.company, 
-  //                 style:{ marginLeft: 5 },
-  //                 onClick: (() => alert(`Bem vindo ${TEXTS.buttons.company}`))
-  //               }}
-  //             />
-  //           </ContainerButtons> 
-  //         </ContainerLabelAndButtons>
-  //       </ContainerScreen>
-  //     </ContainerInitialForms>
-  //   </Container>
-  // )
 }

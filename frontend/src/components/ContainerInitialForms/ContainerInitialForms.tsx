@@ -6,10 +6,8 @@
  * 
  */
 
-import logo_2job from 'images/logo_2job.svg';
-
 import { Container } from 'components';
-import { ContainerRight, ContainerLeft, ContainerLogo } from './style';
+import { ContainerRight, ContainerLeft } from './style';
 
 export default function ContainerInitialForms(props: any) {
   return (
@@ -18,9 +16,6 @@ export default function ContainerInitialForms(props: any) {
         {props.left}
       </ContainerLeft>
       <ContainerRight>
-        <ContainerLogo>
-          <img src={logo_2job} style={{ width: '60%' }} alt='Logo_2JOB' />
-        </ContainerLogo>
         {props.right}
       </ContainerRight>
     </Container>
