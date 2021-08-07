@@ -5,16 +5,15 @@
  * @description Initial screen
  * 
  */
-
+ 
 import React from 'react';
 
 import { Button } from '@material-ui/core';
 import { useHistory } from 'react-router';
 
+import { logo_2job } from 'images';
 import { LOGIN_SCREEN } from 'router/references';
 import { ContainerInitialForms } from 'components';
-import { logo_2job } from 'images';
-
 import { useCreateUser } from 'providers/CreateUser';
 
 import {
