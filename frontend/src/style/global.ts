@@ -6,7 +6,7 @@
  * 
  */
 
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, css } from 'styled-components';
 
 export const colors = {
   BACKGROUND: '#454893'
@@ -15,6 +15,12 @@ export const colors = {
 export const theme = {
   backgroundColor: '#454893',
 };
+
+export const FlexBoxCentralize = css`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 export default createGlobalStyle`
   
@@ -31,7 +37,7 @@ export default createGlobalStyle`
   body {
     -webkit-font-smoothing: antialiased;
     background-size: cover;
-    background-color: #454893;
+    background-color: red;
   }
   body, input, button {
     font-family: 'Roboto Slab', serif;

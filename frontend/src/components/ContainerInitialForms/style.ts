@@ -6,23 +6,28 @@
  * 
  */
 
-
 import styled from 'styled-components';
 
-const Container = styled.div`
-  width: 80%;
-  height: 75%;
-  max-width: 400px;
-  min-width: 270px;
-  max-height: 800px;
-  min-height: 250px;
-  border-radius: 3px;
-  border: solid 1px #CECECE;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 16px;
+import { FlexBoxCentralize } from 'style/global';
+
+export const ContainerRight = styled.div`
+  flex: 0.6;
+  width: 100%;
+  background-color: #F3F3F3;
+  ${FlexBoxCentralize}
+  @media(max-width: 800px) {
+    flex: 1;
+  }
+`;
+
+export const ContainerLeft = styled.div`
+  flex: 0.45;
+  width: 100%;
+  background-color: #454893;
+  ${FlexBoxCentralize}
+  @media(max-width: 800px) {
+    display: none;
+  }
 `;
 
 export const ContainerLogo = styled.div`
@@ -31,5 +36,3 @@ export const ContainerLogo = styled.div`
   align-items: center;
   justify-content: center;
 `;
-
-export default Container;
