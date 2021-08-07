@@ -9,9 +9,8 @@
 import styled from 'styled-components';
 
 export const ContainerPage = styled.div`
-  width: 100vw;
-  height: 100vh;
+  flex: 1;
+  width: 100%;
+  height: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
 `;

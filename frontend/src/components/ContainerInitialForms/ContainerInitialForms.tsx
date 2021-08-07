@@ -8,11 +8,12 @@
 
 import logo_2job from 'images/logo_2job.svg';
 
+import { Container } from 'components';
 import { ContainerRight, ContainerLeft, ContainerLogo } from './style';
 
 export default function ContainerInitialForms(props: any) {
   return (
-    <div style={{ display: 'flex', flex: 1, width: '100%', height: '100%' }}>     
+    <Container>     
       <ContainerLeft>
         {props.left}
       </ContainerLeft>
@@ -22,6 +23,6 @@ export default function ContainerInitialForms(props: any) {
         </ContainerLogo>
         {props.right}
       </ContainerRight>
-    </div>
+    </Container>
   )
 }
