@@ -10,8 +10,7 @@ import styled from 'styled-components';
 
 import { FlexBoxCentralize } from 'style/global';
 
-
-import back from 'images/back.svg';
+import { background } from 'images';
 
 export const ContainerRight = styled.div`
   flex: 0.6;
@@ -28,7 +27,7 @@ export const ContainerLeft = styled.div`
   flex: 0.45;
   width: 100%;
   flex-direction: column;
-  background-image: url(${back});
+  background-image: url(${background});
   background-position: center;
   background-size: auto 100% ;
   ${FlexBoxCentralize}

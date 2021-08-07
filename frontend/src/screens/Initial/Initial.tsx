@@ -11,7 +11,7 @@ import React from 'react';
 import { Button } from '@material-ui/core';
 
 import { ContainerInitialForms } from 'components';
-import logo_2job from 'images/logo_2job.svg';
+import { logo_2job } from 'images';
 
 import {
   useStyles,
