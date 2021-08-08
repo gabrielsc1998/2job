@@ -14,15 +14,24 @@ import { colors, FlexBoxCentralize } from 'style/global';
 export const useStyles = makeStyles((theme) => ({
   button: {
     width: '100%',
-    minWidth: 90,
+    minWidth: 100,
     color: colors.SECONDARY, 
-    borderRadius: 50,
     borderColor: colors.PRIMARY, 
     backgroundColor: colors.PRIMARY,
     '&:hover': {
       fontWeight: 'bold',
       color: colors.PRIMARY,
       backgroundColor: colors.SECONDARY
+    },
+  },
+  textButton: {
+    color: colors.PRIMARY, 
+    textTransform: 'none',
+    backgroundColor: 'transparent',
+    '&:hover': {
+      fontWeight: 'bold',
+      textDecoration: 'underline',
+      backgroundColor: 'transparent'
     },
   }
 }));

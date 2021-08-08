@@ -6,11 +6,10 @@
  * 
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 
-import { Button, Input, InputLabel } from '@material-ui/core';
+import { Button, TextField } from '@material-ui/core';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import { IconButton } from '@material-ui/core';
 
 import { useHistory } from 'react-router';
 
@@ -37,11 +36,33 @@ import TEXTS from './texts';
 //   }
 // };
 
-import { TextField } from '@material-ui/core';
 export default function Initial() {
 
   const classes = useStyles();
   const history = useHistory();
+
+  const [ctrlInputPassword, setCtrlInputPassword] = useState({
+    show: false,
+    Icon: Visibility
+  });
+
+  const executeControlInputPassword = () => {
+    let lastCtrlInputPassword = {...ctrlInputPassword};
+    lastCtrlInputPassword.show = !lastCtrlInputPassword.show;
+    lastCtrlInputPassword.Icon = lastCtrlInputPassword.show ? VisibilityOff : Visibility;
+    setCtrlInputPassword({...lastCtrlInputPassword});
+  }
+
+  const RenderIconPassword = () => {
+    const Icon = ctrlInputPassword.Icon;
+    return (
+      <Icon
+        htmlColor='#9B9B9B'
+        style={{ cursor: 'pointer' }} 
+        onClick={() => executeControlInputPassword() }
+      />
+    )
+  }
 
   return(
     <ContainerInitialForms 
@@ -62,46 +83,48 @@ export default function Initial() {
           </div>
           <div style={{ display: 'flex', flex: 1, flexDirection: 'column', width: '100%' }}>
             <TextField
-              label='E-mail ou usuário'
+              id='emailOrUsername'
+              label={TEXTS.inputs.emailOrUser.label}
               fullWidth
+              margin='normal'
             />
             <TextField 
-              label='Senha'
+              id='password'
+              label={TEXTS.inputs.password.label}
               fullWidth
-              type='password'
+              margin='normal'
+              type={ctrlInputPassword.show ? 'text' : 'password'}
               InputProps={{
                 endAdornment: (
-                  // <InputAdornment position="end">
-                  //   <AccountCircle />
-                  // </InputAdornment>
-                  <IconButton>
-                    <Visibility />
-                  </IconButton>
-                ),
+                  <InputAdornment position='end'>
+                    <RenderIconPassword />
+                  </InputAdornment>
+                )
               }}
             />
-            {/* <InputLabel htmlFor="input-pass">Senha</InputLabel>
-            <Input
-              id='input-pass'
-              type='password'
-              fullWidth
-              // id="standard-adornment-password"
-              // type={values.showPassword ? 'text' : 'password'}
-              // value={values.password}
-              // onChange={handleChange('password')}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    style={{ backgroundColor: 'red' }}
-                    aria-label="toggle password visibility"
-                    // onClick={handleClickShowPassword}
-                    // onMouseDown={handleMouseDownPassword}
-                  >
-                    {/* {values.showPassword ? <Visibility /> : <VisibilityOff />} */}
-                  {/* </IconButton> */}
-                {/* </InputAdornment> */}
-              {/* } */}
-            {/* /> */}
+            <div style={{ marginBlock: 16  }}>
+              <Button
+                variant={'outlined'}
+                disableElevation
+                className={classes.button}
+              >
+                {TEXTS.buttons.login}
+              </Button>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', flex: 1 }}>
+              <Button
+                disableElevation
+                className={classes.textButton}
+              >
+                Esqueceu sua senha?
+              </Button>
+              <Button
+                disableElevation
+                className={classes.textButton}
+              >
+                Crie uma conta!
+              </Button>
+            </div>
           </div>
         </ContainerLabel2>
       }

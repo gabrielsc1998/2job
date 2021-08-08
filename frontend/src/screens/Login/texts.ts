@@ -13,10 +13,16 @@ const TEXTS = [
       p1: 'Aqui as empresas e',
       p2: 'os devs se encontram.'
     },
-    labelTellUsAboutYou: 'Conte-nos um pouco sobre você',
-    labelButtons: 'Eu sou:',
+    inputs: {
+      emailOrUser: {
+        label: 'E-mail ou usuário'
+      },
+      password: {
+        label: 'Senha'
+      }
+    },
     buttons: {
-      dev: 'Dev.',
+      login: 'LOGIN',
       company: 'Empresa'
     },
 
