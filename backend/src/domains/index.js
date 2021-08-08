@@ -34,7 +34,7 @@ class Domains {
     if(this.domainRoutes.length != 0) {
       this.domainRoutes.forEach(domainRoutes => {
         const { BASE_PATH=undefined, routes=undefined } = domainRoutes;
-
+        
         if(!_.isUndefined(BASE_PATH) && (_.isArray(routes) && routes.lenght != 0)) {
           const router = server.getRouter();
           routes.forEach(route => {
@@ -48,7 +48,7 @@ class Domains {
               }
             }
           });
-    
+          
           server.useRouter(BASE_PATH, router);
         }
       })

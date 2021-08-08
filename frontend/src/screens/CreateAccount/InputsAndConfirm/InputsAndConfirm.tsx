@@ -24,6 +24,7 @@ import {
 } from './style';
 
 import TEXTS from './texts';
+import DevAPI from 'domains/users/dev/api'
 
 export default function InputsAndConfirm() {
 
@@ -37,9 +38,11 @@ export default function InputsAndConfirm() {
     history.push(CREATE_ACCOUNT.USER_TYPE);
   }
 
-  const testSubmit = (data: any) => {
+  const testSubmit = async (data: any) => {
     // event.preventDefault();
     console.log(data)
+    await DevAPI.create(data);
+
   }
 
   return(

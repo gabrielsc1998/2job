@@ -3,12 +3,11 @@ const cors = require('cors');
 
 const app = express();
 const { Router } = require('express');
-const router = Router();
 
 class Server {
 
   constructor() {
-    this._config()
+    this._config();
   }
 
   _config() {
@@ -54,6 +53,7 @@ class Server {
 
   getRouter() {
     try {
+      const router = Router();
       return router;
     } catch (error) {
       console.log(` ## Error to getRouter [${error}]`);
