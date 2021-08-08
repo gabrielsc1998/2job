@@ -8,9 +8,11 @@
 
 import Initial from './Initial/Initial';
 import Login from './Login/Login';
+import CreateAccount from './CreateAccount/CreateAccount';
 
 export {
   Initial,
-  Login
+  Login,
+  CreateAccount
 };
 

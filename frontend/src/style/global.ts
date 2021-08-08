@@ -13,6 +13,10 @@ export const colors = {
   SECONDARY: '#F3F3F3',
 };
 
+export const sizes = {
+  DEFAULT_SPACING: 8,
+};
+
 export const theme = {
   backgroundColor: '#454893',
 };

@@ -14,32 +14,42 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import { useHistory } from 'react-router';
 
 import { logo_2job } from 'images';
-// import {  } from 'router/references';
-import { ContainerInitialForms } from 'components';
+
 import { Visibility, VisibilityOff } from '@material-ui/icons';
+
+import { ContainerInitialForms } from 'components';
+
+import { CREATE_ACCOUNT_SCREEN } from 'router/references';
 
 import {
   useStyles,
   LabelTitle, 
   LabelSubtitle,
   ContainerLabel,
-  ContainerLabel2
+  ContainerLabel2,
+  ContainerLoginButton,
+  ContainerTextsButton,
+  ContainerForm
 } from './style';
 
 import TEXTS from './texts';
 
-// interface InterfaceMyButton {
-//   options: {
-//     text: string,
-//     onClick?: () => void;
-//     style?: React.CSSProperties | undefined;
-//   }
-// };
+interface InterfaceTextButton {
+  options: {
+    text: string,
+    onClick?: () => void;
+    style?: React.CSSProperties | undefined;
+  }
+};
 
 export default function Initial() {
 
   const classes = useStyles();
   const history = useHistory();
+
+  const goToCreateAccountScreen = () => {
+    history.push(CREATE_ACCOUNT_SCREEN);
+  }
 
   const [ctrlInputPassword, setCtrlInputPassword] = useState({
     show: false,
@@ -64,6 +74,17 @@ export default function Initial() {
     )
   }
 
+  const TextButton = (props: InterfaceTextButton) => {
+    const { text='', onClick=(()=>{}) } = props.options;
+    return (
+      <Button
+        disableElevation
+        onClick={onClick}
+        className={classes.textButton}
+      > {text} </Button>
+    )
+  }
+
   return(
     <ContainerInitialForms 
       left={
@@ -81,7 +102,7 @@ export default function Initial() {
           <div style={{ width: '100%' }}>
             <img src={logo_2job} style={{ width: '100%' }} alt='Logo_2JOB' />
           </div>
-          <div style={{ display: 'flex', flex: 1, flexDirection: 'column', width: '100%' }}>
+          <ContainerForm>
             <TextField
               id='emailOrUsername'
               label={TEXTS.inputs.emailOrUser.label}
@@ -102,7 +123,7 @@ export default function Initial() {
                 )
               }}
             />
-            <div style={{ marginBlock: 16  }}>
+            <ContainerLoginButton>
               <Button
                 variant={'outlined'}
                 disableElevation
@@ -110,22 +131,16 @@ export default function Initial() {
               >
                 {TEXTS.buttons.login}
               </Button>
-            </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', flex: 1 }}>
-              <Button
-                disableElevation
-                className={classes.textButton}
-              >
-                Esqueceu sua senha?
-              </Button>
-              <Button
-                disableElevation
-                className={classes.textButton}
-              >
-                Crie uma conta!
-              </Button>
-            </div>
-          </div>
+            </ContainerLoginButton>
+            <ContainerTextsButton>
+              <TextButton
+                options={{ text: TEXTS.buttons.forgotPassword, onClick: goToCreateAccountScreen }}
+              />
+              <TextButton
+                options={{ text: TEXTS.buttons.createAccount, onClick: goToCreateAccountScreen }}
+              />
+            </ContainerTextsButton>
+          </ContainerForm>
         </ContainerLabel2>
       }
     />

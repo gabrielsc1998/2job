@@ -6,5 +6,7 @@
  * 
  */
 
-export const INITIAL_SCREEN = '/';
-export const LOGIN_SCREEN = '/login';
+export const INITIAL_SCREEN = '/inital';
+
+export const LOGIN_SCREEN = '/';
+export const CREATE_ACCOUNT_SCREEN = '/createAccount';

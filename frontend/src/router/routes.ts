@@ -8,12 +8,14 @@
 
 import {
   Initial,
-  Login
+  Login,
+  CreateAccount
 } from 'screens';
 
 import {
   INITIAL_SCREEN,
-  LOGIN_SCREEN
+  LOGIN_SCREEN, 
+  CREATE_ACCOUNT_SCREEN
 } from './references';
 
 const routes = [
@@ -24,6 +26,10 @@ const routes = [
   {
     ref: LOGIN_SCREEN,
     component: Login
+  },
+  {
+    ref: CREATE_ACCOUNT_SCREEN,
+    component: CreateAccount
   },
 ];
 

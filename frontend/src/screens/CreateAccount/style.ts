@@ -9,29 +9,20 @@
 import styled from 'styled-components';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { colors, sizes, FlexBoxCentralize } from 'style/global';
+import { colors, FlexBoxCentralize } from 'style/global';
 
 export const useStyles = makeStyles((theme) => ({
   button: {
     width: '100%',
-    minWidth: 100,
+    minWidth: 90,
     color: colors.SECONDARY, 
+    borderRadius: 50,
     borderColor: colors.PRIMARY, 
     backgroundColor: colors.PRIMARY,
     '&:hover': {
       fontWeight: 'bold',
       color: colors.PRIMARY,
       backgroundColor: colors.SECONDARY
-    },
-  },
-  textButton: {
-    color: colors.PRIMARY, 
-    textTransform: 'none',
-    backgroundColor: 'transparent',
-    '&:hover': {
-      fontWeight: 'bold',
-      textDecoration: 'underline',
-      backgroundColor: 'transparent'
     },
   }
 }));
@@ -62,21 +53,4 @@ export const LabelSubtitle = styled.p`
   color: ${colors.SECONDARY};
   font-size: 30px;
   text-align: center;
-`;
-
-export const ContainerLoginButton = styled.div`
-  margin-block: ${sizes.DEFAULT_SPACING}px;
-`;
-
-export const ContainerTextsButton = styled.div`
-  flex: 1;
-  display: flex;
-  justify-content: space-between;
-`;
-
-export const ContainerForm = styled.div`
-  flex: 1; 
-  width: 100%;
-  display: flex; 
-  flex-direction: column;
 `;
