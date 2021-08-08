@@ -12,12 +12,9 @@ import { TextField } from '@material-ui/core';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 
-// import {
-// } from './style';
-
 import TEXTS from './texts';
 
-export default function Password() {
+export default function Password(props: any) {
 
   const [ctrlInputPassword, setCtrlInputPassword] = useState({
     show: false,
@@ -43,9 +40,9 @@ export default function Password() {
   }
 
   return(
-    <TextField 
-      id='password'
-      label={TEXTS.inputs.password.label}
+    <TextField
+      {...props}
+      label={TEXTS.label}
       fullWidth
       margin='normal'
       type={ctrlInputPassword.show ? 'text' : 'password'}

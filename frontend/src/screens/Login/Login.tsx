@@ -6,12 +6,10 @@
  * 
  */
 
-import React, { useState } from 'react';
+import React from 'react';
 
 import { useHistory } from 'react-router';
 import { Button, TextField } from '@material-ui/core';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import { Visibility, VisibilityOff } from '@material-ui/icons';
 
 import { logo_2job } from 'images';
 import { ContainerInitialForms, Inputs } from 'components';

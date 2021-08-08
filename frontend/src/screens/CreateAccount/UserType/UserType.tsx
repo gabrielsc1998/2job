@@ -15,7 +15,7 @@ import { useCreateUser } from 'providers/CreateUser';
 
 import { DEFINITIONS } from 'domains/users';
 import { ContainerInitialForms } from 'components';
-import { CREATE_ACCOUNT } from 'router/references';
+import { LOGIN_SCREEN, CREATE_ACCOUNT } from 'router/references';
 
 import {
   useStyles,
@@ -43,7 +43,11 @@ export default function UserType() {
     // createUser.setType(undefined);
   });
 
-  const gotToInputsAndConfirmScreen = () => {
+  const goToLoginScreen = () => {
+    history.push(LOGIN_SCREEN);
+  }
+
+  const goToInputsAndConfirmaScreen = () => {
     history.push(CREATE_ACCOUNT.INPUTS_AND_CONFIRM);
   }
  
@@ -63,6 +67,14 @@ export default function UserType() {
   return(
     <ContainerInitialForms>
       <ContainerForm>
+        <div style={{ position: 'absolute', top: 10, right: 10, textTransform: 'none', flexDirection: 'column', display: 'flex'  }}>
+          <Button
+            className={classes.buttonChangeUserType} 
+            onClick={() => { goToLoginScreen() } }
+          > 
+            Tela de LOGIN 
+          </Button> 
+        </div>
         <div style={{ display: 'flex', width: '100%', justifyContent: 'center', alignItems: 'center' }}>
           <h1 style={{ fontSize: 30, color: '#5B5B5B', textAlign: 'center' }}>{TEXTS.labelLetsCreateYourAccount}</h1>
         </div>
@@ -76,14 +88,14 @@ export default function UserType() {
               options={{
                 text: TEXTS.buttons.dev, 
                 style:{ marginRight: 8 },
-                onClick: (() => { createUser.setType(DEFINITIONS.DEV); gotToInputsAndConfirmScreen() } )
+                onClick: (() => { createUser.setType(DEFINITIONS.DEV); goToInputsAndConfirmaScreen() } )
               }}
             />
             <MyButton 
               options={{
                 text: TEXTS.buttons.company, 
                 style:{ marginLeft: 8 },
-                onClick: (() => { createUser.setType(DEFINITIONS.COMPANY); gotToInputsAndConfirmScreen() } )
+                onClick: (() => { createUser.setType(DEFINITIONS.COMPANY); goToInputsAndConfirmaScreen() } )
               }}
             />
           </ContainerButtons>

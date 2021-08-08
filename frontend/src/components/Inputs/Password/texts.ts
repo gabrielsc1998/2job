@@ -8,20 +8,7 @@
 
 const TEXTS = [
   {
-    inputs: {
-      emailOrUser: {
-        label: 'E-mail ou usuário'
-      },
-      password: {
-        label: 'Senha'
-      }
-    },
-    buttons: {
-      login: 'LOGIN',
-      createAccount: 'Crie uma conta!',
-      forgotPassword: 'Esqueceu sua senha?'
-    },
-
+    label: 'Senha'
   }
 ]
 
