@@ -2,31 +2,27 @@
  * 
  * @author Gabriel da Silva Caetano
  * @email <98gabrielSc@gmail.com>
- * @description Initial screen
+ * @description Login screen
  * 
  */
 
 import React, { useState } from 'react';
 
+import { useHistory } from 'react-router';
 import { Button, TextField } from '@material-ui/core';
 import InputAdornment from '@material-ui/core/InputAdornment';
-
-import { useHistory } from 'react-router';
-
-import { logo_2job } from 'images';
-
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 
+import { logo_2job } from 'images';
 import { ContainerInitialForms } from 'components';
-
-import { CREATE_ACCOUNT_SCREEN } from 'router/references';
+import { CREATE_ACCOUNT } from 'router/references';
 
 import {
   useStyles,
-  ContainerLabel2,
+  ContainerMain,
+  ContainerForm,
   ContainerLoginButton,
   ContainerTextsButton,
-  ContainerForm
 } from './style';
 
 import TEXTS from './texts';
@@ -45,7 +41,7 @@ export default function Initial() {
   const history = useHistory();
 
   const goToCreateAccountScreen = () => {
-    history.push(CREATE_ACCOUNT_SCREEN);
+    history.push(CREATE_ACCOUNT.USER_TYPE);
   }
 
   const [ctrlInputPassword, setCtrlInputPassword] = useState({
@@ -84,7 +80,7 @@ export default function Initial() {
 
   return(
     <ContainerInitialForms>
-      <ContainerLabel2>
+      <ContainerMain>
         <div style={{ width: '100%' }}>
           <img src={logo_2job} style={{ width: '100%' }} alt='Logo_2JOB' />
         </div>
@@ -127,7 +123,7 @@ export default function Initial() {
             />
           </ContainerTextsButton>
         </ContainerForm>
-      </ContainerLabel2>
+      </ContainerMain>
     </ContainerInitialForms>
   )
 }

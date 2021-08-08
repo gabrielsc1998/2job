@@ -15,7 +15,7 @@ import {
 import {
   INITIAL_SCREEN,
   LOGIN_SCREEN, 
-  CREATE_ACCOUNT_SCREEN
+  CREATE_ACCOUNT
 } from './references';
 
 const routes = [
@@ -28,8 +28,12 @@ const routes = [
     component: Login
   },
   {
-    ref: CREATE_ACCOUNT_SCREEN,
-    component: CreateAccount
+    ref: CREATE_ACCOUNT.USER_TYPE,
+    component: CreateAccount.UserType
+  },
+  {
+    ref: CREATE_ACCOUNT.INPUTS_AND_CONFIRM,
+    component: CreateAccount.InputsAndConfirm
   },
 ];
 

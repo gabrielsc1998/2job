@@ -8,11 +8,16 @@
 
 import Initial from './Initial/Initial';
 import Login from './Login/Login';
-import CreateAccount from './CreateAccount/CreateAccount';
+import { UserType, InputsAndConfirm } from './CreateAccount';
+
+const CreateAccount = {
+  UserType: UserType,
+  InputsAndConfirm: InputsAndConfirm 
+};
 
 export {
-  Initial,
   Login,
+  Initial,
   CreateAccount
 };
 

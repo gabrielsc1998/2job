@@ -7,9 +7,9 @@
  */
 
 import React, { 
+  useState,
   useContext,
-  createContext,
-  useState
+  createContext
 } from 'react';
 
 interface InterfacePropsCreateUser {

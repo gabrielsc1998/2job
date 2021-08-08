@@ -2,8 +2,14 @@
  * 
  * @author Gabriel da Silva Caetano
  * @email <98gabrielSc@gmail.com>
- * @description File to make available the Initial screen for the application
+ * @description
  * 
  */
 
-export const x = 1;
+import UserType from "./UserType/UserType";
+import InputsAndConfirm from "./InputsAndConfirm/InputsAndConfirm";
+
+export {
+  UserType,
+  InputsAndConfirm
+}

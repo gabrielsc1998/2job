@@ -24,10 +24,19 @@ export const useStyles = makeStyles((theme) => ({
       color: colors.PRIMARY,
       backgroundColor: colors.SECONDARY
     },
+  },
+  buttonChangeUserType: {
+    textTransform: 'none',
+    color: colors.PRIMARY,
+    backgroundColor: colors.SECONDARY,
+    '&:hover': {
+      color: colors.SECONDARY,
+      backgroundColor: colors.PRIMARY
+    },
   }
 }));
 
-export const ContainerLabel2 = styled.div`
+export const ContainerForm = styled.div`
   width: 60%;
   min-width: 300px;
   height: 50%;
@@ -41,4 +50,8 @@ export const ContainerButtons = styled.div`
   display: flex;
   flex-direction: row; 
   margin-top: ${sizes.DEFAULT_SPACING}px;
+`;
+
+export const ContainerLoginButton = styled.div`
+  margin-block: ${sizes.DEFAULT_SPACING*3}px;
 `;
