@@ -18,9 +18,6 @@ import { useCreateUser } from 'providers/CreateUser';
 
 import {
   useStyles,
-  LabelTitle, 
-  LabelSubtitle,
-  ContainerLabel,
   ContainerLabel2
 } from './style';
 
@@ -59,16 +56,6 @@ export default function Initial() {
   
   return(
     <ContainerInitialForms 
-      left={
-        <ContainerLabel>
-          <LabelTitle>{TEXTS.title}</LabelTitle>
-          <LabelSubtitle>
-            {TEXTS.subtitle.p1}
-            <br/>
-            {TEXTS.subtitle.p2}
-          </LabelSubtitle>
-        </ContainerLabel>
-      }
       right={
         <ContainerLabel2>
           <div style={{ width: '100%' }}>

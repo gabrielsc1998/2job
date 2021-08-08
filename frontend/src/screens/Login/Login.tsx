@@ -23,9 +23,6 @@ import { CREATE_ACCOUNT_SCREEN } from 'router/references';
 
 import {
   useStyles,
-  LabelTitle, 
-  LabelSubtitle,
-  ContainerLabel,
   ContainerLabel2,
   ContainerLoginButton,
   ContainerTextsButton,
@@ -86,63 +83,51 @@ export default function Initial() {
   }
 
   return(
-    <ContainerInitialForms 
-      left={
-        <ContainerLabel>
-          <LabelTitle>{TEXTS.title}</LabelTitle>
-          <LabelSubtitle>
-            {TEXTS.subtitle.p1}
-            <br/>
-            {TEXTS.subtitle.p2}
-          </LabelSubtitle>
-        </ContainerLabel>
-      }
-      right={
-        <ContainerLabel2>
-          <div style={{ width: '100%' }}>
-            <img src={logo_2job} style={{ width: '100%' }} alt='Logo_2JOB' />
-          </div>
-          <ContainerForm>
-            <TextField
-              id='emailOrUsername'
-              label={TEXTS.inputs.emailOrUser.label}
-              fullWidth
-              margin='normal'
+    <ContainerInitialForms>
+      <ContainerLabel2>
+        <div style={{ width: '100%' }}>
+          <img src={logo_2job} style={{ width: '100%' }} alt='Logo_2JOB' />
+        </div>
+        <ContainerForm>
+          <TextField
+            id='emailOrUsername'
+            label={TEXTS.inputs.emailOrUser.label}
+            fullWidth
+            margin='normal'
+          />
+          <TextField 
+            id='password'
+            label={TEXTS.inputs.password.label}
+            fullWidth
+            margin='normal'
+            type={ctrlInputPassword.show ? 'text' : 'password'}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position='end'>
+                  <RenderIconPassword />
+                </InputAdornment>
+              )
+            }}
+          />
+          <ContainerLoginButton>
+            <Button
+              variant={'outlined'}
+              disableElevation
+              className={classes.button}
+            >
+              {TEXTS.buttons.login}
+            </Button>
+          </ContainerLoginButton>
+          <ContainerTextsButton>
+            <TextButton
+              options={{ text: TEXTS.buttons.forgotPassword, onClick: goToCreateAccountScreen }}
             />
-            <TextField 
-              id='password'
-              label={TEXTS.inputs.password.label}
-              fullWidth
-              margin='normal'
-              type={ctrlInputPassword.show ? 'text' : 'password'}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position='end'>
-                    <RenderIconPassword />
-                  </InputAdornment>
-                )
-              }}
+            <TextButton
+              options={{ text: TEXTS.buttons.createAccount, onClick: goToCreateAccountScreen }}
             />
-            <ContainerLoginButton>
-              <Button
-                variant={'outlined'}
-                disableElevation
-                className={classes.button}
-              >
-                {TEXTS.buttons.login}
-              </Button>
-            </ContainerLoginButton>
-            <ContainerTextsButton>
-              <TextButton
-                options={{ text: TEXTS.buttons.forgotPassword, onClick: goToCreateAccountScreen }}
-              />
-              <TextButton
-                options={{ text: TEXTS.buttons.createAccount, onClick: goToCreateAccountScreen }}
-              />
-            </ContainerTextsButton>
-          </ContainerForm>
-        </ContainerLabel2>
-      }
-    />
+          </ContainerTextsButton>
+        </ContainerForm>
+      </ContainerLabel2>
+    </ContainerInitialForms>
   )
 }

@@ -27,11 +27,6 @@ export const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export const ContainerLabel = styled.div`
-  flex: 1;
-  flex-direction: column;
-  ${FlexBoxCentralize};
-`;
 
 export const ContainerLabel2 = styled.div`
   width: 60%;
@@ -40,17 +35,4 @@ export const ContainerLabel2 = styled.div`
   min-height: 300px;
   flex-direction: column;
   ${FlexBoxCentralize};
-`;
-
-export const LabelTitle = styled.p`
-  color: ${colors.SECONDARY};
-  font-size: 40px;
-  text-align: center;
-`;
-
-export const LabelSubtitle = styled.p`
-  opacity: 0.5;
-  color: ${colors.SECONDARY};
-  font-size: 30px;
-  text-align: center;
 `;

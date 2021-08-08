@@ -8,11 +8,6 @@
 
 const TEXTS = [
   {
-    title: 'Seja bem vindo(a)!',
-    subtitle: {
-      p1: 'Aqui as empresas e',
-      p2: 'os devs se encontram.'
-    },
     inputs: {
       emailOrUser: {
         label: 'E-mail ou usuário'

@@ -36,8 +36,21 @@ export const ContainerLeft = styled.div`
   }
 `;
 
-export const ContainerLogo = styled.div`
+export const ContainerLabel = styled.div`
   flex: 1;
-  display: flex;
-  ${FlexBoxCentralize}
+  flex-direction: column;
+  ${FlexBoxCentralize};
+`;
+
+export const LabelTitle = styled.p`
+  color: ${colors.SECONDARY};
+  font-size: 40px;
+  text-align: center;
+`;
+
+export const LabelSubtitle = styled.p`
+  opacity: 0.5;
+  color: ${colors.SECONDARY};
+  font-size: 30px;
+  text-align: center;
 `;

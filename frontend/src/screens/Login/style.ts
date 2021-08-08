@@ -65,7 +65,7 @@ export const LabelSubtitle = styled.p`
 `;
 
 export const ContainerLoginButton = styled.div`
-  margin-block: ${sizes.DEFAULT_SPACING}px;
+  margin-block: ${sizes.DEFAULT_SPACING*3}px;
 `;
 
 export const ContainerTextsButton = styled.div`
