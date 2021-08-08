@@ -14,7 +14,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 
 import { logo_2job } from 'images';
-import { ContainerInitialForms } from 'components';
+import { ContainerInitialForms, Inputs } from 'components';
 import { CREATE_ACCOUNT } from 'router/references';
 
 import {
@@ -40,31 +40,8 @@ export default function Initial() {
   const classes = useStyles();
   const history = useHistory();
 
-  const goToCreateAccountScreen = () => {
+  const goToCreateAccountuSERtScreen = () => {
     history.push(CREATE_ACCOUNT.USER_TYPE);
-  }
-
-  const [ctrlInputPassword, setCtrlInputPassword] = useState({
-    show: false,
-    Icon: Visibility
-  });
-
-  const executeControlInputPassword = () => {
-    let lastCtrlInputPassword = {...ctrlInputPassword};
-    lastCtrlInputPassword.show = !lastCtrlInputPassword.show;
-    lastCtrlInputPassword.Icon = lastCtrlInputPassword.show ? VisibilityOff : Visibility;
-    setCtrlInputPassword({...lastCtrlInputPassword});
-  }
-
-  const RenderIconPassword = () => {
-    const Icon = ctrlInputPassword.Icon;
-    return (
-      <Icon
-        htmlColor='#9B9B9B'
-        style={{ cursor: 'pointer' }} 
-        onClick={() => executeControlInputPassword() }
-      />
-    )
   }
 
   const TextButton = (props: InterfaceTextButton) => {
@@ -91,20 +68,7 @@ export default function Initial() {
             fullWidth
             margin='normal'
           />
-          <TextField 
-            id='password'
-            label={TEXTS.inputs.password.label}
-            fullWidth
-            margin='normal'
-            type={ctrlInputPassword.show ? 'text' : 'password'}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position='end'>
-                  <RenderIconPassword />
-                </InputAdornment>
-              )
-            }}
-          />
+          <Inputs.Password />
           <ContainerLoginButton>
             <Button
               variant={'outlined'}
@@ -116,10 +80,10 @@ export default function Initial() {
           </ContainerLoginButton>
           <ContainerTextsButton>
             <TextButton
-              options={{ text: TEXTS.buttons.forgotPassword, onClick: goToCreateAccountScreen }}
+              options={{ text: TEXTS.buttons.forgotPassword, onClick: goToCreateAccountuSERtScreen }}
             />
             <TextButton
-              options={{ text: TEXTS.buttons.createAccount, onClick: goToCreateAccountScreen }}
+              options={{ text: TEXTS.buttons.createAccount, onClick: goToCreateAccountuSERtScreen }}
             />
           </ContainerTextsButton>
         </ContainerForm>

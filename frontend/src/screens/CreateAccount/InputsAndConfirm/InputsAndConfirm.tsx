@@ -6,75 +6,36 @@
  * 
  */
  
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
+import { useHistory } from 'react-router';
 import { Button, TextField } from '@material-ui/core';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import { Visibility, VisibilityOff } from '@material-ui/icons';
-// import { useHistory } from 'react-router';
-
-// import { LOGIN_SCREEN } from 'router/references';
-import { ContainerInitialForms } from 'components';
-// import { useCreateUser } from 'providers/CreateUser';
+import {  Visibility, VisibilityOff } from '@material-ui/icons';
 
 import { DEFINITIONS } from 'domains/users';
+import { ContainerInitialForms } from 'components';
+import { CREATE_ACCOUNT } from 'router/references';
+import { useCreateUser } from 'providers/CreateUser';
 
 import {
   useStyles,
   ContainerForm,
-  ContainerButtons,
   ContainerLoginButton
 } from './style';
 
 import TEXTS from './texts';
 
-interface InterfaceMyButton {
-  options: {
-    text: string,
-    onClick?: () => void;
-    style?: React.CSSProperties | undefined;
-  }
-};
-
-interface InterfaceCreateUser {
-  type?: string;
-};
-
 export default function InputsAndConfirm() {
 
   const classes = useStyles();
-  // const history = useHistory();
+  const history = useHistory();
+  const createUser = useCreateUser();
 
-  const [createUser, setCreateUser] = useState<InterfaceCreateUser>({
-    type: undefined
-  });
-
-  const setUserType = (userType: string | undefined) => {
-    setCreateUser({...createUser, type: userType});
+  const goToSetUserTypeScreen = () => {
+    history.push(CREATE_ACCOUNT.USER_TYPE);
   }
 
-  const gotToLoginScreen = () => {
-    // console.log(createUser.type)
-    // history.push(LOGIN_SCREEN);
-  }
-  
-  useEffect(() => {
-    console.log(createUser.type)
-  }, [createUser])
-
-  const MyButton = (props: InterfaceMyButton) => {
-    const { text='', onClick=(()=>{}), style=undefined } = props.options;
-    return (
-      <Button 
-        variant={'outlined'}
-        disableElevation
-        className={classes.button}
-        style={style}
-        onClick={onClick}
-      > {text} </Button>
-    );
-  };
-  
   const [ctrlInputPassword, setCtrlInputPassword] = useState({
     show: false,
     Icon: Visibility
@@ -105,9 +66,9 @@ export default function InputsAndConfirm() {
           {/* <p style={{ textAlign: 'center' }}> Você é {createUser.type === DEFINITIONS.DEV ? 'Dev' : 'Empresa'}. </p> */}
           <Button
             className={classes.buttonChangeUserType} 
-            onClick={() => setUserType(undefined) }
+            onClick={() => { goToSetUserTypeScreen() } }
           > 
-            Você é {createUser.type === DEFINITIONS.DEV ? 'Dev' : 'Empresa'}. <br/> ALTERAR? 
+            Você é {createUser.getType() === DEFINITIONS.DEV ? 'Dev' : 'Empresa'}. <br/> ALTERAR? 
           </Button> 
         </div>
         <div style={{ display: 'flex', width: '100%', justifyContent: 'center', alignItems: 'center' }}>

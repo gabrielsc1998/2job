@@ -13,12 +13,16 @@ import React, {
 } from 'react';
 
 interface InterfacePropsCreateUser {
-  type?: 'dev' | 'company';
   children?: any;
 };
 
+interface InterfaceCreateUser {
+  type?: string | undefined;
+};
+
 interface InterfaceContextCreateUser {
-  setType: (userType: string) => void;
+  setType: (userType: string | undefined) => void;
+  getType: () => string | undefined;
 };
 
 export const CreateUserContext = createContext<InterfaceContextCreateUser>({} as InterfaceContextCreateUser);
@@ -26,20 +30,23 @@ export const CreateUserContext = createContext<InterfaceContextCreateUser>({} as
 export default function CreateUserProvider(props: InterfacePropsCreateUser) {
   const { children } = props;
 
-  const [createUser, setCreateUser] = useState({
-    type: ''
+  const [createUser, setCreateUser] = useState<InterfaceCreateUser>({
+    type: undefined
   });
 
-  const setType = (userType: string) => {
-    console.log(userType);
+  const setType = (userType: string | undefined) => {
     setCreateUser({
       ...createUser,
       type: userType
     });
   }
 
+  const getType = (): string | undefined => {
+    return createUser.type;
+  }
+
   return (
-    <CreateUserContext.Provider value={{ setType }} >
+    <CreateUserContext.Provider value={{ setType, getType }} >
       {children}
     </CreateUserContext.Provider>
   );

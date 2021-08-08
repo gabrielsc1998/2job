@@ -8,8 +8,10 @@
 
 import Container from './Container';
 import ContainerInitialForms from './ContainerInitialForms';
+import Inputs from './Inputs';
 
 export {
+  Inputs,
   Container,
   ContainerInitialForms
 }

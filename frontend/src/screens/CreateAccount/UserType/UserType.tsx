@@ -6,12 +6,12 @@
  * 
  */
  
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 import { useHistory } from 'react-router';
-import { Button, TextField } from '@material-ui/core';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import { Visibility, VisibilityOff } from '@material-ui/icons';
+import { Button } from '@material-ui/core';
+
+import { useCreateUser } from 'providers/CreateUser';
 
 import { DEFINITIONS } from 'domains/users';
 import { ContainerInitialForms } from 'components';
@@ -20,8 +20,7 @@ import { CREATE_ACCOUNT } from 'router/references';
 import {
   useStyles,
   ContainerForm,
-  ContainerButtons,
-  ContainerLoginButton
+  ContainerButtons
 } from './style';
 
 import TEXTS from './texts';
@@ -34,32 +33,20 @@ interface InterfaceMyButton {
   }
 };
 
-interface InterfaceCreateUser {
-  type?: string;
-};
-
 export default function UserType() {
 
   const classes = useStyles();
   const history = useHistory();
+  const createUser = useCreateUser();
 
-  const [createUser, setCreateUser] = useState<InterfaceCreateUser>({
-    type: undefined
+  useEffect(() => {
+    // createUser.setType(undefined);
   });
 
-  const setUserType = (userType: string | undefined) => {
-    setCreateUser({...createUser, type: userType});
-  }
-
   const gotToInputsAndConfirmScreen = () => {
-    // console.log(createUser.type)
     history.push(CREATE_ACCOUNT.INPUTS_AND_CONFIRM);
   }
-  
-  useEffect(() => {
-    console.log(createUser.type)
-  }, [createUser])
-
+ 
   const MyButton = (props: InterfaceMyButton) => {
     const { text='', onClick=(()=>{}), style=undefined } = props.options;
     return (
@@ -72,29 +59,6 @@ export default function UserType() {
       > {text} </Button>
     );
   };
-  
-  const [ctrlInputPassword, setCtrlInputPassword] = useState({
-    show: false,
-    Icon: Visibility
-  });
-
-  const executeControlInputPassword = () => {
-    let lastCtrlInputPassword = {...ctrlInputPassword};
-    lastCtrlInputPassword.show = !lastCtrlInputPassword.show;
-    lastCtrlInputPassword.Icon = lastCtrlInputPassword.show ? VisibilityOff : Visibility;
-    setCtrlInputPassword({...lastCtrlInputPassword});
-  }
-
-  const RenderIconPassword = () => {
-    const Icon = ctrlInputPassword.Icon;
-    return (
-      <Icon
-        htmlColor='#9B9B9B'
-        style={{ cursor: 'pointer' }} 
-        onClick={() => executeControlInputPassword() }
-      />
-    )
-  }
 
   return(
     <ContainerInitialForms>
@@ -112,14 +76,14 @@ export default function UserType() {
               options={{
                 text: TEXTS.buttons.dev, 
                 style:{ marginRight: 8 },
-                onClick: (() => { setUserType(DEFINITIONS.DEV); gotToInputsAndConfirmScreen() } )
+                onClick: (() => { createUser.setType(DEFINITIONS.DEV); gotToInputsAndConfirmScreen() } )
               }}
             />
             <MyButton 
               options={{
                 text: TEXTS.buttons.company, 
                 style:{ marginLeft: 8 },
-                onClick: (() => { setUserType(DEFINITIONS.COMPANY); gotToInputsAndConfirmScreen() } )
+                onClick: (() => { createUser.setType(DEFINITIONS.COMPANY); gotToInputsAndConfirmScreen() } )
               }}
             />
           </ContainerButtons>
