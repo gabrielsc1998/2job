@@ -8,7 +8,8 @@
 
 const TEXTS = [
   {
-    label: 'Senha'
+    label: 'Senha',
+    helper: 'Não esqueça de inserir corretamente sua senha'
   }
 ]
 

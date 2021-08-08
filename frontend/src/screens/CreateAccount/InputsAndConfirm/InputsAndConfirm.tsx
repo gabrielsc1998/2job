@@ -6,7 +6,7 @@
  * 
  */
  
-import React, { useState } from 'react';
+import React from 'react';
 
 import { useForm } from "react-hook-form";
 import { useHistory } from 'react-router';
@@ -33,8 +33,6 @@ export default function InputsAndConfirm() {
 
   const { register, handleSubmit } = useForm();
   
-  const [email, setEmail] = useState('');
-
   const goToSetUserTypeScreen = () => {
     history.push(CREATE_ACCOUNT.USER_TYPE);
   }
