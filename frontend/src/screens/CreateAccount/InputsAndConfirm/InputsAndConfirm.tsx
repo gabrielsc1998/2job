@@ -6,11 +6,13 @@
  * 
  */
  
-import React from 'react';
+import React, { useState } from 'react';
 
 import { useForm } from "react-hook-form";
 import { useHistory } from 'react-router';
 import { Button, TextField } from '@material-ui/core';
+
+import { CircularProgress } from '@material-ui/core';
 
 import { DEFINITIONS } from 'domains/users';
 import { ContainerInitialForms, Inputs } from 'components';
@@ -31,8 +33,9 @@ export default function InputsAndConfirm() {
   const classes = useStyles();
   const history = useHistory();
   const createUser = useCreateUser();
+  const [loading, setLoading] = useState(false);
 
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
   
   const goToSetUserTypeScreen = () => {
     history.push(CREATE_ACCOUNT.USER_TYPE);
@@ -40,9 +43,12 @@ export default function InputsAndConfirm() {
 
   const testSubmit = async (data: any) => {
     // event.preventDefault();
-    console.log(data)
-    await DevAPI.create(data);
-
+    setLoading(true);
+    console.log(data);
+    setTimeout(async () => {
+      await DevAPI.create(data);
+      setLoading(false);
+    }, 5000)
   }
 
   return(
@@ -56,26 +62,41 @@ export default function InputsAndConfirm() {
             Você é {createUser.getType() === DEFINITIONS.DEV ? 'Dev' : 'Empresa'}. <br/> ALTERAR? 
           </Button> 
         </div>
-        <div style={{ display: 'flex', width: '100%', justifyContent: 'center', alignItems: 'center' }}>
-          <h1 style={{ fontSize: 30, color: '#5B5B5B', textAlign: 'center' }}>Informe-nos seu e-mail e sua senha</h1>
+        <div style={{ display: 'flex', width: '100%', justifyContent: 'center', alignItems: 'center', marginBottom: 32 }}>
+          <h1 style={{ fontSize: 30, color: '#5B5B5B', textAlign: 'center' }}>
+            {TEXTS.label}
+          </h1>
         </div>
         <div style={{ width: '100%' }}>
           <form onSubmit={handleSubmit(testSubmit)}>
             <TextField
+              label={createUser.getType() === DEFINITIONS.DEV ? 'Nome completo' : 'Nome da empresa'}
+              fullWidth
+              margin='normal'
+              error={errors.name}
+              helperText={errors.name && `Não esqueça de inserir corretamente ${createUser.getType() === DEFINITIONS.DEV ? 'seu nome completo' : 'o nome da empresa'}`}
+              {...register('name', { required: true })}
+            />
+            <TextField
               label={'E-mail'}
               fullWidth
               margin='normal'
-              {...register('email')}
+              type='email'
+              error={errors.email}
+              helperText={errors.email && 'Não esqueça de inserir corretamente seu e-mail'}
+              {...register('email', { required: true })}
             />
-            <Inputs.Password {...register('password')} />
+            <Inputs.Password {...register('password', { required: true })} error={errors.password} />
             <ContainerLoginButton>
               <Button
                 type='submit'
                 variant={'outlined'}
                 disableElevation
                 className={classes.button}
-                >
-                {'CRIAR CONTA'}
+                disabled={loading}
+                startIcon={loading && <CircularProgress size={16} style={{ color: 'white' }} /> }
+              >
+                {TEXTS.button.createAccount}
               </Button>
             </ContainerLoginButton>
           </form>

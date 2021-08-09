@@ -8,7 +8,11 @@
 
 const TEXTS = [
   {
-    
+    // label: 'Para criar sua conta, insira seu e-mail e sua senha',
+    label: 'Vamos finalizar?',
+    button: {
+      createAccount: 'CRIAR CONTA'
+    }
   }
 ]
 

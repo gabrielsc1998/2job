@@ -72,7 +72,7 @@ export default function UserType() {
             className={classes.buttonChangeUserType} 
             onClick={() => { goToLoginScreen() } }
           > 
-            Tela de LOGIN 
+            Voltar para o LOGIN 
           </Button> 
         </div>
         <div style={{ display: 'flex', width: '100%', justifyContent: 'center', alignItems: 'center' }}>

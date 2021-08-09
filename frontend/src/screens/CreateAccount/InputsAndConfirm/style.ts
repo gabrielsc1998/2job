@@ -14,9 +14,8 @@ import { colors, sizes, FlexBoxCentralize } from 'style/global';
 export const useStyles = makeStyles((theme) => ({
   button: {
     width: '100%',
-    minWidth: 90,
-    color: colors.SECONDARY, 
-    borderRadius: 50,
+    minWidth: 100,
+    color: colors.SECONDARY,
     borderColor: colors.PRIMARY, 
     backgroundColor: colors.PRIMARY,
     '&:hover': {

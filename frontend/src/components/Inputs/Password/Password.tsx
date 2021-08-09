@@ -17,7 +17,7 @@ import { IconStyle } from './style';
 
 export default function Password(props: any) {
 
-  const { error = false } = props;
+  const { error=false } = props;
 
   const [ctrlInputPassword, setCtrlInputPassword] = useState({
     show: false,
