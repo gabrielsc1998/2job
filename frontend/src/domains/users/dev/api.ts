@@ -20,6 +20,7 @@ class DevAPI {
 
   async create({email, password}: CreateUser): Promise<boolean> {
     const resp = await API.post(ROUTES.CREATE, {email, password});
+    console.log(resp)
     if(resp.status === 201) {
       return true;
     }

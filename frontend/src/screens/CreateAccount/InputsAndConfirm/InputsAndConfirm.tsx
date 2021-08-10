@@ -11,8 +11,10 @@ import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { useHistory } from 'react-router';
 import { Button, TextField } from '@material-ui/core';
-
 import { CircularProgress } from '@material-ui/core';
+import { IconButton } from '@material-ui/core';
+import { Close } from '@material-ui/icons';
+import { useSnackbar } from 'notistack';
 
 import { DEFINITIONS } from 'domains/users';
 import { ContainerInitialForms, Inputs } from 'components';
@@ -35,20 +37,52 @@ export default function InputsAndConfirm() {
   const createUser = useCreateUser();
   const [loading, setLoading] = useState(false);
 
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+
   const { register, handleSubmit, formState: { errors } } = useForm();
   
   const goToSetUserTypeScreen = () => {
     history.push(CREATE_ACCOUNT.USER_TYPE);
   }
 
+  const CloseButton = () => (
+    <div>
+      <IconButton onClick={()=>{ closeSnackbar() }}>
+        <Close htmlColor='white' />
+      </IconButton>
+    </div>
+  )
+
   const testSubmit = async (data: any) => {
     // event.preventDefault();
     setLoading(true);
     console.log(data);
     setTimeout(async () => {
-      await DevAPI.create(data);
       setLoading(false);
-    }, 5000)
+      if(await DevAPI.create(data)) {
+        enqueueSnackbar('Conta criada com sucesso!', { 
+          variant: 'success',
+          autoHideDuration: 3000,
+          key: 'bottomright',
+          anchorOrigin: {
+            vertical: 'bottom',
+            horizontal: 'right', 
+          },
+          action: <CloseButton/>
+        });
+      } else {
+        enqueueSnackbar('Erro ao criar a conta!', { 
+          variant: 'error',
+          autoHideDuration: 3000,
+          key: 'bottomright',
+          anchorOrigin: {
+            vertical: 'bottom',
+            horizontal: 'right', 
+          },
+          action: <CloseButton/>
+        });
+      }
+    }, 2500)
   }
 
   return(
