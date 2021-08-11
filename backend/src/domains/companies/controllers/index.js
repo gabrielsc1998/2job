@@ -26,8 +26,9 @@ class CompanyController {
   async getById(request, response) {
     try {
       checkError(request);
-      const company = await company.getById(request.params.id);
-      response.status(200).send(company);
+      const { id } = request.params;
+      const getCompany = await company.getById(id);
+      response.status(200).send(getCompany);
     } catch(error) {
       response.status(400).send({ error });
     }

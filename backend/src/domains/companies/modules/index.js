@@ -6,51 +6,41 @@ class CompanyModule {
 
 	constructor() {}
 
-	create(payload) {
-		return new Promise(async (resolve, reject) => {
-			try {
-				const ret = await companyModel.create(payload);
-				resolve(ret);
-			} catch (error) {
-				reject(error);
-			}
-		});
+	async create(payload) {
+		try {
+			return await companyModel.create(payload);
+		} catch (error) {
+			return { error };
+		}
 	}
 
-	getById(id) {
-		return new Promise(async (resolve, reject) => {
-			try {
-				if(!_.isString(id)) {
-					throw `invalid id type`;
-				}
-				const ret = await companyModel.findById(id);
-				resolve(ret);
-			} catch (error) {
-				reject(error);
+	async getById(id) {
+		try {
+			if(!_.isString(id)) {
+				throw `Invalid id type`;
 			}
-		});
+			return await companyModel.findById(id);
+		} catch (error) {
+			return { error };
+		}
 	}
 
-	listAll() {
-		return new Promise(async (resolve, reject) => {
-			try {
-				const ret = await companyModel.find();
-				resolve(ret);
-			} catch (error) {
-				reject(error);
-			}
-		});
+	async listAll() {
+		try {
+			const ret = await companyModel.find();
+			return ret;
+		} catch (error) {
+			return { error };
+		}
 	}
 
-	deleteById(id) {
-		return new Promise(async (resolve, reject) => {
-			try {
-				const ret = await companyModel.findByIdAndRemove(id);
-				resolve(ret);
-			} catch (error) {
-				reject(error);
-			}
-		});
+	async deleteById(id) {
+		try {
+			const ret = await companyModel.findByIdAndRemove(id);
+			return ret;
+		} catch (error) {
+			return { error };
+		}
 	}
 
 }
