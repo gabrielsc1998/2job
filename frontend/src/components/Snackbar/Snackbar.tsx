@@ -12,11 +12,13 @@ import { IconButton } from '@material-ui/core';
 import { Close } from '@material-ui/icons';
 import { useSnackbar, VariantType, SnackbarOrigin, SnackbarKey } from 'notistack';
 
+import { IconStyle } from './style';
+
 const CloseButton = ({index=undefined}: {index?: SnackbarKey}) => {
   const { closeSnackbar } = useSnackbar();
   return (
     <IconButton onClick={() => { closeSnackbar(index) }}>
-      <Close htmlColor='white' />
+      <Close htmlColor={IconStyle.htmlColor} />
     </IconButton>
   )
 }
