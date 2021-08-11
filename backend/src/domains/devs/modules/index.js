@@ -7,50 +7,41 @@ class DevModel {
 	constructor() {}
 
 	create(payload) {
-		return new Promise(async (resolve, reject) => {
-			try {
-				const ret = await devModel.create(payload);
-				resolve(ret);
-			} catch (error) {
-				reject(error);
-			}
-		});
+		try {
+			return await devModel.create(payload);
+		} catch (error) {
+			return { error };
+		}
 	}
 
 	getById(id) {
-		return new Promise(async (resolve, reject) => {
-			try {
-				if(!_.isString(id)) {
-					throw `invalid id type`;
-				}
-				const ret = await devModel.findById(id);
-				resolve(ret);
-			} catch (error) {
-				reject(error);
+		try {
+			if(!_.isString(id)) {
+				throw `Invalid id type`;
 			}
-		});
+			return await devModel.findById(id);
+		} catch (error) {
+			return { error };
+		}
 	}
 
 	listAll() {
-		return new Promise(async (resolve, reject) => {
-			try {
-				const ret = await devModel.find();
-				resolve(ret);
-			} catch (error) {
-				reject(error);
-			}
-		});
+		try {
+			return await devModel.find();
+		} catch (error) {
+			return { error };
+		}
 	}
 
 	deleteById(id) {
-		return new Promise(async (resolve, reject) => {
-			try {
-				const ret = await devModel.findByIdAndRemove(id);
-				resolve(ret);
-			} catch (error) {
-				reject(error);
+		try {
+			if(!_.isString(id)) {
+				throw `Invalid id type`;
 			}
-		});
+			return await devModel.findByIdAndRemove(id);
+		} catch (error) {
+			return { error };
+		}
 	}
 
 }
