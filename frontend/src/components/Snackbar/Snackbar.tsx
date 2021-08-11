@@ -10,12 +10,12 @@ import React from 'react';
 
 import { IconButton } from '@material-ui/core';
 import { Close } from '@material-ui/icons';
-import { useSnackbar, VariantType, SnackbarOrigin } from 'notistack';
+import { useSnackbar, VariantType, SnackbarOrigin, SnackbarKey } from 'notistack';
 
-const CloseButton = () => {
+const CloseButton = ({index=undefined}: {index?: SnackbarKey}) => {
   const { closeSnackbar } = useSnackbar();
   return (
-    <IconButton onClick={()=>{ closeSnackbar() }}>
+    <IconButton onClick={() => { closeSnackbar(index) }}>
       <Close htmlColor='white' />
     </IconButton>
   )
@@ -25,16 +25,16 @@ const vertical: SnackbarOrigin['vertical'] = 'bottom';
 const horizontal: SnackbarOrigin['horizontal'] = 'right';
 
 const optionsSnackbar = (variant: VariantType) => {
-  // const options = 
+  const snackbarKey = Math.floor(new Date().valueOf() * Math.random()).toString(36);
   return {
     autoHideDuration: 3000,
-    action: <CloseButton/>,
-    key: 'bottomright',
+    action: <CloseButton index={snackbarKey}/>,
+    key: snackbarKey,
     anchorOrigin: {
       vertical: vertical,
       horizontal: horizontal, 
     },
-    variant: variant
+    variant: variant,
   };
 };
 
