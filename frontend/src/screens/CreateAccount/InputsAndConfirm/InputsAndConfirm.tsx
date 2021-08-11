@@ -12,14 +12,16 @@ import { useForm } from "react-hook-form";
 import { useHistory } from 'react-router';
 import { Button, TextField } from '@material-ui/core';
 import { CircularProgress } from '@material-ui/core';
-import { IconButton } from '@material-ui/core';
-import { Close } from '@material-ui/icons';
 import { useSnackbar } from 'notistack';
 
 import { DEFINITIONS } from 'domains/users';
-import { ContainerInitialForms, Inputs } from 'components';
 import { CREATE_ACCOUNT } from 'router/references';
 import { useCreateUser } from 'providers/CreateUser';
+import { ContainerInitialForms, Inputs } from 'components';
+import optionsSnackbar from 'components/Snackbar/Snackbar';
+
+import DevAPI from 'domains/users/dev/api';
+import CompanyAPI from 'domains/users/company/api';
 
 import {
   useStyles,
@@ -28,9 +30,7 @@ import {
 } from './style';
 
 import TEXTS from './texts';
-import DevAPI from 'domains/users/dev/api'
 
-import optionsSnackbar from 'components/Snackbar/Snackbar';
 
 export default function InputsAndConfirm() {
 
@@ -39,7 +39,7 @@ export default function InputsAndConfirm() {
   const createUser = useCreateUser();
   const [loading, setLoading] = useState(false);
 
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();
 
   const { register, handleSubmit, formState: { errors } } = useForm();
   
@@ -47,36 +47,16 @@ export default function InputsAndConfirm() {
     history.push(CREATE_ACCOUNT.USER_TYPE);
   }
 
-  const CloseButton = () => (
-    <div>
-      <IconButton onClick={()=>{ closeSnackbar() }}>
-        <Close htmlColor='white' />
-      </IconButton>
-    </div>
-  )
-
   const testSubmit = async (data: any) => {
-    // event.preventDefault();
     setLoading(true);
-    console.log(data);
     setTimeout(async () => {
       setLoading(false);
-      // if(await DevAPI.create(data)) {
+      const API = createUser.getType() === DEFINITIONS.DEV ? DevAPI : CompanyAPI;
+      if(await API.create(data)) {
         enqueueSnackbar('Conta criada com sucesso!', { ...optionsSnackbar('success') });
-        // Snackbar({type: 'success', text: 'Conta criada com sucesso!'});
-        // return <Snackbar type={'success'} text={'Conta criada com sucesso!'} />
-      // } else {
-      //   enqueueSnackbar('Erro ao criar a conta!', { 
-      //     variant: 'error',
-      //     autoHideDuration: 3000,
-      //     key: 'bottomright',
-      //     anchorOrigin: {
-      //       vertical: 'bottom',
-      //       horizontal: 'right', 
-      //     },
-      //     action: <CloseButton/>
-      //   });
-      // }
+      } else {
+        enqueueSnackbar('Erro ao criar a conta!', { ...optionsSnackbar('error') });
+      }
     }, 1)
   }
 
