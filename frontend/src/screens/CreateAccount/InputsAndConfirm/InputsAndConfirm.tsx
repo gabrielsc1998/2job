@@ -30,7 +30,7 @@ import {
 import TEXTS from './texts';
 import DevAPI from 'domains/users/dev/api'
 
-import Snackbar from 'components/Snackbar';
+import optionsSnackbar from 'components/Snackbar/Snackbar';
 
 export default function InputsAndConfirm() {
 
@@ -61,32 +61,23 @@ export default function InputsAndConfirm() {
     console.log(data);
     setTimeout(async () => {
       setLoading(false);
-      if(await DevAPI.create(data)) {
-        // enqueueSnackbar('Conta criada com sucesso!', { 
-        //   variant: 'success',
-        //   autoHideDuration: 3000,
-        //   key: 'bottomright',
-        //   anchorOrigin: {
-        //     vertical: 'bottom',
-        //     horizontal: 'right', 
-        //   },
-        //   action: <CloseButton/>
-        // });
+      // if(await DevAPI.create(data)) {
+        enqueueSnackbar('Conta criada com sucesso!', { ...optionsSnackbar('success') });
         // Snackbar({type: 'success', text: 'Conta criada com sucesso!'});
-        return <Snackbar type={'success'} text={'Conta criada com sucesso!'} />
-      } else {
-        enqueueSnackbar('Erro ao criar a conta!', { 
-          variant: 'error',
-          autoHideDuration: 3000,
-          key: 'bottomright',
-          anchorOrigin: {
-            vertical: 'bottom',
-            horizontal: 'right', 
-          },
-          action: <CloseButton/>
-        });
-      }
-    }, 2500)
+        // return <Snackbar type={'success'} text={'Conta criada com sucesso!'} />
+      // } else {
+      //   enqueueSnackbar('Erro ao criar a conta!', { 
+      //     variant: 'error',
+      //     autoHideDuration: 3000,
+      //     key: 'bottomright',
+      //     anchorOrigin: {
+      //       vertical: 'bottom',
+      //       horizontal: 'right', 
+      //     },
+      //     action: <CloseButton/>
+      //   });
+      // }
+    }, 1)
   }
 
   return(

@@ -6,50 +6,36 @@
  * 
  */
 
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { IconButton } from '@material-ui/core';
 import { Close } from '@material-ui/icons';
-import { useSnackbar } from 'notistack';
+import { useSnackbar, VariantType, SnackbarOrigin } from 'notistack';
 
-
-export default function ContainerInitialForms(props: any) {
-  
-  const { type=undefined, text='' } = props;
-
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
-
-  const CloseButton = () => (
-    <div>
-      <IconButton onClick={()=>{ closeSnackbar() }}>
-        <Close htmlColor='white' />
-      </IconButton>
-    </div>
+const CloseButton = () => {
+  const { closeSnackbar } = useSnackbar();
+  return (
+    <IconButton onClick={()=>{ closeSnackbar() }}>
+      <Close htmlColor='white' />
+    </IconButton>
   )
-  
-  const options = {
-    autoHideDuration: 3000,
-    action: <CloseButton/>
-  }
-
-  const openSuccess = () => {
-    enqueueSnackbar(
-      text, 
-      { 
-        ...options,
-        key: 'bottomright',
-        anchorOrigin: {
-          vertical: 'bottom',
-          horizontal: 'right', 
-        },
-        variant: 'success'
-      }
-    );
-  };
-
-  useEffect(() => {
-    type === 'success' && openSuccess();
-  });
-
-  return ( <div/> )
 }
+
+const vertical: SnackbarOrigin['vertical'] = 'bottom';
+const horizontal: SnackbarOrigin['horizontal'] = 'right';
+
+const optionsSnackbar = (variant: VariantType) => {
+  // const options = 
+  return {
+    autoHideDuration: 3000,
+    action: <CloseButton/>,
+    key: 'bottomright',
+    anchorOrigin: {
+      vertical: vertical,
+      horizontal: horizontal, 
+    },
+    variant: variant
+  };
+};
+
+export default optionsSnackbar;
