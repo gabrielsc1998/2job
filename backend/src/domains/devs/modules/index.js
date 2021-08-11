@@ -6,7 +6,7 @@ class DevModel {
 
 	constructor() {}
 
-	create(payload) {
+	async create(payload) {
 		try {
 			return await devModel.create(payload);
 		} catch (error) {
@@ -14,7 +14,7 @@ class DevModel {
 		}
 	}
 
-	getById(id) {
+	async getById(id) {
 		try {
 			if(!_.isString(id)) {
 				throw `Invalid id type`;
@@ -25,7 +25,7 @@ class DevModel {
 		}
 	}
 
-	listAll() {
+	async listAll() {
 		try {
 			return await devModel.find();
 		} catch (error) {
@@ -33,7 +33,7 @@ class DevModel {
 		}
 	}
 
-	deleteById(id) {
+	async deleteById(id) {
 		try {
 			if(!_.isString(id)) {
 				throw `Invalid id type`;
