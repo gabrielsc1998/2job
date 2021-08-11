@@ -6,7 +6,7 @@
  * 
  */
 
-export interface CreateUser {
+export interface CreateCompany {
   name: string;
   email: string;
   password: string;

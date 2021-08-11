@@ -10,7 +10,7 @@ const routes = [
     path: `/create`,
     validations: [
       body('email').isEmail(),
-      // body('name').isString(),
+      body('name').isString(),
       // body('occupationArea').isString(),
       // body('technologies').isArray(),
       // body('state').isString(),

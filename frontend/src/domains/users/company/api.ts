@@ -2,23 +2,23 @@
  * 
  * @author Gabriel da Silva Caetano
  * @email <98gabrielSc@gmail.com>
- * @description 
+ * @description
  * 
  */
 
-import { CreateUser } from './models';
+import { CreateCompany } from './models';
 import API from 'services/api';
 
-const CONTEXT = '/dev';
+const CONTEXT = '/company';
 const ROUTES = {
   CREATE: `${CONTEXT}/create`
 };
 
-class DevAPI {
+class CompanyAPI {
 
   // constructor() {}
 
-  async create({name, email, password}: CreateUser): Promise<boolean> {
+  async create({name, email, password}: CreateCompany): Promise<boolean> {
     const resp = await API.post(ROUTES.CREATE, {name, email, password});
     if(resp.status === 201) {
       return true;
@@ -29,4 +29,4 @@ class DevAPI {
 
 }
 
-export default new DevAPI();
+export default new CompanyAPI();

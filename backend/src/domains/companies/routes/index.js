@@ -11,8 +11,9 @@ const routes = [
     validations: [
       body('email').isEmail(),
       body('name').isString(),
-      body('state').isString(),
-      body('city').isString()
+      body('password').isString(),
+      // body('state').isString(),
+      // body('city').isString()
     ],
     handler: controller.create
   },
