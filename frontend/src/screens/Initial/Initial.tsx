@@ -8,7 +8,6 @@
  
 import React from 'react';
 
-import { Button } from '@material-ui/core';
 import { useHistory } from 'react-router';
 
 import { logo_2job } from 'images';
@@ -17,8 +16,8 @@ import { ContainerInitialForms } from 'components';
 import { useCreateUser } from 'providers/CreateUser';
 
 import {
-  useStyles,
-  ContainerLabel2
+  ContainerLabel,
+  MaterialButton
 } from './style';
 
 import TEXTS from './texts';
@@ -33,7 +32,6 @@ interface InterfaceMyButton {
 
 export default function Initial() {
 
-  const classes = useStyles();
   const createUser = useCreateUser();
   const history = useHistory();
 
@@ -44,20 +42,19 @@ export default function Initial() {
   const MyButton = (props: InterfaceMyButton) => {
     const { text='', onClick=(()=>{}), style=undefined } = props.options;
     return (
-      <Button 
+      <MaterialButton 
         variant={'outlined'}
         disableElevation
-        className={classes.button}
         style={style}
         onClick={onClick}
-      > {text} </Button>
+      > {text} </MaterialButton>
     );
   };
   
   return(
     <ContainerInitialForms 
       right={
-        <ContainerLabel2>
+        <ContainerLabel>
           <div style={{ width: '100%' }}>
             <img src={logo_2job} style={{ width: '100%' }} alt='Logo_2JOB' />
           </div>
@@ -83,7 +80,7 @@ export default function Initial() {
               />
             </div>
           </div>
-        </ContainerLabel2>
+        </ContainerLabel>
       }
     />
   )

@@ -9,18 +9,19 @@
 import React from 'react';
 
 import { useHistory } from 'react-router';
-import { Button, TextField } from '@material-ui/core';
+import { TextField } from '@material-ui/core';
 
 import { logo_2job } from 'images';
 import { ContainerInitialForms, Inputs } from 'components';
 import { CREATE_ACCOUNT } from 'router/references';
 
 import {
-  useStyles,
   ContainerMain,
   ContainerForm,
   ContainerLoginButton,
   ContainerTextsButton,
+  MaterialButton,
+  MaterialTextButton
 } from './style';
 
 import TEXTS from './texts';
@@ -35,7 +36,6 @@ interface InterfaceTextButton {
 
 export default function Initial() {
 
-  const classes = useStyles();
   const history = useHistory();
 
   const goToCreateAccountuSERtScreen = () => {
@@ -45,11 +45,10 @@ export default function Initial() {
   const TextButton = (props: InterfaceTextButton) => {
     const { text='', onClick=(()=>{}) } = props.options;
     return (
-      <Button
+      <MaterialTextButton
         disableElevation
         onClick={onClick}
-        className={classes.textButton}
-      > {text} </Button>
+      > {text} </MaterialTextButton>
     )
   }
 
@@ -68,13 +67,12 @@ export default function Initial() {
           />
           <Inputs.Password />
           <ContainerLoginButton>
-            <Button
+            <MaterialButton
               variant={'outlined'}
               disableElevation
-              className={classes.button}
             >
               {TEXTS.buttons.login}
-            </Button>
+            </MaterialButton>
           </ContainerLoginButton>
           <ContainerTextsButton>
             <TextButton

@@ -7,34 +7,38 @@
  */
 
 import styled from 'styled-components';
-import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 
 import { colors, sizes, FlexBoxCentralize } from 'style/global';
 
-export const useStyles = makeStyles((theme) => ({
-  button: {
-    width: '100%',
-    minWidth: 100,
-    color: colors.SECONDARY, 
-    borderColor: colors.PRIMARY, 
-    backgroundColor: colors.PRIMARY,
-    '&:hover': {
-      fontWeight: 'bold',
-      color: colors.PRIMARY,
-      backgroundColor: colors.SECONDARY
-    },
-  },
-  textButton: {
-    color: colors.PRIMARY, 
-    textTransform: 'none',
-    backgroundColor: 'transparent',
-    '&:hover': {
-      fontWeight: 'bold',
-      textDecoration: 'underline',
-      backgroundColor: 'transparent'
-    },
+export const MaterialButton = styled(Button)`
+  && {
+    width: 100%;
+    min-width: 100px;
+    color: ${colors.SECONDARY};
+    border-color: ${colors.PRIMARY};
+    background-color: ${colors.PRIMARY};
+    &:hover {
+      font-weight: bold;
+      color: ${colors.PRIMARY};
+      background-color: ${colors.SECONDARY}
+    };
+    ${FlexBoxCentralize};
   }
-}));
+`;
+
+export const MaterialTextButton = styled(Button)`
+  && {
+    color: ${colors.PRIMARY}; 
+    text-transform: none;
+    background-Color: transparent;
+    &:hover {
+      font-weight: bold;
+      text-decoration: underline;
+      background-color: transparent;
+    }
+  }
+`;
 
 export const ContainerMain = styled.div`
   width: 60%;
