@@ -6,20 +6,17 @@
  * 
  */
 
-import { CreateCompany } from './models';
 import API from 'services/api';
 
-const CONTEXT = '/company';
-const ROUTES = {
-  CREATE: `${CONTEXT}/create`
-};
+import { routes } from './routes';
+import { CreateCompany } from './models';
 
 class CompanyAPI {
 
   // constructor() {}
 
   async create({name, email, password}: CreateCompany): Promise<boolean> {
-    const resp = await API.post(ROUTES.CREATE, {name, email, password});
+    const resp = await API.post(routes.create, {name, email, password});
     if(resp.status === 201) {
       return true;
     }
