@@ -8,7 +8,7 @@
 
 import API from 'services/api';
 
-import { routes } from './routes';
+import routes from './routes';
 import { CreateCompany } from './models';
 
 class CompanyAPI {

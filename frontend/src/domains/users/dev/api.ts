@@ -6,20 +6,17 @@
  * 
  */
 
-import { CreateUser } from './models';
 import API from 'services/api';
 
-const CONTEXT = '/dev';
-const ROUTES = {
-  CREATE: `${CONTEXT}/create`
-};
+import routes from './routes';
+import { CreateUser } from './models';
 
 class DevAPI {
 
   // constructor() {}
 
   async create({name, email, password}: CreateUser): Promise<boolean> {
-    const resp = await API.post(ROUTES.CREATE, {name, email, password});
+    const resp = await API.post(routes.create, {name, email, password});
     if(resp.status === 201) {
       return true;
     }
