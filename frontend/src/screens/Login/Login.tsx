@@ -62,7 +62,6 @@ export default function Initial() {
 
   const [loading, setLoading] = useState(false);
   const login = async (data: any) => {
-    console.log(data)
     setLoading(true);
     setTimeout(async () => {
       setLoading(false);

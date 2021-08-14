@@ -14,7 +14,6 @@ class Session {
     try {
       checkError(request);
       const { emailOrUsername, password } = request.body;
-      console.log(emailOrUsername, password)
       // const payloadCreateCompany = request.body;
       // await company.create(payloadCreateCompany);
       if(emailOrUsername === 'teste' && password === '123') {

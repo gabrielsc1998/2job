@@ -9,13 +9,12 @@
 import React, { useState } from 'react';
 
 import { useForm } from "react-hook-form";
-import { useHistory } from 'react-router';
+// import { useHistory } from 'react-router';
 import { /*Button*/ TextField } from '@material-ui/core';
-// import { CircularProgress } from '@material-ui/core';
 import { useSnackbar } from 'notistack';
 
 import { DEFINITIONS } from 'domains/users';
-import { CREATE_ACCOUNT } from 'router/references';
+// import { CREATE_ACCOUNT } from 'router/references';
 import { useCreateUser } from 'providers/CreateUser';
 import { ContainerInitialForms, Inputs, Button } from 'components';
 import optionsSnackbar from 'components/Snackbar/Snackbar';
@@ -24,7 +23,6 @@ import DevAPI from 'domains/users/dev/api';
 import CompanyAPI from 'domains/users/company/api';
 
 import {
-  useStyles,
   ContainerForm,
   ContainerLoginButton
 } from './style';
@@ -35,7 +33,7 @@ import TEXTS from './texts';
 export default function InputsAndConfirm() {
 
   // const classes = useStyles();
-  const history = useHistory();
+  // const history = useHistory();
   const createUser = useCreateUser();
   const [loading, setLoading] = useState(false);
 
@@ -43,9 +41,9 @@ export default function InputsAndConfirm() {
 
   const { register, handleSubmit, formState: { errors } } = useForm();
   
-  const goToSetUserTypeScreen = () => {
-    history.push(CREATE_ACCOUNT.USER_TYPE);
-  }
+  // const goToSetUserTypeScreen = () => {
+  //   history.push(CREATE_ACCOUNT.USER_TYPE);
+  // }
 
   const testSubmit = async (data: any) => {
     setLoading(true);
