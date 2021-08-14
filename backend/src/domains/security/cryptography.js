@@ -9,13 +9,13 @@ class Cryptography {
   }
   
   createSalt() {
-    return crypto.randomBytes(Math.ceil(32))
+    return crypto.randomBytes(Math.ceil(16))
 					 .toString('hex')
 					 .slice(0,16);
   }
 
   encryptWithSHA512(password, salt) {
-    const hash = createHash(salt);
+    const hash = this.createHash(salt);
     hash.update(password);
     return hash.digest('hex');
   };
@@ -24,13 +24,9 @@ class Cryptography {
     const salt = this.createSalt();
     return {
       salt,
-      password: encryptWithSHA512(password, salt)
+      password: this.encryptWithSHA512(password, salt)
     };
   }
-  
-
-
-  
 
 }
 
