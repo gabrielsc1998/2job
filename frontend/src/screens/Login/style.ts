@@ -11,22 +11,6 @@ import Button from '@material-ui/core/Button';
 
 import { colors, sizes, FlexBoxCentralize } from 'style/global';
 
-export const MaterialButton = styled(Button)`
-  && {
-    width: 100%;
-    min-width: 100px;
-    color: ${colors.SECONDARY};
-    border-color: ${colors.PRIMARY};
-    background-color: ${colors.PRIMARY};
-    &:hover {
-      font-weight: bold;
-      color: ${colors.PRIMARY};
-      background-color: ${colors.SECONDARY}
-    };
-    ${FlexBoxCentralize};
-  }
-`;
-
 export const MaterialTextButton = styled(Button)`
   && {
     color: ${colors.PRIMARY}; 
@@ -38,6 +22,10 @@ export const MaterialTextButton = styled(Button)`
       background-color: transparent;
     }
   }
+`;
+
+export const ContainerLogo = styled.div`
+  width: 100%;
 `;
 
 export const ContainerMain = styled.div`

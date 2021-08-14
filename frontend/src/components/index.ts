@@ -6,12 +6,14 @@
  * 
  */
 
+import Inputs from './Inputs';
+import Button from './Button';
 import Container from './Container';
 import ContainerInitialForms from './ContainerInitialForms';
-import Inputs from './Inputs';
 
 export {
   Inputs,
+  Button,
   Container,
   ContainerInitialForms
 }

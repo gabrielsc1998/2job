@@ -12,7 +12,7 @@ import { useHistory } from 'react-router';
 import { TextField } from '@material-ui/core';
 
 import { logo_2job } from 'images';
-import { ContainerInitialForms, Inputs } from 'components';
+import { ContainerInitialForms, Inputs, Button } from 'components';
 import { CREATE_ACCOUNT } from 'router/references';
 
 import {
@@ -20,7 +20,7 @@ import {
   ContainerForm,
   ContainerLoginButton,
   ContainerTextsButton,
-  MaterialButton,
+  ContainerLogo,
   MaterialTextButton
 } from './style';
 
@@ -38,7 +38,7 @@ export default function Initial() {
 
   const history = useHistory();
 
-  const goToCreateAccountuSERtScreen = () => {
+  const goToCreateAccountUserScreen = () => {
     history.push(CREATE_ACCOUNT.USER_TYPE);
   }
 
@@ -55,9 +55,9 @@ export default function Initial() {
   return(
     <ContainerInitialForms>
       <ContainerMain>
-        <div style={{ width: '100%' }}>
+        <ContainerLogo>
           <img src={logo_2job} style={{ width: '100%' }} alt='Logo_2JOB' />
-        </div>
+        </ContainerLogo>
         <ContainerForm>
           <TextField
             id='emailOrUsername'
@@ -67,19 +67,14 @@ export default function Initial() {
           />
           <Inputs.Password />
           <ContainerLoginButton>
-            <MaterialButton
-              variant={'outlined'}
-              disableElevation
-            >
-              {TEXTS.buttons.login}
-            </MaterialButton>
+            <Button text={TEXTS.buttons.login}/>
           </ContainerLoginButton>
           <ContainerTextsButton>
             <TextButton
-              options={{ text: TEXTS.buttons.forgotPassword, onClick: goToCreateAccountuSERtScreen }}
+              options={{ text: TEXTS.buttons.forgotPassword, onClick: goToCreateAccountUserScreen }}
             />
             <TextButton
-              options={{ text: TEXTS.buttons.createAccount, onClick: goToCreateAccountuSERtScreen }}
+              options={{ text: TEXTS.buttons.createAccount, onClick: goToCreateAccountUserScreen }}
             />
           </ContainerTextsButton>
         </ContainerForm>
