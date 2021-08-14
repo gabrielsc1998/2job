@@ -6,7 +6,7 @@
  * 
  */
 
-const CONTEXT = '/dev';
+const CONTEXT = '/devs';
 
 type ObjectRoutes = {
   [key: string]: string;

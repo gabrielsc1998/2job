@@ -6,7 +6,7 @@
  * 
  */
 
-const CONTEXT = '/company';
+const CONTEXT = '/companies';
 
 type ObjectRoutes = {
   [key: string]: string;

@@ -2,7 +2,7 @@ const { body, param, query } = require('express-validator');
 
 const controller = require('../controllers');
 
-const BASE_PATH = '/company';
+const BASE_PATH = '/companies';
 const routes = [
   
   {

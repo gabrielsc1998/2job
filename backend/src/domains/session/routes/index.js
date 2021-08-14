@@ -2,22 +2,18 @@ const { body, param, query } = require('express-validator');
 
 const controller = require('../controllers');
 
-const BASE_PATH = '/company';
 const routes = [
   
   {
     method: 'POST',
-    path: `/create`,
+    path: `/login`,
     validations: [
-      body('email').isEmail(),
-      body('name').isString(),
+      body('emailOrUser').isString(),
       body('password').isString(),
-      // body('state').isString(),
-      // body('city').isString()
     ],
     handler: controller.create
   },
   
 ]
 
-module.exports = { BASE_PATH, routes };
+module.exports = { routes };
