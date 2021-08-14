@@ -35,7 +35,7 @@ class Domains {
       this.domainRoutes.forEach(domainRoutes => {
         const { BASE_PATH=undefined, routes=undefined } = domainRoutes;
         
-        if(!_.isUndefined(BASE_PATH) && (_.isArray(routes) && routes.lenght != 0)) {
+        if(!_.isUndefined(BASE_PATH) && (_.isArray(routes) && routes.length != 0)) {
           const router = server.getRouter();
           routes.forEach(route => {
             const { path, validations=undefined, handler } = route;

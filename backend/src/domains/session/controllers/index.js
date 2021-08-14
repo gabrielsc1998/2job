@@ -13,10 +13,11 @@ class Session {
   async login(request, response) {
     try {
       checkError(request);
-      const { emailOrUser, password } = request.body;
+      const { emailOrUsername, password } = request.body;
+      console.log(emailOrUsername, password)
       // const payloadCreateCompany = request.body;
       // await company.create(payloadCreateCompany);
-      if(emailOrUser === 'teste' && password === '123') {
+      if(emailOrUsername === 'teste' && password === '123') {
         response.status(200).send({ msg: 'Logged!' });
       } else {
         response.status(400).send({ msg: 'No Logged!' });
