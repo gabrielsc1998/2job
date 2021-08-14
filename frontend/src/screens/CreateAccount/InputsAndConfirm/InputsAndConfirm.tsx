@@ -48,7 +48,6 @@ export default function InputsAndConfirm() {
   }
 
   const testSubmit = async (data: any) => {
-    console.log('here')
     setLoading(true);
     setTimeout(async () => {
       setLoading(false);

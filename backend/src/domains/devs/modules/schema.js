@@ -1,5 +1,5 @@
-const db = require("../../../database");
-// const bcrypt = require("bcryptjs");
+const db = require('../../../database');
+const cryptography = require('../../security/cryptography');
 
 const mongoose = db.getInstance();
 
@@ -26,6 +26,11 @@ const DevSchema = new mongoose.Schema({
 		unique: true,
 		require: true,
 		lowercase: true,
+	},
+
+	salt: {
+		type: String,
+		select: false
 	},
 
 	password: {
@@ -58,21 +63,30 @@ const DevSchema = new mongoose.Schema({
 
 });
 
+DevSchema.pre("save", async function(next) {
+	// const salt = crypto.randomBytes(Math.ceil(32/2))
+	// 						 .toString('hex')
+	// 						 .slice(0,16); 
+
+	// cryptography.createSalt();
+
+
+	// let hash = crypto.createHmac('sha512', salt);
+  // hash.update(this.password);
+  // this.password = hash.digest('hex');
+
+	// const senhaESalt = sha512('abcd1234', salt)
+	// console.log(senhaESalt)
+	// console.log(this.password === senhaESalt.hash);
+
+	const { salt, password } = cryptography.encryptThePassword(this.password);
+	this.salt = salt;
+	this.password = password;
+	next();
+});
+
 const dev = mongoose.model("dev", DevSchema);
 module.exports = dev;
 
 
 
-// Antes de salvar, criptografa a senha
-// pre -> função do "mongoose" para dizer que 
-// se quer que algo aconteça antes de salvar
-// userSchema.pre("save", async function(next)
-// {
-// 	// this -> ponteiro para o dado a ser salvo
-// 	// Faz a criptografia da senha com "10 rounds" - padrão
-// 	const passwordHash = await bcrypt.hash(this.password, 10);
-// 	// Passa a senha criptografada para a senha
-// 	this.password = passwordHash;
-
-// 	next();
-// });
