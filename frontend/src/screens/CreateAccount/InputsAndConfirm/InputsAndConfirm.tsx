@@ -10,14 +10,14 @@ import React, { useState } from 'react';
 
 import { useForm } from "react-hook-form";
 import { useHistory } from 'react-router';
-import { Button, TextField } from '@material-ui/core';
-import { CircularProgress } from '@material-ui/core';
+import { /*Button*/ TextField } from '@material-ui/core';
+// import { CircularProgress } from '@material-ui/core';
 import { useSnackbar } from 'notistack';
 
 import { DEFINITIONS } from 'domains/users';
 import { CREATE_ACCOUNT } from 'router/references';
 import { useCreateUser } from 'providers/CreateUser';
-import { ContainerInitialForms, Inputs } from 'components';
+import { ContainerInitialForms, Inputs, Button } from 'components';
 import optionsSnackbar from 'components/Snackbar/Snackbar';
 
 import DevAPI from 'domains/users/dev/api';
@@ -34,7 +34,7 @@ import TEXTS from './texts';
 
 export default function InputsAndConfirm() {
 
-  const classes = useStyles();
+  // const classes = useStyles();
   const history = useHistory();
   const createUser = useCreateUser();
   const [loading, setLoading] = useState(false);
@@ -48,6 +48,7 @@ export default function InputsAndConfirm() {
   }
 
   const testSubmit = async (data: any) => {
+    console.log('here')
     setLoading(true);
     setTimeout(async () => {
       setLoading(false);
@@ -64,12 +65,12 @@ export default function InputsAndConfirm() {
     <ContainerInitialForms>
       <ContainerForm>
         <div style={{ position: 'absolute', top: 10, right: 10, textTransform: 'none', flexDirection: 'column', display: 'flex'  }}>
-          <Button
+          {/* <Button
             className={classes.buttonChangeUserType} 
             onClick={() => { goToSetUserTypeScreen() } }
           > 
             Você é {createUser.getType() === DEFINITIONS.DEV ? 'Dev' : 'Empresa'}. <br/> ALTERAR? 
-          </Button> 
+          </Button>  */}
         </div>
         <div style={{ display: 'flex', width: '100%', justifyContent: 'center', alignItems: 'center', marginBottom: 32 }}>
           <h1 style={{ fontSize: 30, color: '#5B5B5B', textAlign: 'center' }}>
@@ -98,15 +99,20 @@ export default function InputsAndConfirm() {
             <Inputs.Password {...register('password', { required: true })} error={errors.password} />
             <ContainerLoginButton>
               <Button
+                type={'submit'}
+                disabled={loading}
+                loading={loading}
+                text={TEXTS.button.createAccount} 
+              />
+                
+              {/* <Button
                 type='submit'
-                variant={'outlined'}
-                disableElevation
                 className={classes.button}
                 disabled={loading}
                 startIcon={loading && <CircularProgress size={16} style={{ color: 'white' }} /> }
               >
-                {TEXTS.button.createAccount}
-              </Button>
+                {}
+              </Button> */}
             </ContainerLoginButton>
           </form>
         </div>

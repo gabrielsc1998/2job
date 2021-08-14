@@ -6,18 +6,35 @@
  * 
  */
 
+import { CircularProgress } from '@material-ui/core';
+
 import { MaterialButton } from './style';
 
 interface ButtonProps {
   text: string;
+  type?: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
+  loading?: boolean;
+  onClick?: () => void;
 };
 
 export default function Button(props: ButtonProps) {
-  const { text='' } = props;
+  const { 
+    text='',
+    type='button',
+    disabled=false,
+    loading=false, 
+    onClick=undefined,
+  } = props;
+  
   return (
     <MaterialButton
+      type={type}
+      disabled={disabled}
+      startIcon={loading && <CircularProgress size={16} style={{ color: 'white' }} /> }
       variant={'outlined'}
       disableElevation
+      onClick={onClick}
     >
       {text}
     </MaterialButton>

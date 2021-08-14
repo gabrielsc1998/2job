@@ -17,7 +17,7 @@ const routes: ObjectRoutes = {
 };
 
 Object.keys(routes).forEach((key: string) => {
-  routes[key] = `${CONTEXT}${key}`
+  routes[key] = `${CONTEXT}${routes[key]}`
 });
 
 export default routes;
