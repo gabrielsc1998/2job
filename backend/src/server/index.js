@@ -17,22 +17,18 @@ class Server {
   }
 
   async start() {
-    return new Promise(async (resolve, reject) => {
-      try {
-        const { port=3000 } = require('../../config').app;
-        await app.listen(port, (error) => {
-          if(error) {
-            console.log(` ## Error to start server [${error}]`);
-            resolve(false);
-          } else {
-            console.log(` ## Server started - listening on http://localhost:${port}`);
-            resolve(true);
-          }
-        });
-      } catch(error) {
-        reject(error);
-      }
-    });
+    try {
+      const { port=3000 } = require('../../config').app;
+      await app.listen(port, (error) => {
+        if(error) {
+          throw error;
+        } else {
+          console.log(` ## Server started - listening on http://localhost:${port}`);
+        }
+      });
+    } catch(error) {
+      console.log(` ## Error to start server [${error}]`);
+    }
   }
 
   use(method) {
