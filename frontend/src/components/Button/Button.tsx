@@ -16,6 +16,7 @@ interface ButtonProps {
   disabled?: boolean;
   loading?: boolean;
   onClick?: () => void;
+  style?: React.CSSProperties
 };
 
 export default function Button(props: ButtonProps) {
@@ -25,6 +26,7 @@ export default function Button(props: ButtonProps) {
     disabled=false,
     loading=false, 
     onClick=undefined,
+    style={}
   } = props;
   
   return (
@@ -35,6 +37,7 @@ export default function Button(props: ButtonProps) {
       variant={'outlined'}
       disableElevation
       onClick={onClick}
+      style={style}
     >
       {text}
     </MaterialButton>

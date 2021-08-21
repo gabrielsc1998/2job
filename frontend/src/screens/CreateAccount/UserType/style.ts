@@ -7,34 +7,16 @@
  */
 
 import styled from 'styled-components';
-import { makeStyles } from '@material-ui/core/styles';
 
 import { colors, sizes, FlexBoxCentralize } from 'style/global';
 
-export const useStyles = makeStyles((theme) => ({
-  button: {
-    width: '100%',
-    minWidth: 90,
-    color: colors.SECONDARY, 
-    borderRadius: 50,
-    borderColor: colors.PRIMARY, 
-    backgroundColor: colors.PRIMARY,
-    '&:hover': {
-      fontWeight: 'bold',
-      color: colors.PRIMARY,
-      backgroundColor: colors.SECONDARY
-    },
-  },
-  buttonChangeUserType: {
-    textTransform: 'none',
-    color: colors.PRIMARY,
-    backgroundColor: colors.SECONDARY,
-    '&:hover': {
-      color: colors.SECONDARY,
-      backgroundColor: colors.PRIMARY
-    },
-  }
-}));
+export const ContainerButtonGoToLogin = styled.div`
+  display: flex;
+  position: absolute;
+  text-transform: none;
+  flex-direction: column;
+  top: 10px; right: 10px;
+`;
 
 export const ContainerForm = styled.div`
   width: 60%;
@@ -54,4 +36,21 @@ export const ContainerButtons = styled.div`
 
 export const ContainerLoginButton = styled.div`
   margin-block: ${sizes.DEFAULT_SPACING*3}px;
+`;
+
+export const ContainerButtonsAndLabel = styled.div`
+  width: 100%;
+`;
+
+// <div style={{  }}>
+//           <h1 style={{ fontSize: 30, color: '#5B5B5B', textAlign: 'center' }}>{TEXTS.labelLetsCreateYourAccount}</h1>
+//         </div>
+//         <div style={{ display: 'flex', marginBlock: 64, width: '100%', justifyContent: 'center', alignItems: 'center' }}>
+//           <h1 style={{ fontSize: 25, color: '#909090', textAlign: 'center' }}>{TEXTS.labelTellUsAboutYou}</h1>
+//         </div>
+
+export const ContainerTitle = styled.div`
+  width: 100%;
+  display: flex;
+  ${FlexBoxCentralize};
 `;

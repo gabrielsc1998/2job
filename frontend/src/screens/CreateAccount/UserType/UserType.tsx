@@ -9,33 +9,25 @@
 import React, { useEffect } from 'react';
 
 import { useHistory } from 'react-router';
-import { Button } from '@material-ui/core';
 
 import { useCreateUser } from 'providers/CreateUser';
 
 import { DEFINITIONS } from 'domains/users';
-import { ContainerInitialForms } from 'components';
+import { ContainerInitialForms, Button } from 'components';
 import { LOGIN_SCREEN, CREATE_ACCOUNT } from 'router/references';
 
 import {
-  useStyles,
   ContainerForm,
-  ContainerButtons
+  ContainerTitle,
+  ContainerButtons,
+  ContainerButtonGoToLogin,
+  ContainerButtonsAndLabel
 } from './style';
 
 import TEXTS from './texts';
 
-interface InterfaceMyButton {
-  options: {
-    text: string,
-    onClick?: () => void;
-    style?: React.CSSProperties | undefined;
-  }
-};
-
 export default function UserType() {
 
-  const classes = useStyles();
   const history = useHistory();
   const createUser = useCreateUser();
 
@@ -50,56 +42,36 @@ export default function UserType() {
   const goToInputsAndConfirmaScreen = () => {
     history.push(CREATE_ACCOUNT.INPUTS_AND_CONFIRM);
   }
- 
-  const MyButton = (props: InterfaceMyButton) => {
-    const { text='', onClick=(()=>{}), style=undefined } = props.options;
-    return (
-      <Button 
-        variant={'outlined'}
-        disableElevation
-        className={classes.button}
-        style={style}
-        onClick={onClick}
-      > {text} </Button>
-    );
-  };
-
   return(
     <ContainerInitialForms>
       <ContainerForm>
-        <div style={{ position: 'absolute', top: 10, right: 10, textTransform: 'none', flexDirection: 'column', display: 'flex'  }}>
+        <ContainerButtonGoToLogin>
           <Button
-            className={classes.buttonChangeUserType} 
+            text={'Voltar para o LOGIN'}
             onClick={() => { goToLoginScreen() } }
-          > 
-            Voltar para o LOGIN 
-          </Button> 
-        </div>
-        <div style={{ display: 'flex', width: '100%', justifyContent: 'center', alignItems: 'center' }}>
+          /> 
+        </ContainerButtonGoToLogin>
+        <ContainerTitle>
           <h1 style={{ fontSize: 30, color: '#5B5B5B', textAlign: 'center' }}>{TEXTS.labelLetsCreateYourAccount}</h1>
-        </div>
-        <div style={{ display: 'flex', marginBlock: 64, width: '100%', justifyContent: 'center', alignItems: 'center' }}>
+        </ContainerTitle>
+        <ContainerTitle style={{ marginBlock: 64 }}>
           <h1 style={{ fontSize: 25, color: '#909090', textAlign: 'center' }}>{TEXTS.labelTellUsAboutYou}</h1>
-        </div>
-        <div style={{ width: '100%' }}>
+        </ContainerTitle>
+        <ContainerButtonsAndLabel>
           <h2 style={{ fontSize: 20, color: '#454893', textAlign: 'center' }}>{TEXTS.labelButtons}</h2>
           <ContainerButtons>
-            <MyButton 
-              options={{
-                text: TEXTS.buttons.dev, 
-                style:{ marginRight: 8 },
-                onClick: (() => { createUser.setType(DEFINITIONS.DEV); goToInputsAndConfirmaScreen() } )
-              }}
+            <Button 
+              text={TEXTS.buttons.dev}
+              style={{ marginRight: 8, borderRadius: 100 }}
+              onClick={(() => { createUser.setType(DEFINITIONS.DEV); goToInputsAndConfirmaScreen() } )}
             />
-            <MyButton 
-              options={{
-                text: TEXTS.buttons.company, 
-                style:{ marginLeft: 8 },
-                onClick: (() => { createUser.setType(DEFINITIONS.COMPANY); goToInputsAndConfirmaScreen() } )
-              }}
+            <Button 
+              text={TEXTS.buttons.company} 
+              style={{ marginLeft: 8, borderRadius: 100 }}
+              onClick={(() => { createUser.setType(DEFINITIONS.COMPANY); goToInputsAndConfirmaScreen() } )}
             />
           </ContainerButtons>
-        </div>
+        </ContainerButtonsAndLabel>
       </ContainerForm>
     </ContainerInitialForms>
   )
