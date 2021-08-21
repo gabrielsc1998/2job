@@ -7,33 +7,8 @@
  */
 
 import styled from 'styled-components';
-import { makeStyles } from '@material-ui/core/styles';
 
-import { colors, sizes, FlexBoxCentralize } from 'style/global';
-
-export const useStyles = makeStyles((theme) => ({
-  button: {
-    width: '100%',
-    minWidth: 100,
-    color: colors.SECONDARY,
-    borderColor: colors.PRIMARY, 
-    backgroundColor: colors.PRIMARY,
-    '&:hover': {
-      fontWeight: 'bold',
-      color: colors.PRIMARY,
-      backgroundColor: colors.SECONDARY
-    },
-  },
-  buttonChangeUserType: {
-    textTransform: 'none',
-    color: colors.PRIMARY,
-    backgroundColor: colors.SECONDARY,
-    '&:hover': {
-      color: colors.SECONDARY,
-      backgroundColor: colors.PRIMARY
-    },
-  }
-}));
+import { sizes, FlexBoxCentralize } from 'style/global';
 
 export const ContainerForm = styled.div`
   width: 60%;

@@ -8,7 +8,7 @@
 
 import styled from 'styled-components';
 
-import { colors, sizes, FlexBoxCentralize } from 'style/global';
+import { sizes, FlexBoxCentralize } from 'style/global';
 
 export const ContainerButtonGoToLogin = styled.div`
   display: flex;
@@ -41,13 +41,6 @@ export const ContainerLoginButton = styled.div`
 export const ContainerButtonsAndLabel = styled.div`
   width: 100%;
 `;
-
-// <div style={{  }}>
-//           <h1 style={{ fontSize: 30, color: '#5B5B5B', textAlign: 'center' }}>{TEXTS.labelLetsCreateYourAccount}</h1>
-//         </div>
-//         <div style={{ display: 'flex', marginBlock: 64, width: '100%', justifyContent: 'center', alignItems: 'center' }}>
-//           <h1 style={{ fontSize: 25, color: '#909090', textAlign: 'center' }}>{TEXTS.labelTellUsAboutYou}</h1>
-//         </div>
 
 export const ContainerTitle = styled.div`
   width: 100%;

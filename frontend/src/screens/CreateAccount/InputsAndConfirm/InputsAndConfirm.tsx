@@ -10,7 +10,7 @@ import React, { useState } from 'react';
 
 import { useForm } from "react-hook-form";
 // import { useHistory } from 'react-router';
-import { /*Button*/ TextField } from '@material-ui/core';
+import { TextField } from '@material-ui/core';
 import { useSnackbar } from 'notistack';
 
 import { DEFINITIONS } from 'domains/users';
@@ -32,7 +32,6 @@ import TEXTS from './texts';
 
 export default function InputsAndConfirm() {
 
-  // const classes = useStyles();
   // const history = useHistory();
   const createUser = useCreateUser();
   const [loading, setLoading] = useState(false);
@@ -101,15 +100,6 @@ export default function InputsAndConfirm() {
                 loading={loading}
                 text={TEXTS.button.createAccount} 
               />
-                
-              {/* <Button
-                type='submit'
-                className={classes.button}
-                disabled={loading}
-                startIcon={loading && <CircularProgress size={16} style={{ color: 'white' }} /> }
-              >
-                {}
-              </Button> */}
             </ContainerLoginButton>
           </form>
         </div>
