@@ -1,6 +1,6 @@
-const config = require('../../config');
+import config from '../config';
 
-module.exports = {
+const dbConfig = {
   options: {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -9,3 +9,5 @@ module.exports = {
   },
   DB_URL: config.db.url,
 }
+
+export default dbConfig;

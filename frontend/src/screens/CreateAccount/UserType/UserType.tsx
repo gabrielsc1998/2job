@@ -34,9 +34,9 @@ export default function UserType() {
     // createUser.setType(undefined);
   });
 
-  const goToLoginScreen = () => {
-    history.push(LOGIN_SCREEN);
-  }
+  // const goToLoginScreen = () => {
+  //   history.push(LOGIN_SCREEN);
+  // }
 
   const goToInputsAndConfirmaScreen = () => {
     history.push(CREATE_ACCOUNT.INPUTS_AND_CONFIRM);
