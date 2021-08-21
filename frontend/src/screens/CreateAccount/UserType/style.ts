@@ -10,14 +10,6 @@ import styled from 'styled-components';
 
 import { sizes, FlexBoxCentralize } from 'style/global';
 
-export const ContainerButtonGoToLogin = styled.div`
-  display: flex;
-  position: absolute;
-  text-transform: none;
-  flex-direction: column;
-  top: 10px; right: 10px;
-`;
-
 export const ContainerForm = styled.div`
   width: 60%;
   min-width: 300px;

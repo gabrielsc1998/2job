@@ -16,7 +16,7 @@ import { useSnackbar } from 'notistack';
 import { DEFINITIONS } from 'domains/users';
 // import { CREATE_ACCOUNT } from 'router/references';
 import { useCreateUser } from 'providers/CreateUser';
-import { ContainerInitialForms, Inputs, Button } from 'components';
+import { ContainerInitialForms, Inputs, Button, GoBack } from 'components';
 import optionsSnackbar from 'components/Snackbar/Snackbar';
 
 import DevAPI from 'domains/users/dev/api';
@@ -57,17 +57,22 @@ export default function InputsAndConfirm() {
     }, 1)
   }
 
+  const RenderHelperText = (type: 'name' | 'email'): string => {
+    const helperText = {
+      'name': `Não esqueça de inserir corretamente ${createUser.getType() === DEFINITIONS.DEV ? 'seu nome completo' : 'o nome da empresa'}`,
+      'email': 'Não esqueça de inserir corretamente seu e-mail'
+    }
+    return errors[type] ? helperText[type] : ' '
+  }
+
   return(
     <ContainerInitialForms>
       <ContainerForm>
-        <div style={{ position: 'absolute', top: 10, right: 10, textTransform: 'none', flexDirection: 'column', display: 'flex'  }}>
-          {/* <Button
-            className={classes.buttonChangeUserType} 
-            onClick={() => { goToSetUserTypeScreen() } }
-          > 
-            Você é {createUser.getType() === DEFINITIONS.DEV ? 'Dev' : 'Empresa'}. <br/> ALTERAR? 
-          </Button>  */}
-        </div>
+        <GoBack 
+          text={
+            `Você é ${createUser.getType() === DEFINITIONS.DEV ? 'Dev' : 'Empresa'}. ALTERAR?`
+          }
+        />
         <div style={{ display: 'flex', width: '100%', justifyContent: 'center', alignItems: 'center', marginBottom: 32 }}>
           <h1 style={{ fontSize: 30, color: '#5B5B5B', textAlign: 'center' }}>
             {TEXTS.label}
@@ -80,7 +85,7 @@ export default function InputsAndConfirm() {
               fullWidth
               margin='normal'
               error={errors.name}
-              helperText={errors.name && `Não esqueça de inserir corretamente ${createUser.getType() === DEFINITIONS.DEV ? 'seu nome completo' : 'o nome da empresa'}`}
+              helperText={RenderHelperText('name')}
               {...register('name', { required: true })}
             />
             <TextField
@@ -89,7 +94,7 @@ export default function InputsAndConfirm() {
               margin='normal'
               type='email'
               error={errors.email}
-              helperText={errors.email && 'Não esqueça de inserir corretamente seu e-mail'}
+              helperText={RenderHelperText('email')}
               {...register('email', { required: true })}
             />
             <Inputs.Password {...register('password', { required: true })} error={errors.password} />

@@ -13,14 +13,13 @@ import { useHistory } from 'react-router';
 import { useCreateUser } from 'providers/CreateUser';
 
 import { DEFINITIONS } from 'domains/users';
-import { ContainerInitialForms, Button } from 'components';
+import { ContainerInitialForms, Button, GoBack } from 'components';
 import { LOGIN_SCREEN, CREATE_ACCOUNT } from 'router/references';
 
 import {
   ContainerForm,
   ContainerTitle,
   ContainerButtons,
-  ContainerButtonGoToLogin,
   ContainerButtonsAndLabel
 } from './style';
 
@@ -45,12 +44,7 @@ export default function UserType() {
   return(
     <ContainerInitialForms>
       <ContainerForm>
-        <ContainerButtonGoToLogin>
-          <Button
-            text={'Voltar para o LOGIN'}
-            onClick={() => { goToLoginScreen() } }
-          /> 
-        </ContainerButtonGoToLogin>
+        <GoBack text={'Voltar para o LOGIN'} />
         <ContainerTitle>
           <h1 style={{ fontSize: 30, color: '#5B5B5B', textAlign: 'center' }}>{TEXTS.labelLetsCreateYourAccount}</h1>
         </ContainerTitle>
