@@ -29,3 +29,10 @@ export const ContainerButtons = styled.div`
 export const ContainerLoginButton = styled.div`
   margin-block: ${sizes.DEFAULT_SPACING*3}px;
 `;
+
+export const ContainerTitle = styled.div`
+  display: flex;
+  width: 100%;
+  margin-bottom: ${sizes.DEFAULT_SPACING*4}px;
+  ${FlexBoxCentralize};
+`;

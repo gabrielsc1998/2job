@@ -8,8 +8,8 @@
 
 import React from 'react';
 
-import { IconButton } from '@material-ui/core';
 import { Close } from '@material-ui/icons';
+import { IconButton } from '@material-ui/core';
 import { useSnackbar, VariantType, SnackbarOrigin, SnackbarKey } from 'notistack';
 
 import { IconStyle } from './style';

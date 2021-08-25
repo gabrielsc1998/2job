@@ -9,30 +9,25 @@
 import React, { useState } from 'react';
 
 import { useForm } from "react-hook-form";
-// import { useHistory } from 'react-router';
+import { useHistory } from 'react-router';
 import { TextField } from '@material-ui/core';
 import { useSnackbar } from 'notistack';
 
 import { DEFINITIONS } from 'domains/users';
-// import { CREATE_ACCOUNT } from 'router/references';
+import { LOGIN_SCREEN } from 'router/references';
 import { useCreateUser } from 'providers/CreateUser';
-import { ContainerInitialForms, Inputs, Button, GoBack } from 'components';
 import optionsSnackbar from 'components/Snackbar/Snackbar';
+import { ContainerInitialForms, Inputs, Button, GoBack } from 'components';
 
 import DevAPI from 'domains/users/dev/api';
 import CompanyAPI from 'domains/users/company/api';
 
-import {
-  ContainerForm,
-  ContainerLoginButton
-} from './style';
-
 import TEXTS from './texts';
-
+import { ContainerForm, ContainerLoginButton, ContainerTitle } from './style';
 
 export default function InputsAndConfirm() {
 
-  // const history = useHistory();
+  const history = useHistory();
   const createUser = useCreateUser();
   const [loading, setLoading] = useState(false);
 
@@ -44,6 +39,10 @@ export default function InputsAndConfirm() {
   //   history.push(CREATE_ACCOUNT.USER_TYPE);
   // }
 
+  const goToLoginScreen = () => {
+    history.push(LOGIN_SCREEN);
+  }
+
   const testSubmit = async (data: any) => {
     setLoading(true);
     setTimeout(async () => {
@@ -51,6 +50,7 @@ export default function InputsAndConfirm() {
       const API = createUser.getType() === DEFINITIONS.DEV ? DevAPI : CompanyAPI;
       if(await API.create(data)) {
         enqueueSnackbar('Conta criada com sucesso!', { ...optionsSnackbar('success') });
+        setTimeout(() => goToLoginScreen(), 150);
       } else {
         enqueueSnackbar('Erro ao criar a conta!', { ...optionsSnackbar('error') });
       }
@@ -73,11 +73,11 @@ export default function InputsAndConfirm() {
             `Você é ${createUser.getType() === DEFINITIONS.DEV ? 'Dev' : 'Empresa'}. ALTERAR?`
           }
         />
-        <div style={{ display: 'flex', width: '100%', justifyContent: 'center', alignItems: 'center', marginBottom: 32 }}>
+        <ContainerTitle>
           <h1 style={{ fontSize: 30, color: '#5B5B5B', textAlign: 'center' }}>
             {TEXTS.label}
           </h1>
-        </div>
+        </ContainerTitle>
         <div style={{ width: '100%' }}>
           <form onSubmit={handleSubmit(testSubmit)}>
             <TextField
