@@ -1,12 +1,12 @@
-const _ = require('lodash');
+import _ from 'lodash';
 
-const companyModel = require('./schema');
+import companyModel from './schema';
 
 class CompanyModule {
 
 	constructor() {}
 
-	async create(payload) {
+	create = async (payload: any) => {
 		try {
 			return await companyModel.create(payload);
 		} catch (error) {
@@ -14,7 +14,7 @@ class CompanyModule {
 		}
 	}
 
-	async getById(id) {
+	getById = async (id: string) => {
 		try {
 			if(!_.isString(id)) {
 				throw `Invalid id type`;
@@ -25,7 +25,7 @@ class CompanyModule {
 		}
 	}
 
-	async listAll() {
+	listAll = async ()  =>{
 		try {
 			const ret = await companyModel.find();
 			return ret;
@@ -34,7 +34,7 @@ class CompanyModule {
 		}
 	}
 
-	async deleteById(id) {
+	deleteById = async (id: string) => {
 		try {
 			const ret = await companyModel.findByIdAndRemove(id);
 			return ret;
@@ -45,4 +45,4 @@ class CompanyModule {
 
 }
 
-module.exports = new CompanyModule();
+export default new CompanyModule();

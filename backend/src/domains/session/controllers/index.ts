@@ -1,7 +1,9 @@
 const _ = require('lodash');
 const { validationResult } = require('express-validator');
 
-const checkError = (request) => {
+import { Request, Response } from "../../../server/types";
+
+const checkError = (request: Request) => {
   const errors = validationResult(request);
   if(!errors.isEmpty()) {
     throw errors.array();
@@ -10,7 +12,7 @@ const checkError = (request) => {
 
 class Session {
 
-  async login(request, response) {
+  login = async (request: Request, response: Response): Promise<void> =>  {
     try {
       checkError(request);
       const { emailOrUsername, password } = request.body;
@@ -28,4 +30,4 @@ class Session {
 
 }
 
-module.exports = new Session();
+export default new Session();

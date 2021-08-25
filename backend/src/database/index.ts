@@ -26,12 +26,12 @@ class MongoDB {
   }
 
   getInstance = () => {
-    try {
+    // try {
       return mongoose;
-    } catch(error) {
-      console.log(` ## Problem to get the mongo instance [${error}]`);
-      return undefined;
-    }
+    // } catch(error) {
+    //   console.log(` ## Problem to get the mongo instance [${error}]`);
+    //   // return undefined;
+    // }
   }
 }
 

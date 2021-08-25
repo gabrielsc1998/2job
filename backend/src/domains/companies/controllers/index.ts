@@ -1,9 +1,11 @@
-const _ = require('lodash');
-const { validationResult } = require('express-validator');
+import _ from 'lodash';
+import { validationResult } from 'express-validator';
 
-const company = require('../modules');
+import { Request, Response } from "../../../server/types";
 
-const checkError = (request) => {
+import company from '../modules';
+
+const checkError = (request: Request) => {
   const errors = validationResult(request);
   if(!errors.isEmpty()) {
     throw errors.array();
@@ -12,7 +14,7 @@ const checkError = (request) => {
 
 class CompanyController {
 
-  async create(request, response) {
+  create = async (request: Request, response: Response) => {
     try {
       checkError(request);
       const payloadCreateCompany = request.body;
@@ -23,7 +25,7 @@ class CompanyController {
     }
   }
 
-  async getById(request, response) {
+  getById = async (request: Request, response: Response) => {
     try {
       checkError(request);
       const { id } = request.params;
@@ -34,7 +36,7 @@ class CompanyController {
     }
   }
   
-  async listAll(request, response) {
+  listAll = async (request: Request, response: Response) => {
     try {
       checkError(request);
       const companyList = await company.listAll();
@@ -44,7 +46,7 @@ class CompanyController {
     }
   }
 
-  async deleteById(request, response) {
+  deleteById = async (request: Request, response: Response) => {
     try {
       checkError(request);
       await company.deleteById(request.params.id);
@@ -56,4 +58,4 @@ class CompanyController {
 
 }
 
-module.exports = new CompanyController();
+export default new CompanyController();

@@ -1,12 +1,12 @@
-const _ = require('lodash');
+import _ from 'lodash';
 
-const devModel = require('./schema');
+import devModel from './schema';
 
 class DevModel {
 
 	constructor() {}
 
-	async create(payload) {
+	create = async (payload: any) => {
 		try {
 			return await devModel.create(payload);
 		} catch (error) {
@@ -14,7 +14,7 @@ class DevModel {
 		}
 	}
 
-	async getById(id) {
+	getById = async (id: string) => {
 		try {
 			if(!_.isString(id)) {
 				throw `Invalid id type`;
@@ -25,7 +25,7 @@ class DevModel {
 		}
 	}
 
-	async listAll() {
+	listAll = async () => {
 		try {
 			return await devModel.find();
 		} catch (error) {
@@ -33,7 +33,7 @@ class DevModel {
 		}
 	}
 
-	async deleteById(id) {
+	deleteById = async (id: string) => {
 		try {
 			if(!_.isString(id)) {
 				throw `Invalid id type`;
@@ -46,4 +46,4 @@ class DevModel {
 
 }
 
-module.exports = new DevModel();
+export default new DevModel();

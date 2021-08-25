@@ -1,6 +1,6 @@
-const { body, param, query } = require('express-validator');
+import { body } from 'express-validator';
 
-const controller = require('../controllers');
+import controller from '../controllers';
 
 const BASE_PATH = '/session';
 const routes = [
@@ -17,4 +17,4 @@ const routes = [
   
 ]
 
-module.exports = { BASE_PATH, routes };
+export { BASE_PATH, routes };
