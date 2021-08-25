@@ -4,7 +4,7 @@
   "description": "backend of the 2job project, a platform for job advertisement and search",
   "main": "./src/index.ts",
   "scripts": {
-    "start": "clear & nodemon index.js",
+    "start": "clear & nodemon ./src/index.ts",
     "test": "test"
   },
   "repository": {
@@ -36,6 +36,8 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
     "nodemon": "^2.0.12",
-    "prettier": "^2.3.2"
+    "prettier": "^2.3.2",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.3.5"
   }
 }
