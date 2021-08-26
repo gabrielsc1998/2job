@@ -38,3 +38,4 @@ const routes = [
 ];
 
 export default routes;
+export const redirectRefIfRouteNotFound = LOGIN_SCREEN;
