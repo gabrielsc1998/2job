@@ -1,7 +1,10 @@
-const _ = require('lodash');
-const { validationResult } = require('express-validator');
+import _ from 'lodash';
+import { validationResult } from 'express-validator';
 
-import { Request, Response } from "../../../server/types";
+import { Request, Response } from '../../../server/types';
+
+import DevsModules from '../../devs/modules';
+// import CompaniesController from '../../companies/controllers';
 
 const checkError = (request: Request) => {
   const errors = validationResult(request);
@@ -12,10 +15,20 @@ const checkError = (request: Request) => {
 
 class Session {
 
+  private _controllers: Array<any> = [];
+
+  constructor() {
+    // this._controllers.push(DevsController);
+    // this._controllers.push(CompaniesController);
+  }
+
   login = async (request: Request, response: Response): Promise<void> =>  {
     try {
-      checkError(request);
+      // checkError(request);
       const { emailOrUsername, password } = request.body;
+      
+      const resp = await DevsModules.findOne({ email: emailOrUsername });
+      console.log(resp);
       // const payloadCreateCompany = request.body;
       // await company.create(payloadCreateCompany);
       if(emailOrUsername === 'teste' && password === '123') {

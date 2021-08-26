@@ -33,6 +33,14 @@ class DevModel {
 		}
 	}
 
+	findOne = async (parameter: { email: string }) => {
+		try {
+			return await devModel.find({...parameter});
+		} catch (error) {
+			return { error };
+		}
+	}
+
 	deleteById = async (id: string) => {
 		try {
 			if(!_.isString(id)) {
