@@ -34,6 +34,14 @@ class CompanyModule {
 		}
 	}
 
+	findOne = async (parameter: { email: string }) => {
+		try {
+			return await companyModel.find({...parameter});
+		} catch (error) {
+			return { error };
+		}
+	}
+
 	deleteById = async (id: string) => {
 		try {
 			const ret = await companyModel.findByIdAndRemove(id);

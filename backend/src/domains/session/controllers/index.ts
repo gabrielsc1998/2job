@@ -3,8 +3,7 @@ import { validationResult } from 'express-validator';
 
 import { Request, Response } from '../../../server/types';
 
-import DevsModules from '../../devs/modules';
-// import CompaniesController from '../../companies/controllers';
+import sessionModule from '../modules';
 
 const checkError = (request: Request) => {
   const errors = validationResult(request);
@@ -27,7 +26,7 @@ class Session {
       // checkError(request);
       const { emailOrUsername, password } = request.body;
       
-      const resp = await DevsModules.findOne({ email: emailOrUsername });
+      const resp = await sessionModule.findOne({ email: emailOrUsername });
       console.log(resp);
       // const payloadCreateCompany = request.body;
       // await company.create(payloadCreateCompany);

@@ -68,13 +68,10 @@ const DevSchema = new mongoose.Schema({
 });
 
 DevSchema.pre<IDev>('save', function(next: any) {
-		const { salt, password } = cryptography.encryptThePassword(this.password);
-		this.salt = salt;
-		this.password = password;
-		next();
-	}
-);
+	const { salt, password } = cryptography.encryptThePassword(this.password);
+	this.salt = salt;
+	this.password = password;
+	next();
+});
 
 export default mongoose.model("dev", DevSchema);
-
-

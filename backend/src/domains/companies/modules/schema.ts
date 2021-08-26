@@ -21,6 +21,11 @@ const CompanySchema = new mongoose.Schema({
 		require: true,
 		select: false,
 	},
+	
+	salt: {
+		type: String,
+		select: false
+	},
 
 	name: {
 		type: String,
@@ -50,8 +55,6 @@ CompanySchema.pre<ICompany>('save', function(next: any) {
 	this.salt = salt;
 	this.password = password;
 	next();
-}
-);
-
+});
 
 export default mongoose.model("company", CompanySchema);
