@@ -7,6 +7,6 @@
     "esModuleInterop": true,
     "strict": true,
     "noImplicitThis": true,
-    "types": ["node"]
+    "types": ["node", "mocha"]
   }
 }

@@ -25,9 +25,10 @@ class Session {
     try {
       // checkError(request);
       const { emailOrUsername, password } = request.body;
-      
       const resp = await sessionModule.findOne({ email: emailOrUsername });
-      console.log(resp);
+      if(_.isUndefined(resp)) {
+        response.status(401).send({ msg: 'Not authorized!' });
+      }
       // const payloadCreateCompany = request.body;
       // await company.create(payloadCreateCompany);
       if(emailOrUsername === 'teste' && password === '123') {

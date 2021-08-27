@@ -7,7 +7,8 @@ interface ObjectConfig {
   },
   db: {
     url: string,
-  }
+  },
+  tokenKey: string
 }
 
 interface Config {
@@ -22,7 +23,8 @@ const config: Config = {
     },
     db: {
       url: process.env.URL || 'mongodb://localhost/db'
-    }
+    },
+    tokenKey: process.env.KEY || 'abcd1234effe43210000ffff'
   },
 }
 
