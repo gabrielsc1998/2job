@@ -28,7 +28,7 @@ class SessionModel {
     const findDev = await devsModule.findOne({...query});
     if(_.isEmpty(findDev)) {
       const findCompany = await companiesModule.findOne({...query}, ['password', 'salt']);
-      if((_.isEmpty(findCompany)) {
+      if(_.isEmpty(findCompany)) {
         return undefined;
       }
       return findCompany;
