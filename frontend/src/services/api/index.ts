@@ -8,9 +8,13 @@
 
 import axios from 'axios';
 
-const API_PORT = 3002;
+import config from './../../config/index';
+
 const api = axios.create({
-  baseURL: `http://localhost:${API_PORT}`,
+  baseURL: config.api.url,
+  headers: {
+    token: localStorage.getItem('token')
+  }
 });
 
 export default api;

@@ -15,6 +15,7 @@
     "@types/react-dom": "^17.0.0",
     "@types/react-router-dom": "^5.1.8",
     "axios": "^0.21.1",
+    "dotenv": "^10.0.0",
     "notistack": "^1.0.10",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -26,7 +27,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "clear & craco start",
+    "start": "env-cmd -f .env clear & craco start",
     "build": "craco build",
     "test": "clear & craco test",
     "eject": "craco eject"
