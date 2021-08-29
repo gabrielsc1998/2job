@@ -34,9 +34,9 @@ class CompanyModule {
 		}
 	}
 
-	findOne = async (parameter: { email: string }) => {
+	findOne = async (parameter: { email: string }, select?: string | Array<string>) => {
 		try {
-			return await companyModel.find({...parameter});
+			return await companyModel.findOne({...parameter}).select(select);
 		} catch (error) {
 			return { error };
 		}

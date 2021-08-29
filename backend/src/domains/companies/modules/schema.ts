@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import mongoose from 'mongoose';
 
 import cryptography from '../../security/cryptography';
@@ -51,9 +52,17 @@ const CompanySchema = new mongoose.Schema({
 });
 
 CompanySchema.pre<ICompany>('save', function(next: any) {
-	const { salt, password } = cryptography.encryptThePassword(this.password);
-	this.salt = salt;
-	this.password = password;
+	try {
+		const cryptographyResp = cryptography.encryptThePassword(this.password);
+		if(!_.isUndefined(cryptographyResp)) {
+			this.salt = cryptographyResp.salt;
+			this.password = cryptographyResp.password;
+		} else {
+			throw `Error to encrypt the password!`;
+		}
+	} catch(error) {
+		console.log(` ## pre save company => ${error}`);
+	}
 	next();
 });
 

@@ -33,9 +33,9 @@ class DevModel {
 		}
 	}
 
-	findOne = async (parameter: { email: string }) => {
+	findOne = async (parameter: { email: string }, select?: string | Array<string>) => {
 		try {
-			return await devModel.find({...parameter});
+			return await devModel.findOne({...parameter}).select(select);
 		} catch (error) {
 			return { error };
 		}

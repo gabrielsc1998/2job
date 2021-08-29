@@ -1,7 +1,9 @@
 import _ from 'lodash';
 import { validationResult } from 'express-validator';
 
+import cryptography from '../../security/cryptography';
 import { Request, Response } from '../../../server/types';
+import authentication from '../../security/authentication';
 
 import sessionModule from '../modules';
 
@@ -26,16 +28,19 @@ class Session {
       // checkError(request);
       const { emailOrUsername, password } = request.body;
       const resp = await sessionModule.findOne({ email: emailOrUsername });
-      if(_.isUndefined(resp)) {
-        response.status(401).send({ msg: 'Not authorized!' });
+      if(!_.isUndefined(resp) && !_.isEmpty(resp)) {
+        if(cryptography.comparePassword({
+          password,
+          storedSalt: resp.salt,
+          storedPassword: resp.password
+        })) {
+          const token = authentication.createToken(resp.id);
+          response.status(200).send({ msg: 'Authorized!', id: resp.id, token });
+          return;
+        }
       }
-      // const payloadCreateCompany = request.body;
-      // await company.create(payloadCreateCompany);
-      if(emailOrUsername === 'teste' && password === '123') {
-        response.status(200).send({ msg: 'Logged!' });
-      } else {
-        response.status(400).send({ msg: 'No Logged!' });
-      }
+
+      response.status(401).send({ msg: 'Not authorized!' });
     } catch(error) {
       response.status(400).send({ error });
     }

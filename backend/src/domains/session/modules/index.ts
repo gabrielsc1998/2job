@@ -24,11 +24,11 @@ class SessionModel {
     return session?.token;
   }
 
-  findOne = async (query: any): Promise<Object | undefined> => {
+  findOne = async (query: any): Promise<{id: string, password: string, salt: string} | undefined> => {
     const findDev = await devsModule.findOne({...query});
-    if(!findDev) {
-      const findCompany = await companiesModule.findOne({...query});
-      if(!findCompany) {
+    if(_.isEmpty(findDev)) {
+      const findCompany = await companiesModule.findOne({...query}, ['password', 'salt']);
+      if((_.isEmpty(findCompany)) {
         return undefined;
       }
       return findCompany;
