@@ -6,6 +6,8 @@
  *
  */
 
+import { TChildren } from 'types';
+
 import Container from '../Container';
 
 import {
@@ -18,7 +20,13 @@ import {
 
 import TEXTS from './texts';
 
-export default function ContainerInitialForms(props: any) {
+interface IPropsContainerInitialForms {
+  children?: TChildren;
+}
+
+export default function ContainerInitialForms(
+  props: IPropsContainerInitialForms
+) {
   return (
     <Container>
       <ContainerLeft>

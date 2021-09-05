@@ -7,7 +7,6 @@
  */
 
 import Login from './Login';
-import Initial from './Initial';
 import { UserType, InputsAndConfirm } from './CreateAccount';
 
 const CreateAccount = {
@@ -15,4 +14,4 @@ const CreateAccount = {
   InputsAndConfirm,
 };
 
-export { Login, Initial, CreateAccount };
+export { Login, CreateAccount };

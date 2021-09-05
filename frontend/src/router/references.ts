@@ -6,8 +6,6 @@
  *
  */
 
-export const INITIAL_SCREEN = '/inital';
-
 export const LOGIN_SCREEN = '/';
 
 const CREATE_ACCOUNT_REF = '/createAccount';

@@ -6,15 +6,11 @@
  *
  */
 
-import { Initial, Login, CreateAccount } from 'screens';
+import { Login, CreateAccount } from 'screens';
 
-import { INITIAL_SCREEN, LOGIN_SCREEN, CREATE_ACCOUNT } from './references';
+import { LOGIN_SCREEN, CREATE_ACCOUNT } from './references';
 
 const routes = [
-  {
-    ref: INITIAL_SCREEN,
-    component: Initial,
-  },
   {
     ref: LOGIN_SCREEN,
     component: Login,

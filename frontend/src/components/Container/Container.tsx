@@ -6,8 +6,14 @@
  *
  */
 
+import { TChildren } from 'types';
+
 import ContainerPage from './style';
 
-export default function Container(props: any) {
+interface IPropsContainer {
+  children?: TChildren;
+}
+
+export default function Container(props: IPropsContainer) {
   return <ContainerPage>{props.children}</ContainerPage>;
 }

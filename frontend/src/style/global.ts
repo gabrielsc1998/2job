@@ -8,17 +8,17 @@
 
 import { createGlobalStyle, css } from 'styled-components';
 
-export const colors = {
-  PRIMARY: '#454893',
-  SECONDARY: '#F3F3F3',
-};
-
 export const sizes = {
   DEFAULT_SPACING: 8,
 };
 
-export const theme = {
-  backgroundColor: '#454893',
+export const BreakPoints = {
+  mobile_S: '320px',
+  mobile_M: '375px',
+  mobile_L: '425px',
+  tablet: '768px',
+  laptop: '1024px',
+  laptop_L: '1440px',
 };
 
 export const FlexBoxCentralize = css`

@@ -9,11 +9,11 @@
 import styled from 'styled-components';
 import Button from '@material-ui/core/Button';
 
-import { colors, sizes, FlexBoxCentralize } from 'style/global';
+import { sizes, FlexBoxCentralize } from 'style/global';
 
 export const MaterialTextButton = styled(Button)`
   && {
-    color: ${colors.PRIMARY};
+    color: ${({ theme }) => theme.colors.primary};
     text-transform: none;
     background-color: transparent;
     &:hover {
