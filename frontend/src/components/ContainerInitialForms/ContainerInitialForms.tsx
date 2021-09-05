@@ -6,7 +6,7 @@
  *
  */
 
-import { Container } from 'components';
+import Container from '../Container';
 
 import {
   ContainerLeft,

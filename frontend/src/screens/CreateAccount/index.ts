@@ -6,7 +6,7 @@
  *
  */
 
-import UserType from './UserType/UserType';
-import InputsAndConfirm from './InputsAndConfirm/InputsAndConfirm';
+import UserType from './UserType';
+import InputsAndConfirm from './InputsAndConfirm';
 
 export { UserType, InputsAndConfirm };

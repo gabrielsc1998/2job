@@ -6,7 +6,4 @@
  *
  */
 
-export interface ILogin {
-  emailOrUsername: string;
-  password: string;
-}
+export { default } from './SvgImage';

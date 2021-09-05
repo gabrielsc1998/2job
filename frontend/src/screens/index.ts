@@ -6,8 +6,8 @@
  *
  */
 
-import Initial from './Initial/Initial';
-import Login from './Login/Login';
+import Login from './Login';
+import Initial from './Initial';
 import { UserType, InputsAndConfirm } from './CreateAccount';
 
 const CreateAccount = {

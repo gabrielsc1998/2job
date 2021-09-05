@@ -35,10 +35,12 @@ const CloseButton = ({ index = undefined }: { index?: SnackbarKey }) => {
 const vertical: SnackbarOrigin['vertical'] = 'bottom';
 const horizontal: SnackbarOrigin['horizontal'] = 'right';
 
+const generateRandomKey = (): string => {
+  return Math.floor(new Date().valueOf() * Math.random()).toString(36);
+};
+
 const optionsSnackbar = (variant: VariantType) => {
-  const snackbarKey = Math.floor(new Date().valueOf() * Math.random()).toString(
-    36
-  );
+  const snackbarKey = generateRandomKey();
   return {
     autoHideDuration: 3000,
     action: <CloseButton index={snackbarKey} />,

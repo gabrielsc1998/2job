@@ -36,7 +36,7 @@ export default function Initial() {
   };
 
   const MyButton = (props: InterfaceMyButton) => {
-    const { text = '', onClick = () => {}, style = undefined } = props.options;
+    const { text = '', onClick, style = undefined } = props.options;
     return (
       <MaterialButton
         variant="outlined"

@@ -31,7 +31,6 @@ module.exports = {
     'react/jsx-props-no-spreading': [0],
     'react/destructuring-assignment': [0],
     'react/jsx-one-expression-per-line': [0],
-    // 'prettier/prettier': ['off', { singleQuote: true, trailingComma: 'es5' }],
     'react/prefer-stateless-function': [0, { ignorePureComponents: true }],
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],

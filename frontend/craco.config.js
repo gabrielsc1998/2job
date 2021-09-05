@@ -1,11 +1,10 @@
-import { resolve } from 'path';
+/* eslint-disable @typescript-eslint/no-var-requires */
+const path = require('path');
 
-export const webpack = {
+module.exports = {
   alias: {
-    '@': resolve(__dirname, 'src/'),
+    '@': path.resolve(__dirname, 'src/'),
   },
-};
-export const jest = {
   configure: {
     moduleNameMapper: {
       '^@(.*)$': '<rootDir>/src$1',

@@ -8,17 +8,17 @@
 
 import React, { useState } from 'react';
 
+import { useSnackbar } from 'notistack';
 import { useHistory } from 'react-router';
 import { useForm } from 'react-hook-form';
 import { TextField } from '@material-ui/core';
 
-import { useSnackbar } from 'notistack';
-import optionsSnackbar from 'components/Snackbar/Snackbar';
-
 import { logo2job } from 'images';
-import { ContainerInitialForms, Inputs, Button } from 'components';
-import { CREATE_ACCOUNT } from 'router/references';
 import session from 'domains/session/api';
+import { ILogin } from 'domains/session/models';
+import { CREATE_ACCOUNT } from 'router/references';
+import optionsSnackbar from 'components/Snackbar/Snackbar';
+import { ContainerInitialForms, Inputs, Button, SvgImage } from 'components';
 
 import {
   ContainerMain,
@@ -48,11 +48,10 @@ export default function Initial() {
   };
 
   const TextButton = (props: InterfaceTextButton) => {
-    const { text = '', onClick = () => {} } = props.options;
+    const { text = '', onClick } = props.options;
     return (
       <MaterialTextButton disableElevation onClick={onClick}>
-        {' '}
-        {text}{' '}
+        {text}
       </MaterialTextButton>
     );
   };
@@ -60,7 +59,7 @@ export default function Initial() {
   const { register, handleSubmit /* ,formState: { errors } */ } = useForm();
 
   const [loading, setLoading] = useState(false);
-  const login = async (data: any) => {
+  const login = async (data: ILogin) => {
     setLoading(true);
     setTimeout(async () => {
       setLoading(false);
@@ -78,7 +77,7 @@ export default function Initial() {
     <ContainerInitialForms>
       <ContainerMain>
         <ContainerLogo>
-          <img src={logo2job} style={{ width: '100%' }} alt="logo2job" />
+          <SvgImage src={logo2job} alt="2job logo" />
         </ContainerLogo>
         <ContainerForm>
           <form onSubmit={handleSubmit(login)}>

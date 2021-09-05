@@ -9,12 +9,12 @@
 import API from 'services/api';
 
 import routes from './routes';
-import { Login } from './models';
+import { ILogin } from './models';
 
 class SessionAPI {
   // constructor() {}
 
-  login = async ({ emailOrUsername, password }: Login): Promise<boolean> => {
+  login = async ({ emailOrUsername, password }: ILogin): Promise<boolean> => {
     const resp = await API.post(routes.login, { emailOrUsername, password });
     if (resp.status === 200) {
       const { token } = resp.data;

@@ -2,18 +2,18 @@ import 'dotenv/config';
 
 const env = String(process.env.REACT_APP_NODE_ENV) || 'dev';
 
-interface ObjectConfig {
+type IObjectConfig = {
   api: {
     url: string;
   };
+};
+
+interface IConfig {
+  [key: string]: IObjectConfig;
+  dev: IObjectConfig;
 }
 
-interface Config {
-  [key: string]: ObjectConfig;
-  dev: ObjectConfig;
-}
-
-const config: Config = {
+const config: IConfig = {
   dev: {
     api: {
       url: process.env.REACT_APP_URL || 'http://localhost:3000',

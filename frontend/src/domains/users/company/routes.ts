@@ -1,19 +1,17 @@
 /**
- * 
+ *
  * @author Gabriel da Silva Caetano
  * @email <98gabrielSc@gmail.com>
  * @description
- * 
+ *
  */
+
+import { TObjectRoutes } from 'domains/models';
 
 const CONTEXT = '/companies';
 
-type ObjectRoutes = {
-  [key: string]: string;
-};
-
-const routes: ObjectRoutes = {
-  create: `/create`
+const routes: TObjectRoutes = {
+  create: `/create`,
 };
 
 Object.keys(routes).forEach((key: string) => {

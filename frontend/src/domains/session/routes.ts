@@ -6,14 +6,11 @@
  *
  */
 
+import { TObjectRoutes } from 'domains/models';
+
 const CONTEXT = '/session';
 
-type ObjectRoutes = {
-  [key: string]: string;
-  login: string;
-};
-
-const routes: ObjectRoutes = {
+const routes: TObjectRoutes = {
   login: `/login`,
 };
 
