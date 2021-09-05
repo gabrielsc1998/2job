@@ -8,11 +8,16 @@
 
 import styled from 'styled-components';
 
+import { BreakPoints } from 'style/global';
+
 const ContainerPage = styled.div`
-  flex: 1;
   width: 100%;
   height: 100%;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  @media (max-width: ${BreakPoints.tablet}) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export default ContainerPage;

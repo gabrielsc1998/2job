@@ -16,6 +16,7 @@ import {
   ContainerLabel,
   LabelTitle,
   LabelSubtitle,
+  ContainerImageMask,
 } from './style';
 
 import TEXTS from './texts';
@@ -30,6 +31,7 @@ export default function ContainerInitialForms(
   return (
     <Container>
       <ContainerLeft>
+        <ContainerImageMask />
         <ContainerLabel>
           <LabelTitle>{TEXTS.title}</LabelTitle>
           <LabelSubtitle>

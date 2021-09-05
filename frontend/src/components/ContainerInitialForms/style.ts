@@ -13,30 +13,35 @@ import { FlexBoxCentralize, BreakPoints } from 'style/global';
 import { background } from 'images';
 
 export const ContainerRight = styled.div`
-  flex: 0.6;
   width: 100%;
+  ${FlexBoxCentralize};
   flex-direction: column;
   background-color: ${({ theme }) => theme.colors.background};
-  ${FlexBoxCentralize}
-  @media(max-width: ${BreakPoints.tablet}) {
-    flex: 1;
-  }
 `;
 
 export const ContainerLeft = styled.div`
-  flex: 0.45;
   width: 100%;
+  ${FlexBoxCentralize};
   flex-direction: column;
-  background-image: url(${background});
-  background-position: center;
   background-size: auto 100%;
-  ${FlexBoxCentralize}
-  @media(max-width: ${BreakPoints.tablet}) {
+  background-position: center;
+  background-image: url(${background});
+  @media (max-width: ${BreakPoints.tablet}) {
     display: none;
   }
+  position: relative;
+`;
+
+export const ContainerImageMask = styled.div`
+  opacity: 0.5;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: ${({ theme }) => theme.colors.primary};
 `;
 
 export const ContainerLabel = styled.div`
+  z-index: 1;
   flex: 1;
   flex-direction: column;
   ${FlexBoxCentralize};
