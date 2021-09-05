@@ -1,9 +1,9 @@
 /**
- * 
+ *
  * @author Gabriel da Silva Caetano
  * @email <98gabrielSc@gmail.com>
  * @description Initial screen
- * 
+ *
  */
 
 const TEXTS = [
@@ -13,10 +13,9 @@ const TEXTS = [
     labelButtons: 'Eu sou:',
     buttons: {
       dev: 'Dev.',
-      company: 'Empresa'
+      company: 'Empresa',
     },
-
-  }
-]
+  },
+];
 
 export default TEXTS[0];

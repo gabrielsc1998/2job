@@ -1,9 +1,9 @@
 /**
- * 
+ *
  * @author Gabriel da Silva Caetano
  * @email <98gabrielSc@gmail.com>
- * @description 
- * 
+ * @description
+ *
  */
 
-export {default} from './Button';
+export { default } from './Button';

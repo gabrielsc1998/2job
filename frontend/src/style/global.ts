@@ -1,9 +1,9 @@
 /**
- * 
+ *
  * @author Gabriel da Silva Caetano
  * @email <98gabrielSc@gmail.com>
  * @description Global style of the application
- * 
+ *
  */
 
 import { createGlobalStyle, css } from 'styled-components';
@@ -51,11 +51,9 @@ export default createGlobalStyle`
   h1, h2, h3, h4, h5, h6, strong {
     font-weight: 500;
   }
-  button {
-    cursor: pointer;
-  }
-  a {
+  button, a {
     outline: none;
+    cursor: pointer;
   }
 
 `;

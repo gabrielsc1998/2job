@@ -1,21 +1,21 @@
 /**
- * 
+ *
  * @author Gabriel da Silva Caetano
  * @email <98gabrielSc@gmail.com>
  * @description Login screen
- * 
+ *
  */
 
 import React, { useState } from 'react';
 
 import { useHistory } from 'react-router';
-import { useForm } from "react-hook-form";
+import { useForm } from 'react-hook-form';
 import { TextField } from '@material-ui/core';
 
 import { useSnackbar } from 'notistack';
 import optionsSnackbar from 'components/Snackbar/Snackbar';
 
-import { logo_2job } from 'images';
+import { logo2job } from 'images';
 import { ContainerInitialForms, Inputs, Button } from 'components';
 import { CREATE_ACCOUNT } from 'router/references';
 import session from 'domains/session/api';
@@ -26,73 +26,74 @@ import {
   ContainerLoginButton,
   ContainerTextsButton,
   ContainerLogo,
-  MaterialTextButton
+  MaterialTextButton,
 } from './style';
 
 import TEXTS from './texts';
 
 interface InterfaceTextButton {
   options: {
-    text: string,
+    text: string;
     onClick?: () => void;
     style?: React.CSSProperties | undefined;
-  }
-};
+  };
+}
 
 export default function Initial() {
-
   const history = useHistory();
   const { enqueueSnackbar } = useSnackbar();
 
   const goToCreateAccountUserScreen = () => {
     history.push(CREATE_ACCOUNT.USER_TYPE);
-  }
+  };
 
   const TextButton = (props: InterfaceTextButton) => {
-    const { text='', onClick=(()=>{}) } = props.options;
+    const { text = '', onClick = () => {} } = props.options;
     return (
-      <MaterialTextButton
-        disableElevation
-        onClick={onClick}
-      > {text} </MaterialTextButton>
-    )
-  }
-  
-  const { register, handleSubmit /*,formState: { errors }*/ } = useForm();
+      <MaterialTextButton disableElevation onClick={onClick}>
+        {' '}
+        {text}{' '}
+      </MaterialTextButton>
+    );
+  };
+
+  const { register, handleSubmit /* ,formState: { errors } */ } = useForm();
 
   const [loading, setLoading] = useState(false);
   const login = async (data: any) => {
     setLoading(true);
     setTimeout(async () => {
       setLoading(false);
-      if(await session.login(data)) {
-        enqueueSnackbar('Login com sucesso!', { ...optionsSnackbar('success') });
+      if (await session.login(data)) {
+        enqueueSnackbar('Login com sucesso!', {
+          ...optionsSnackbar('success'),
+        });
       } else {
         enqueueSnackbar('Erro no login!', { ...optionsSnackbar('error') });
       }
-    }, 1)
-  }
+    }, 1);
+  };
 
-  return(
+  return (
     <ContainerInitialForms>
       <ContainerMain>
         <ContainerLogo>
-          <img src={logo_2job} style={{ width: '100%' }} alt='Logo_2JOB' />
+          <img src={logo2job} style={{ width: '100%' }} alt="logo2job" />
         </ContainerLogo>
         <ContainerForm>
           <form onSubmit={handleSubmit(login)}>
             <TextField
-              id='emailOrUsername'
+              id="emailOrUsername"
               label={TEXTS.inputs.emailOrUser.label}
               fullWidth
-              margin='normal'
+              margin="normal"
               {...register('emailOrUsername', { required: true })}
             />
-            <Inputs.Password {...register('password', { required: true })}/>
+            <Inputs.Password {...register('password', { required: true })} />
             <ContainerLoginButton>
-              <Button 
+              <Button
                 text={TEXTS.buttons.login}
-                type='submit'
+                type="submit"
                 disabled={loading}
                 loading={loading}
               />
@@ -100,14 +101,20 @@ export default function Initial() {
           </form>
           <ContainerTextsButton>
             <TextButton
-              options={{ text: TEXTS.buttons.forgotPassword, onClick: goToCreateAccountUserScreen }}
+              options={{
+                text: TEXTS.buttons.forgotPassword,
+                onClick: goToCreateAccountUserScreen,
+              }}
             />
             <TextButton
-              options={{ text: TEXTS.buttons.createAccount, onClick: goToCreateAccountUserScreen }}
+              options={{
+                text: TEXTS.buttons.createAccount,
+                onClick: goToCreateAccountUserScreen,
+              }}
             />
           </ContainerTextsButton>
         </ContainerForm>
       </ContainerMain>
     </ContainerInitialForms>
-  )
+  );
 }

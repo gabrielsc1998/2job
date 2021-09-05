@@ -1,16 +1,14 @@
-const path = require('path');
+import { resolve } from 'path';
 
-module.exports = {
-  webpack: {
-    alias: {
-      '@': path.resolve(__dirname, 'src/')
-    }
+export const webpack = {
+  alias: {
+    '@': resolve(__dirname, 'src/'),
   },
-  jest: {
-    configure: {
-      moduleNameMapper: {
-        '^@(.*)$': '<rootDir>/src$1'
-      }
-    }
-  }
+};
+export const jest = {
+  configure: {
+    moduleNameMapper: {
+      '^@(.*)$': '<rootDir>/src$1',
+    },
+  },
 };

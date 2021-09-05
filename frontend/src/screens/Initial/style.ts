@@ -1,9 +1,9 @@
 /**
- * 
+ *
  * @author Gabriel da Silva Caetano
  * @email <98gabrielSc@gmail.com>
- * @description 
- * 
+ * @description
+ *
  */
 
 import styled from 'styled-components';
@@ -23,7 +23,7 @@ export const MaterialButton = styled(Button)`
     & .label {
       color: ${colors.PRIMARY};
     }
-    background-color: ${colors.SECONDARY}
+    background-color: ${colors.SECONDARY};
   }
   ${FlexBoxCentralize};
 `;

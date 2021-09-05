@@ -1,32 +1,31 @@
 /**
- * 
+ *
  * @author Gabriel da Silva Caetano
  * @email <98gabrielSc@gmail.com>
- * @description 
- * 
+ * @description
+ *
  */
 
-import { ContainerGoBack } from './style';
-
 import { useHistory } from 'react-router';
+import ContainerGoBack from './style';
 
 import Button from '../Button';
 
 interface GoBackProps {
   text?: string;
-};
+}
 
 export default function GoBack(props: GoBackProps) {
-  const { text='Voltar' } = props;
-  
+  const { text = 'Voltar' } = props;
+
   const history = useHistory();
   return (
     <ContainerGoBack>
-      <Button 
+      <Button
         text={text}
         style={{ textTransform: 'none' }}
         onClick={() => history.goBack()}
       />
     </ContainerGoBack>
-  )
+  );
 }

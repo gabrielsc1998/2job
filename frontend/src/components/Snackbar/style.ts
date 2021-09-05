@@ -1,11 +1,13 @@
 /**
- * 
+ *
  * @author Gabriel da Silva Caetano
  * @email <98gabrielSc@gmail.com>
- * @description 
- * 
+ * @description
+ *
  */
 
-export const IconStyle = {
-  htmlColor: 'white'
+const IconStyle = {
+  htmlColor: 'white',
 };
+
+export default IconStyle;

@@ -1,9 +1,9 @@
 /**
- * 
+ *
  * @author Gabriel da Silva Caetano
  * @email <98gabrielSc@gmail.com>
- * @description 
- * 
+ * @description
+ *
  */
 
 import styled from 'styled-components';
@@ -29,7 +29,7 @@ export const ContainerLeft = styled.div`
   flex-direction: column;
   background-image: url(${background});
   background-position: center;
-  background-size: auto 100% ;
+  background-size: auto 100%;
   ${FlexBoxCentralize}
   @media(max-width: 800px) {
     display: none;

@@ -1,9 +1,9 @@
 /**
- * 
+ *
  * @author Gabriel da Silva Caetano
  * @email <98gabrielSc@gmail.com>
  * @description
- * 
+ *
  */
 
 const CONTEXT = '/session';
@@ -14,12 +14,11 @@ type ObjectRoutes = {
 };
 
 const routes: ObjectRoutes = {
-  login: `/login`
+  login: `/login`,
 };
 
 Object.keys(routes).forEach((key: string) => {
   routes[key] = `${CONTEXT}${routes[key]}`;
 });
-
 
 export default routes;

@@ -1,9 +1,9 @@
 /**
- * 
+ *
  * @author Gabriel da Silva Caetano
  * @email <98gabrielSc@gmail.com>
- * @description 
- * 
+ * @description
+ *
  */
 
 import styled from 'styled-components';
@@ -13,9 +13,9 @@ import { colors, sizes, FlexBoxCentralize } from 'style/global';
 
 export const MaterialTextButton = styled(Button)`
   && {
-    color: ${colors.PRIMARY}; 
+    color: ${colors.PRIMARY};
     text-transform: none;
-    background-Color: transparent;
+    background-color: transparent;
     &:hover {
       font-weight: bold;
       text-decoration: underline;
@@ -38,14 +38,14 @@ export const ContainerMain = styled.div`
 `;
 
 export const ContainerForm = styled.div`
-  flex: 1; 
+  flex: 1;
   width: 100%;
-  display: flex; 
+  display: flex;
   flex-direction: column;
 `;
 
 export const ContainerLoginButton = styled.div`
-  margin-block: ${sizes.DEFAULT_SPACING*3}px;
+  margin-block: ${sizes.DEFAULT_SPACING * 3}px;
 `;
 
 export const ContainerTextsButton = styled.div`

@@ -1,41 +1,37 @@
 /**
- * 
+ *
  * @author Gabriel da Silva Caetano
  * @email <98gabrielSc@gmail.com>
- * @description 
- * 
+ * @description
+ *
  */
 
 import { Container } from 'components';
 
-import { 
+import {
   ContainerLeft,
-  ContainerRight, 
+  ContainerRight,
   ContainerLabel,
   LabelTitle,
-  LabelSubtitle
+  LabelSubtitle,
 } from './style';
 
 import TEXTS from './texts';
 
 export default function ContainerInitialForms(props: any) {
   return (
-    <Container>     
+    <Container>
       <ContainerLeft>
         <ContainerLabel>
-          <LabelTitle>
-            {TEXTS.title}
-          </LabelTitle>
+          <LabelTitle>{TEXTS.title}</LabelTitle>
           <LabelSubtitle>
             {TEXTS.subtitle.p1}
-            <br/>
+            <br />
             {TEXTS.subtitle.p2}
           </LabelSubtitle>
         </ContainerLabel>
       </ContainerLeft>
-      <ContainerRight>
-        {props.children}
-      </ContainerRight>
+      <ContainerRight>{props.children}</ContainerRight>
     </Container>
-  )
+  );
 }

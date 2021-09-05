@@ -1,9 +1,9 @@
 /**
- * 
+ *
  * @author Gabriel da Silva Caetano
  * @email <98gabrielSc@gmail.com>
- * @description 
- * 
+ * @description
+ *
  */
 
 import Inputs from './Inputs';
@@ -12,10 +12,4 @@ import GoBack from './GoBack';
 import Container from './Container';
 import ContainerInitialForms from './ContainerInitialForms';
 
-export {
-  Inputs,
-  Button,
-  GoBack,
-  Container,
-  ContainerInitialForms
-}
+export { Inputs, Button, GoBack, Container, ContainerInitialForms };

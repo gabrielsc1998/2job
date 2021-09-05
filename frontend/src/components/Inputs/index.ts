@@ -1,8 +1,7 @@
-
-import Password from "./Password/Password";
+import Password from './Password/Password';
 
 const Inputs = {
-  Password
+  Password,
 };
 
 export default Inputs;

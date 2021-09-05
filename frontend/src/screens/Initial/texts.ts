@@ -1,9 +1,9 @@
 /**
- * 
+ *
  * @author Gabriel da Silva Caetano
  * @email <98gabrielSc@gmail.com>
  * @description Initial screen
- * 
+ *
  */
 
 const TEXTS = [
@@ -11,16 +11,15 @@ const TEXTS = [
     title: 'Seja bem vindo(a)!',
     subtitle: {
       p1: 'Aqui as empresas e',
-      p2: 'os devs se encontram.'
+      p2: 'os devs se encontram.',
     },
     labelTellUsAboutYou: 'Conte-nos um pouco sobre você',
     labelButtons: 'Eu sou:',
     buttons: {
       dev: 'Dev.',
-      company: 'Empresa'
+      company: 'Empresa',
     },
-
-  }
-]
+  },
+];
 
 export default TEXTS[0];

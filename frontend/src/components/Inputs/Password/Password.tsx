@@ -1,9 +1,9 @@
 /**
- * 
+ *
  * @author Gabriel da Silva Caetano
  * @email <98gabrielSc@gmail.com>
- * @description 
- * 
+ * @description
+ *
  */
 
 import React, { useState } from 'react';
@@ -13,51 +13,52 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 
 import TEXTS from './texts';
-import { IconStyle } from './style';
+import IconStyle from './style';
 
 export default function Password(props: any) {
-
-  const { error=false } = props;
+  const { error = false } = props;
 
   const [ctrlInputPassword, setCtrlInputPassword] = useState({
     show: false,
-    Icon: Visibility
+    Icon: Visibility,
   });
 
   const executeControlInputPassword = () => {
-    let lastCtrlInputPassword = {...ctrlInputPassword};
+    const lastCtrlInputPassword = { ...ctrlInputPassword };
     lastCtrlInputPassword.show = !lastCtrlInputPassword.show;
-    lastCtrlInputPassword.Icon = lastCtrlInputPassword.show ? VisibilityOff : Visibility;
-    setCtrlInputPassword({...lastCtrlInputPassword});
-  }
+    lastCtrlInputPassword.Icon = lastCtrlInputPassword.show
+      ? VisibilityOff
+      : Visibility;
+    setCtrlInputPassword({ ...lastCtrlInputPassword });
+  };
 
   const RenderIconPassword = () => {
-    const Icon = ctrlInputPassword.Icon;
+    const { Icon } = ctrlInputPassword;
     return (
       <Icon
         htmlColor={IconStyle.color}
-        style={IconStyle.style} 
-        onClick={() => executeControlInputPassword() }
+        style={IconStyle.style}
+        onClick={() => executeControlInputPassword()}
       />
-    )
-  }
+    );
+  };
 
-  return(
+  return (
     <TextField
       {...props}
       label={TEXTS.label}
       fullWidth
-      margin='normal'
+      margin="normal"
       type={ctrlInputPassword.show ? 'text' : 'password'}
       error={error}
       helperText={error ? TEXTS.helper : ' '}
       InputProps={{
         endAdornment: (
-          <InputAdornment position='end'>
+          <InputAdornment position="end">
             <RenderIconPassword />
           </InputAdornment>
-        )
+        ),
       }}
     />
-  )
+  );
 }

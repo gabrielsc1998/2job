@@ -1,9 +1,9 @@
 /**
- * 
+ *
  * @author Gabriel da Silva Caetano
  * @email <98gabrielSc@gmail.com>
- * @description 
- * 
+ * @description
+ *
  */
 
 import styled from 'styled-components';
@@ -11,7 +11,7 @@ import Button from '@material-ui/core/Button';
 
 import { colors, FlexBoxCentralize } from 'style/global';
 
-export const MaterialButton = styled(Button)`
+const MaterialButton = styled(Button)`
   && {
     width: 100%;
     min-width: 100px;
@@ -21,8 +21,10 @@ export const MaterialButton = styled(Button)`
     &:hover {
       font-weight: bold;
       color: ${colors.PRIMARY};
-      background-color: ${colors.SECONDARY}
-    };
+      background-color: ${colors.SECONDARY};
+    }
     ${FlexBoxCentralize};
   }
 `;
+
+export default MaterialButton;

@@ -14,7 +14,7 @@ function App() {
           <Router />
         </CreateUserProvider>
       </SnackbarProvider>
-      <GlobalStyle /> 
+      <GlobalStyle />
     </>
   );
 }

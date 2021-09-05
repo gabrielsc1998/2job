@@ -1,9 +1,9 @@
 /**
- * 
+ *
  * @author Gabriel da Silva Caetano
  * @email <98gabrielSc@gmail.com>
- * @description 
- * 
+ * @description
+ *
  */
 
 import styled from 'styled-components';
@@ -22,12 +22,12 @@ export const ContainerForm = styled.div`
 export const ContainerButtons = styled.div`
   width: 100%;
   display: flex;
-  flex-direction: row; 
+  flex-direction: row;
   margin-top: ${sizes.DEFAULT_SPACING}px;
 `;
 
 export const ContainerLoginButton = styled.div`
-  margin-block: ${sizes.DEFAULT_SPACING*3}px;
+  margin-block: ${sizes.DEFAULT_SPACING * 3}px;
 `;
 
 export const ContainerButtonsAndLabel = styled.div`
