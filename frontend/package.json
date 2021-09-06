@@ -27,7 +27,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "env-cmd -f .env clear & craco start",
+    "start": "env-cmd clear & craco start",
     "build": "craco build",
     "test": "clear & craco test",
     "eject": "craco eject"
@@ -55,6 +55,7 @@
     "@types/styled-components": "^5.1.11",
     "@typescript-eslint/eslint-plugin": "^4.30.0",
     "@typescript-eslint/parser": "^4.30.0",
+    "env-cmd": "^10.1.0",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",

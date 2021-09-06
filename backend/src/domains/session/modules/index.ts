@@ -25,9 +25,10 @@ class SessionModel {
   }
 
   findOne = async (query: any): Promise<{id: string, password: string, salt: string} | undefined> => {
-    const findDev = await devsModule.findOne({...query});
+    const select = ['password', 'salt'];
+    const findDev = await devsModule.findOne({...query}, select);
     if(_.isEmpty(findDev)) {
-      const findCompany = await companiesModule.findOne({...query}, ['password', 'salt']);
+      const findCompany = await companiesModule.findOne({...query}, select);
       if(_.isEmpty(findCompany)) {
         return undefined;
       }

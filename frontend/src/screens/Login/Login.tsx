@@ -16,7 +16,7 @@ import { TextField } from '@material-ui/core';
 import { logo2job } from 'images';
 import session from 'domains/session/api';
 import { ILogin } from 'domains/session/models';
-import { CREATE_ACCOUNT } from 'router/references';
+import { CREATE_ACCOUNT, DASHBOARD_SCREEN } from 'router/references';
 import optionsSnackbar from 'components/Snackbar/Snackbar';
 import { ContainerInitialForms, Inputs, Button, SvgImage } from 'components';
 
@@ -43,8 +43,8 @@ export default function Initial() {
   const history = useHistory();
   const { enqueueSnackbar } = useSnackbar();
 
-  const goToCreateAccountUserScreen = () => {
-    history.push(CREATE_ACCOUNT.USER_TYPE);
+  const goToScreen = (screen: string) => {
+    history.push(screen);
   };
 
   const TextButton = (props: InterfaceTextButton) => {
@@ -56,21 +56,22 @@ export default function Initial() {
     );
   };
 
-  const { register, handleSubmit /* ,formState: { errors } */ } = useForm();
+  const { register, handleSubmit /* ,formState: { errors } */, reset } =
+    useForm();
 
   const [loading, setLoading] = useState(false);
   const login = async (data: ILogin) => {
     setLoading(true);
-    setTimeout(async () => {
-      setLoading(false);
-      if (await session.login(data)) {
-        enqueueSnackbar('Login com sucesso!', {
-          ...optionsSnackbar('success'),
-        });
-      } else {
-        enqueueSnackbar('Erro no login!', { ...optionsSnackbar('error') });
-      }
-    }, 1);
+    if (await session.login(data)) {
+      enqueueSnackbar('Login com sucesso!', {
+        ...optionsSnackbar('success'),
+      });
+      goToScreen(DASHBOARD_SCREEN);
+    } else {
+      enqueueSnackbar('Não autorizado!', { ...optionsSnackbar('error') });
+    }
+    reset();
+    setLoading(false);
   };
 
   return (
@@ -102,13 +103,17 @@ export default function Initial() {
             <TextButton
               options={{
                 text: TEXTS.buttons.forgotPassword,
-                onClick: goToCreateAccountUserScreen,
+                onClick: () => {
+                  goToScreen(CREATE_ACCOUNT.USER_TYPE);
+                },
               }}
             />
             <TextButton
               options={{
                 text: TEXTS.buttons.createAccount,
-                onClick: goToCreateAccountUserScreen,
+                onClick: () => {
+                  goToScreen(CREATE_ACCOUNT.USER_TYPE);
+                },
               }}
             />
           </ContainerTextsButton>

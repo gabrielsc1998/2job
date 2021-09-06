@@ -15,13 +15,18 @@ class SessionAPI {
   // constructor() {}
 
   login = async ({ emailOrUsername, password }: ILogin): Promise<boolean> => {
-    const resp = await API.post(routes.login, { emailOrUsername, password });
-    if (resp.status === 200) {
-      const { token } = resp.data;
-      token && localStorage.setItem('token', token);
-      return true;
+    try {
+      const resp = await API.post(routes.login, { emailOrUsername, password });
+      if (resp.status === 200) {
+        const { token } = resp.data;
+        token && localStorage.setItem('token', token);
+        return true;
+      }
+      return false;
+    } catch (error) {
+      console.log(`SessionAPI.login - Error: ${error}`);
+      return false;
     }
-    return false;
   };
 }
 

@@ -7,6 +7,7 @@
  */
 
 export const LOGIN_SCREEN = '/';
+export const DASHBOARD_SCREEN = '/dashboard';
 
 const CREATE_ACCOUNT_REF = '/createAccount';
 export const CREATE_ACCOUNT = {

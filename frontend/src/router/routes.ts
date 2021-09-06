@@ -6,9 +6,9 @@
  *
  */
 
-import { Login, CreateAccount } from 'screens';
+import { Login, CreateAccount, Dashboard } from 'screens';
 
-import { LOGIN_SCREEN, CREATE_ACCOUNT } from './references';
+import { LOGIN_SCREEN, CREATE_ACCOUNT, DASHBOARD_SCREEN } from './references';
 
 const routes = [
   {
@@ -22,6 +22,10 @@ const routes = [
   {
     ref: CREATE_ACCOUNT.INPUTS_AND_CONFIRM,
     component: CreateAccount.InputsAndConfirm,
+  },
+  {
+    ref: DASHBOARD_SCREEN,
+    component: Dashboard,
   },
 ];
 

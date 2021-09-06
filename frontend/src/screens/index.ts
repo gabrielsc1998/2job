@@ -7,6 +7,7 @@
  */
 
 import Login from './Login';
+import Dashboard from './Dashboard';
 import { UserType, InputsAndConfirm } from './CreateAccount';
 
 const CreateAccount = {
@@ -14,4 +15,4 @@ const CreateAccount = {
   InputsAndConfirm,
 };
 
-export { Login, CreateAccount };
+export { Login, CreateAccount, Dashboard };
